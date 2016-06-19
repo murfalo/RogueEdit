@@ -12,8 +12,13 @@ class Editor
 public:
     Editor();
     ~Editor();
-    template<typename T> T Editor::loadValue(std::fstream &f);  // Loads a value from fstream
-    void setValue(std::fstream &f); // Sets a value in fstream
+
+    void restart(); // Return playerDataStream to the beginning of PlayerData.txt
+
+    // Loads a value from fstream
+    template<typename T> T Editor::loadValue(std::string specifier);
+
+    void setValue(std::string specifier); // Sets a value in fstream
     QString* Editor::loadCharacterNames(); // Load in characters from playerData.txt
 
 private:
