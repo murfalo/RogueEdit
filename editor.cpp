@@ -22,7 +22,10 @@ Editor::Editor()
     if (playerDataStream.fail()) std::abort(); // TODO: Implement more graceful exception handling.
 }
 
-Editor::~Editor() {}
+Editor::~Editor()
+{
+    this->playerDataStream.close();
+}
 
 template<typename T> T Editor::loadValue(std::fstream &f)
 {
