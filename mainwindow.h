@@ -13,6 +13,8 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    // Create an option for each character under "Load Character" in the menu bar
+    void MainWindow::createCharacterActions(QString* characterNames);
     ~MainWindow();
 
 private:
