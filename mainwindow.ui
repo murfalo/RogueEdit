@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>500</width>
     <height>400</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>500</width>
     <height>400</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
+    <width>500</width>
     <height>400</height>
    </size>
   </property>
@@ -35,7 +35,7 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>75</x>
+      <x>125</x>
       <y>125</y>
       <width>250</width>
       <height>51</height>
@@ -55,7 +55,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>500</width>
      <height>21</height>
     </rect>
    </property>
@@ -81,7 +81,7 @@ p, li { white-space: pre-wrap; }
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <addaction name="actionCharacter"/>
    <addaction name="actionEquipped"/>
