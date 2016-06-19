@@ -23,6 +23,18 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuCharacter">
+    <property name="title">
+     <string>Load Player</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSave_Player">
+    <property name="title">
+     <string>Save Player</string>
+    </property>
+   </widget>
+   <addaction name="menuCharacter"/>
+   <addaction name="menuSave_Player"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
