@@ -49,31 +49,49 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Welcome to RogueEdit! Please select a character from the Load Character menu above.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>500</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuLoad_Character">
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>-2</x>
+      <y>-2</y>
+      <width>511</width>
+      <height>361</height>
+     </rect>
     </property>
-    <property name="title">
-     <string>Load Character</string>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
+    <widget class="QWidget" name="tabCharacter">
+     <attribute name="title">
+      <string>Character</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabEquipped">
+     <attribute name="title">
+      <string>Equipped</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabInventory">
+     <attribute name="title">
+      <string>Inventory</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabStorage">
+     <attribute name="title">
+      <string>Storage</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabCombat_Chips">
+     <attribute name="title">
+      <string>Combat Chips</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabShip_Droids">
+     <attribute name="title">
+      <string>Ship Droids</string>
+     </attribute>
+    </widget>
    </widget>
-   <widget class="QMenu" name="menuSave_Player">
-    <property name="title">
-     <string>Save Character</string>
-    </property>
-   </widget>
-   <addaction name="menuLoad_Character"/>
-   <addaction name="menuSave_Player"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
@@ -81,45 +99,9 @@ p, li { white-space: pre-wrap; }
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
-   <addaction name="actionCharacter"/>
-   <addaction name="actionEquipped"/>
-   <addaction name="actionInventory"/>
-   <addaction name="actionStorage"/>
-   <addaction name="actionCombat_Chips"/>
-   <addaction name="actionShip_Droids"/>
   </widget>
-  <action name="actionCharacter">
-   <property name="text">
-    <string>Character</string>
-   </property>
-  </action>
-  <action name="actionEquipped">
-   <property name="text">
-    <string>Equipped</string>
-   </property>
-  </action>
-  <action name="actionInventory">
-   <property name="text">
-    <string>Inventory</string>
-   </property>
-  </action>
-  <action name="actionStorage">
-   <property name="text">
-    <string>Storage</string>
-   </property>
-  </action>
-  <action name="actionCombat_Chips">
-   <property name="text">
-    <string>Combat Chips</string>
-   </property>
-  </action>
-  <action name="actionShip_Droids">
-   <property name="text">
-    <string>Ship Droids</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

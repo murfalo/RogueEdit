@@ -1,8 +1,6 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
 #pragma once
 #include <QMainWindow>
+#include <QToolButton>
 #include "editor.h"
 
 namespace Ui {
@@ -19,22 +17,7 @@ public:
     void MainWindow::createCharacterActions();
     ~MainWindow();
 
-private slots:
-    void on_actionCharacter_triggered();
-
-    void on_actionEquipped_triggered();
-
-    void on_actionInventory_triggered();
-
-    void on_actionStorage_triggered();
-
-    void on_actionCombat_Chips_triggered();
-
-    void on_actionShip_Droids_triggered();
-
 private:
     Editor e;
     Ui::MainWindow *ui;
 };
-
-#endif // MAINWINDOW_H

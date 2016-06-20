@@ -1,11 +1,7 @@
-#ifndef EDITOR_H
-#define EDITOR_H
-
 #pragma once
 #include <QtCore>
 #include <QMenu>
 #include <fstream>
-#include "mainwindow.h"
 
 class Editor
 {
@@ -27,5 +23,3 @@ private:
     std::fstream playerDataStream; // Used to load and edit PlayerData.txt
     const int MAX_CHARACTERS = 6; // Maximum number of characters allowed by RogueLands
 };
-
-#endif // EDITOR_H
