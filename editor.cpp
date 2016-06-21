@@ -31,8 +31,6 @@ void Editor::restart()
 
 template<typename T> T Editor::loadValue(std::string specifier)
 {
-    /* Loads a value starting from the specifier (e.g. "0name"). PlayerData.txt uses the following
-     * representation: "specifier : value : type; ". */
     T value;
     std::string word;
 
