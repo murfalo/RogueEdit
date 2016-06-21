@@ -7,36 +7,48 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->e = new Editor();
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete this->ui;
+    delete this->e;
 }
 
 void MainWindow::createCharacterActions()
 {
+    /* Creates a dropdown do load characters and an option to save changes on
+     * the main tool bar. */
     QAction* characterNameAction;
-    QString* characterNames = this->e.loadCharacterNames(); // Load character names from file
-    QToolBar* mainToolBar = this->findChild<QToolBar*>("mainToolBar");
+    QString* characterNames = this->e->loadCharacterNames(); // Load character names from file
 
-    // Create a new dropdown menu
-    QMenu* characterMenu = new QMenu;
+    if (characterNames->size() == 0) std::abort(); // Abort if no characters were found
+
+    QToolBar* mainToolBar = this->findChild<QToolBar*>("mainToolBar");
+    QMenu* characterMenu = new QMenu("menuCharacter");
 
     // Add an action to characterMenu for each non-empty item in characterNames
     for (int i = 0; i < characterNames->size(); i++)
     {
         if (characterNames[i].isEmpty()) break;
         characterNameAction = new QAction(characterNames[i], this);
+        characterNameAction->setObjectName(characterNames[i]);
+
+        // Connect characterNameAction to a handler
+        QObject::connect(characterNameAction, SIGNAL(triggered()), this, SLOT(characterNameActionHandler()));
+
         characterMenu->addAction(characterNameAction);
     }
 
-    // Create a dropdown and assign characterMenu to it
+    // Kludge in a dropdown inside the toolbar
     QToolButton* loadCharacterDropdown = new QToolButton;
     loadCharacterDropdown->setText("Load Character");
+    loadCharacterDropdown->setObjectName("dropdownLoad_Character");
     loadCharacterDropdown->setToolButtonStyle(Qt::ToolButtonTextOnly);
     loadCharacterDropdown->setPopupMode(QToolButton::MenuButtonPopup);
     loadCharacterDropdown->setMenu(characterMenu);
+    loadCharacterDropdown->setDefaultAction(characterMenu->actions()[0]);
 
     // Create a save character action
     QAction* saveCharacterAction = new QAction("Save Character", this);
@@ -44,4 +56,19 @@ void MainWindow::createCharacterActions()
     // Add the dropdown and a save character action to mainToolBar
     mainToolBar->addWidget(loadCharacterDropdown);
     mainToolBar->addAction(saveCharacterAction);
+}
+
+void MainWindow::characterNameActionHandler()
+{
+    /* This function occurs when a player name is clicked in the loadCharacterDropdown.
+     * Currently, it is very basic and functionality will be added in the future. */
+    // Determine the name of the character that was clicked
+    QString characterName = QObject::sender()->objectName();
+
+    // Locate loadCharacterDropdown and determine which characterNameAction is sender
+    QToolButton* loadCharacterDropdown = this->findChild<QToolButton*>("dropdownLoad_Character");
+    QAction* sender = this->findChild<QAction*>(characterName);
+    loadCharacterDropdown->setDefaultAction(sender);
+
+    // TODO: this->e.loadCharacter(characterName)
 }

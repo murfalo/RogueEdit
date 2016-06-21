@@ -17,7 +17,10 @@ public:
     void MainWindow::createCharacterActions();
     ~MainWindow();
 
+public slots:
+    void characterNameActionHandler();
+
 private:
-    Editor e;
+    Editor* e;
     Ui::MainWindow *ui;
 };

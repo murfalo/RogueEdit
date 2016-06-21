@@ -50,10 +50,13 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>-2</x>
-      <y>-2</y>
+      <y>-3</y>
       <width>511</width>
       <height>361</height>
      </rect>
