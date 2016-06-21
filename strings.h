@@ -26,6 +26,8 @@ namespace Strings
      * Current representation: "specifier : value : type; " */
     static const std::string separator = ":";   // Seperates information for a specifier
     static const std::string terminator = ";";  // Terminates a specifier
+    static const std::string paddedSeperator = " : ";
+    static const std::string paddedTerminator = " ; ";
 
     // (Soon to be) Long list of specifiers
     static const std::string intSpecifier = "System.Int32";

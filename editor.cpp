@@ -1,6 +1,5 @@
 #pragma once
 #include "editor.h"
-#include "strings.h"
 
 Editor::Editor()
 {
@@ -12,45 +11,64 @@ Editor::Editor()
     // The location of the save file is different on Windows and Mac
     this->playerDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::playerDataSuffix;
 
-    // Open playerDataStream
-    this->playerDataStream.open(this->playerDataLocation);
+    // Open a stream and load contents into memory
+    std::ifstream playerDataStream(this->playerDataLocation);
     if (playerDataStream.fail()) std::abort(); // TODO: Implement more graceful exception handling.
+    this->playerData = new std::string((std::istreambuf_iterator<char>(playerDataStream)),
+                                       std::istreambuf_iterator<char>());
+    playerDataStream.close();
 }
 
 Editor::~Editor()
 {
-    this->playerDataStream.close();
-}
-
-void Editor::restart()
-{
-    // Return playerDataStream to the beginning of PlayerData.txt
-    this->playerDataStream.clear();
-    this->playerDataStream.seekg(0, std::ios::beg);
+    delete this->playerData;
 }
 
 template<typename T> T Editor::loadValue(std::string specifier)
 {
+    /* Returns the value assigned to specifier. */
     T value;
+    // Create a stringstream and set it's contents to playerData
+    std::stringstream playerDataStream;
+    playerDataStream.str(*(this->playerData));
+
     std::string word;
 
     // Search the file up to the specifier
-    while (this->playerDataStream >> word)
+    while (playerDataStream >> word)
         if (word == specifier) break;
 
     // Find the value
-    while(this->playerDataStream >> word && word != Strings::terminator)
+    while(playerDataStream >> word && word != Strings::terminator)
     {
         if (word != Strings::separator && word != Strings::intSpecifier && word != Strings::stringSpecifier)
             value = word;
     }
 
-    this->restart(); // Return the stream to the beginning of the file
-
     return value;
 }
 
-void Editor::setValue(std::string specifier) {}
+void Editor::replaceValue(std::string specifier, std::string oldValue, std::string newValue)
+{
+    /* Replaces oldValue with newValue in this->playerData. */
+    std::string oldString = specifier + Strings::paddedSeperator + oldValue; // String to be replaced
+    std::string newString = specifier + Strings::paddedSeperator + newValue; // String to be inserted
+
+    // Find the location at which to replace
+    std::size_t position = this->playerData->find(oldString);
+
+    // Erase oldString at position from playerData
+    this->playerData->erase(position, oldString.length());
+
+    // Insert newString into playerData at position
+    this->playerData->insert(position, newString);
+
+    // Testing purposes!
+    std::string test = "";
+    for (int i = 0; i < 100; i++)
+        test += this->playerData->at(position + i);
+    qDebug() << QString::fromStdString(test);
+}
 
 QString* Editor::loadCharacterNames()
 {
