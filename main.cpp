@@ -1,6 +1,8 @@
 #pragma once
 #include "mainwindow.h"
 #include "editor.h"
+#include "character.h"
+#include "strings.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -11,7 +13,7 @@ int main(int argc, char *argv[])
     // Add character names from PlayerData.txt to menu bar under "Load Character"
     w.createCharacterActions();
 
-    w.setWindowTitle("RogueEdit");
+    w.setWindowTitle(Strings::appTitle);
     w.show();
 
     return a.exec();

@@ -1,5 +1,6 @@
 #pragma once
 #include "editor.h"
+#include "strings.h"
 
 Editor::Editor()
 {
@@ -9,13 +10,7 @@ Editor::Editor()
         username = qgetenv("USERNAME");
 
     // The location of the save file is different on Windows and Mac
-#if defined(Q_OS_WIN)
-    this->playerDataLocation = ("C:/Users/" + username + "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt").toStdString();
-    this->tmpLocation = ("C:/Users/" + username + "/AppData/LocalLow/DefaultCompany/Roguelands/tmp.txt").toStdString();
-#elif defined(Q_OS_MAC)
-    this->playerDataLocation = "not yet implemented";
-    this->tmpLocation = "not yet implemented";
-#endif
+    this->playerDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::playerDataSuffix;
 
     // Open playerDataStream
     this->playerDataStream.open(this->playerDataLocation);
@@ -46,9 +41,9 @@ template<typename T> T Editor::loadValue(std::string specifier)
         if (word == specifier) break;
 
     // Find the value
-    while(this->playerDataStream >> word && word != ";")
+    while(this->playerDataStream >> word && word != Strings::terminator)
     {
-        if (word != ":" && word != "System.Int32" && word != "System.String")
+        if (word != Strings::separator && word != Strings::intSpecifier && word != Strings::stringSpecifier)
             value = word;
     }
 
@@ -67,16 +62,19 @@ QString* Editor::loadCharacterNames()
     std::string characterName;
     std::string specifier;
     QString* characterNames = new QString[this->MAX_CHARACTERS];
+    int i;
 
     /* In PlayerData.txt, character names are specified by their number, ranging from
      * 0 to MAX_CHARACTERS, followed by "name" (e.g. "0name : Smurfalicious"). */
-    for (int i = 0; i < this->MAX_CHARACTERS; i++)
+    for (i = 0; i < this->MAX_CHARACTERS; i++)
     {
         // Load the name and store it in characterNames
-        specifier = std::to_string(i) + "name";
+        specifier = std::to_string(i) + Strings::nameSpecifier;
         characterName = loadValue<std::string>(specifier);
         characterNames[i] = QString::fromStdString(characterName);
     }
+
+    this->numCharacters = i; // Update numCharacters to store the number of characters loaded
 
     return characterNames;
 }

@@ -51,7 +51,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -62,16 +62,22 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>16</width>
+      <height>16</height>
+     </size>
     </property>
     <widget class="QWidget" name="tabCharacter">
      <attribute name="title">
-      <string>Character</string>
+      <string> Character </string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tabEquipped">
      <attribute name="title">
-      <string>Equipped</string>
+      <string> Equipped </string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tabInventory">
@@ -92,6 +98,11 @@ p, li { white-space: pre-wrap; }
     <widget class="QWidget" name="tabShip_Droids">
      <attribute name="title">
       <string>Ship Droids</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabPortal">
+     <attribute name="title">
+      <string>Portal</string>
      </attribute>
     </widget>
    </widget>
