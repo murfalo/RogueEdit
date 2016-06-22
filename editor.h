@@ -18,10 +18,12 @@ public:
     void Editor::replaceValue(std::string specifier,         // Replaces a value in file
                               std::string oldValue,
                               std::string newValue);
+    void Editor::save();                                     // Save playerData to file
     QString* Editor::loadCharacterNames();                   // Load in characters from file
 
 private:
     std::string playerDataLocation;    // Location of file
+    std::string tmpDataLocation;       // Location to store temporary data when saving
     std::string* playerData;           // Pointer to contents of file in memory
     int numCharacters = 0;             // Number of characters in file
     const int MAX_CHARACTERS = 6;      // Maximum number of characters allowed by RogueLands

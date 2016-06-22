@@ -10,6 +10,7 @@ Editor::Editor()
 
     // The location of the save file is different on Windows and Mac
     this->playerDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::playerDataSuffix;
+    this->tmpDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::tmpDataSuffix;
 
     // Open a stream and load contents into memory
     std::ifstream playerDataStream(this->playerDataLocation);
@@ -62,12 +63,23 @@ void Editor::replaceValue(std::string specifier, std::string oldValue, std::stri
 
     // Insert newString into playerData at position
     this->playerData->insert(position, newString);
+}
 
-    // Testing purposes!
-    std::string test = "";
-    for (int i = 0; i < 100; i++)
-        test += this->playerData->at(position + i);
-    qDebug() << QString::fromStdString(test);
+void Editor::save()
+{
+    /* This function is called when the user clicks on Save Character. First it outputs
+     * its Editor's playerData member to a temporary file.  If this was successful, it overwrites
+     * the original PlayerPrefs.txt with the temporary file. */
+
+    // First, output the edited playerData into tmpDataLocation
+    std::ofstream saveStream(this->tmpDataLocation);
+    saveStream << *(this->playerData);
+    if (saveStream.fail()) std::abort();
+    saveStream.close();
+
+    // Next, overwrite the original playerData and replace it with the new playerData
+    std::remove(this->playerDataLocation.c_str());
+    std::rename(this->tmpDataLocation.c_str(), (const char*) this->playerDataLocation.c_str());
 }
 
 QString* Editor::loadCharacterNames()

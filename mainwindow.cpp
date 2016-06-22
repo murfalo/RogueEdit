@@ -74,5 +74,5 @@ void MainWindow::characterNameActionHandler()
 
 void MainWindow::saveCharacterHandler()
 {
-    //this->e->saveCharacter();
+    this->e->save();
 }

@@ -10,6 +10,7 @@ namespace Strings
 #if defined(Q_OS_WIN)
     static const std::string playerDataPrefix = "C:/Users/";
     static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
 #elif defined(Q_OS_MAC)
     // Not yet implemented
 #endif
