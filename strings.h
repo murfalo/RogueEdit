@@ -10,9 +10,9 @@ namespace Strings
 {
     // The location of the save file is different on Windows and Mac
 #if defined(Q_OS_WIN)
-    static const std::string playerDataPrefix = "C:/Users/";
-    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
+    static const std::string playerDataPrefix = "C:/Users/AppData/LocalLow/DefaultCompany/Roguelands/";
+    static const std::string playerDataSuffix = "PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = ".txt";
 #elif defined(Q_OS_MAC)
     // Not yet implemented
 #endif
