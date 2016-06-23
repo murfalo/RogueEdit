@@ -1,3 +1,5 @@
+#ifndef EDITOR_H
+#define EDITOR_H
 #pragma once
 #include <QtCore>
 #include <QMenu>
@@ -28,3 +30,4 @@ private:
     int numCharacters = 0;             // Number of characters in file
     const int MAX_CHARACTERS = 6;      // Maximum number of characters allowed by RogueLands
 };
+#endif

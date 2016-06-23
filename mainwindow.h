@@ -1,3 +1,5 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 #pragma once
 #include <QMainWindow>
 #include <QToolButton>
@@ -24,3 +26,4 @@ private:
     Editor* e;
     Ui::MainWindow *ui;
 };
+#endif

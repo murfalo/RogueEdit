@@ -1,3 +1,5 @@
+#ifndef STRINGS_H
+#define STRINGS_H
 #pragma once
 #include <string>
 #include <QString>
@@ -35,3 +37,4 @@ namespace Strings
     static const std::string stringSpecifier = "System.String";
     static const std::string nameSpecifier = "name";
 }
+#endif
