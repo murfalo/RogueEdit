@@ -11,6 +11,7 @@ namespace Strings
     // The location of the save file is different on Windows and Mac
 #if defined(Q_OS_WIN)
     static const std::string playerDataPrefix = "C:/Users/AppData/LocalLow/DefaultCompany/Roguelands/";
+	// If the code to add the prefex to a suffix breaks, add a slash (/) to the front of each of the next two strings
     static const std::string playerDataSuffix = "PlayerPrefs.txt";
     static const std::string tmpDataSuffix = ".txt";
 #elif defined(Q_OS_MAC)
