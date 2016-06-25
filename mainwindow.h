@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void MainWindow::createCharacterActions();  // Create character actions in toolbar
+    void createCharacterActions();  // Create character actions in toolbar
     ~MainWindow();
 
 public slots:

@@ -17,11 +17,11 @@ public:
     ~Editor();
 
     template<typename T> T loadValue(std::string specifier); // Loads a value from file
-    void Editor::replaceValue(std::string specifier,         // Replaces a value in file
+    void replaceValue(std::string specifier,         // Replaces a value in file
                               std::string oldValue,
                               std::string newValue);
-    void Editor::save();                                     // Save playerData to file
-    QString* Editor::loadCharacterNames();                   // Load in characters from file
+    void save();                                     // Save playerData to file
+    QString* loadCharacterNames();                   // Load in characters from file
 
 private:
     std::string playerDataLocation;    // Location of file
