@@ -28,6 +28,14 @@
     <height>350</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI Semibold</family>
+    <pointsize>8</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -49,6 +57,9 @@
      <layout class="QVBoxLayout" name="navigationLayout">
       <item>
        <widget class="QTabWidget" name="navigationWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="currentIndex">
          <number>0</number>
         </property>
@@ -64,13 +75,13 @@
               <property name="minimumSize">
                <size>
                 <width>200</width>
-                <height>250</height>
+                <height>240</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>200</width>
-                <height>250</height>
+                <height>240</height>
                </size>
               </property>
               <property name="title">
@@ -237,7 +248,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QComboBox" name="comboBox">
+                  <widget class="QComboBox" name="comboBoxRaceEdit">
                    <item>
                     <property name="text">
                      <string>Ancient</string>
@@ -712,20 +723,20 @@
               <property name="minimumSize">
                <size>
                 <width>230</width>
-                <height>250</height>
+                <height>240</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>230</width>
-                <height>250</height>
+                <height>240</height>
                </size>
               </property>
               <property name="title">
                <string>Stats</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <widget class="QWidget" name="verticalLayoutWidget">
                <property name="geometry">
@@ -778,8 +789,8 @@
                 <rect>
                  <x>37</x>
                  <y>23</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutVitVal">
@@ -843,8 +854,8 @@
                 <rect>
                  <x>108</x>
                  <y>23</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutDexVal">
@@ -901,8 +912,8 @@
                 <rect>
                  <x>180</x>
                  <y>23</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutMagVal">
@@ -959,8 +970,8 @@
                 <rect>
                  <x>37</x>
                  <y>51</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutStrVal">
@@ -1017,8 +1028,8 @@
                 <rect>
                  <x>108</x>
                  <y>51</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutTecVal">
@@ -1075,8 +1086,8 @@
                 <rect>
                  <x>180</x>
                  <y>51</y>
-                 <width>39</width>
-                 <height>22</height>
+                 <width>45</width>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutFaiVal">
@@ -1090,7 +1101,7 @@
                 <rect>
                  <x>10</x>
                  <y>80</y>
-                 <width>41</width>
+                 <width>53</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1113,7 +1124,7 @@
                  <x>60</x>
                  <y>80</y>
                  <width>45</width>
-                 <height>22</height>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutHealthVal">
@@ -1141,9 +1152,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_3">
                <property name="geometry">
                 <rect>
-                 <x>110</x>
+                 <x>130</x>
                  <y>80</y>
-                 <width>61</width>
+                 <width>79</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1185,7 +1196,7 @@
                    </size>
                   </property>
                   <property name="value">
-                   <number>24</number>
+                   <number>0</number>
                   </property>
                   <property name="textVisible">
                    <bool>false</bool>
@@ -1228,7 +1239,7 @@
                    </size>
                   </property>
                   <property name="value">
-                   <number>24</number>
+                   <number>0</number>
                   </property>
                   <property name="textVisible">
                    <bool>false</bool>
@@ -1271,7 +1282,7 @@
                  <x>60</x>
                  <y>120</y>
                  <width>43</width>
-                 <height>23</height>
+                 <height>25</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutManaVal">
@@ -1302,9 +1313,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_5">
                <property name="geometry">
                 <rect>
-                 <x>110</x>
+                 <x>130</x>
                  <y>120</y>
-                 <width>55</width>
+                 <width>67</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1349,7 +1360,7 @@
                    </size>
                   </property>
                   <property name="value">
-                   <number>24</number>
+                   <number>0</number>
                   </property>
                   <property name="textVisible">
                    <bool>false</bool>
@@ -1366,7 +1377,7 @@
                 <rect>
                  <x>10</x>
                  <y>160</y>
-                 <width>46</width>
+                 <width>60</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1389,7 +1400,7 @@
                  <x>60</x>
                  <y>160</y>
                  <width>43</width>
-                 <height>22</height>
+                 <height>24</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutStaminaVal">
@@ -1417,9 +1428,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_7">
                <property name="geometry">
                 <rect>
-                 <x>110</x>
+                 <x>130</x>
                  <y>160</y>
-                 <width>67</width>
+                 <width>86</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1437,14 +1448,17 @@
                <property name="geometry">
                 <rect>
                  <x>10</x>
-                 <y>210</y>
-                 <width>32</width>
+                 <y>200</y>
+                 <width>45</width>
                  <height>21</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="layoutLevel">
                 <property name="leftMargin">
                  <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>3</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelLevel">
@@ -1459,12 +1473,12 @@
                <property name="geometry">
                 <rect>
                  <x>40</x>
-                 <y>210</y>
+                 <y>200</y>
                  <width>47</width>
-                 <height>24</height>
+                 <height>27</height>
                 </rect>
                </property>
-               <layout class="QVBoxLayout" name="layoutLevelEdit">
+               <layout class="QVBoxLayout" name="layoutLevelVal">
                 <property name="spacing">
                  <number>0</number>
                 </property>
@@ -1475,7 +1489,7 @@
                  <number>3</number>
                 </property>
                 <item>
-                 <widget class="QSpinBox" name="spinBoxLevelEdit">
+                 <widget class="QSpinBox" name="spinBoxLevelVal">
                   <property name="minimumSize">
                    <size>
                     <width>41</width>
@@ -1502,8 +1516,8 @@
                <property name="geometry">
                 <rect>
                  <x>90</x>
-                 <y>210</y>
-                 <width>83</width>
+                 <y>200</y>
+                 <width>122</width>
                  <height>21</height>
                 </rect>
                </property>
@@ -1513,6 +1527,9 @@
                 </property>
                 <property name="leftMargin">
                  <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>3</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelAllegianceLevel">
@@ -1527,12 +1544,12 @@
                <property name="geometry">
                 <rect>
                  <x>170</x>
-                 <y>210</y>
+                 <y>200</y>
                  <width>51</width>
-                 <height>24</height>
+                 <height>27</height>
                 </rect>
                </property>
-               <layout class="QVBoxLayout" name="layoutAllegianceLevelEdit">
+               <layout class="QVBoxLayout" name="layoutAllegianceLevelVal">
                 <property name="spacing">
                  <number>6</number>
                 </property>
@@ -1543,7 +1560,7 @@
                  <number>3</number>
                 </property>
                 <item>
-                 <widget class="QSpinBox" name="spinboxAllegianceLevelEdit">
+                 <widget class="QSpinBox" name="spinBoxAllegianceLevelVal">
                   <property name="minimumSize">
                    <size>
                     <width>41</width>
@@ -1569,9 +1586,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_8">
                <property name="geometry">
                 <rect>
-                 <x>170</x>
+                 <x>190</x>
                  <y>80</y>
-                 <width>61</width>
+                 <width>31</width>
                  <height>22</height>
                 </rect>
                </property>
@@ -1579,22 +1596,16 @@
                 <property name="rightMargin">
                  <number>3</number>
                 </property>
+                <property name="bottomMargin">
+                 <number>1</number>
+                </property>
                 <item>
-                 <widget class="QSpinBox" name="spinBoxMaxHealthVal">
-                  <property name="minimumSize">
-                   <size>
-                    <width>41</width>
-                    <height>0</height>
-                   </size>
+                 <widget class="QLabel" name="labelMaxHealthVal">
+                  <property name="text">
+                   <string>100</string>
                   </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>41</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1603,9 +1614,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_9">
                <property name="geometry">
                 <rect>
-                 <x>170</x>
+                 <x>190</x>
                  <y>120</y>
-                 <width>61</width>
+                 <width>31</width>
                  <height>23</height>
                 </rect>
                </property>
@@ -1616,22 +1627,16 @@
                 <property name="rightMargin">
                  <number>3</number>
                 </property>
+                <property name="bottomMargin">
+                 <number>1</number>
+                </property>
                 <item>
-                 <widget class="QSpinBox" name="spinBoxMaxManaVal">
-                  <property name="minimumSize">
-                   <size>
-                    <width>41</width>
-                    <height>0</height>
-                   </size>
+                 <widget class="QLabel" name="labelMaxManaVal">
+                  <property name="text">
+                   <string>100</string>
                   </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>41</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1640,9 +1645,9 @@
               <widget class="QWidget" name="horizontalLayoutWidget_10">
                <property name="geometry">
                 <rect>
-                 <x>170</x>
+                 <x>190</x>
                  <y>160</y>
-                 <width>61</width>
+                 <width>31</width>
                  <height>22</height>
                 </rect>
                </property>
@@ -1650,22 +1655,16 @@
                 <property name="rightMargin">
                  <number>3</number>
                 </property>
+                <property name="bottomMargin">
+                 <number>1</number>
+                </property>
                 <item>
-                 <widget class="QSpinBox" name="spinBoxMaxStaminaVal">
-                  <property name="minimumSize">
-                   <size>
-                    <width>41</width>
-                    <height>0</height>
-                   </size>
+                 <widget class="QLabel" name="labelMaxStaminaVal">
+                  <property name="text">
+                   <string>100</string>
                   </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>41</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
