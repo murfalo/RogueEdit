@@ -1,9 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #pragma once
 #include <QMainWindow>
 #include <QToolButton>
 #include "editor.h"
+#include "strings.h"
 
 namespace Ui {
 class MainWindow;

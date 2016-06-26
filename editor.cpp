@@ -25,10 +25,11 @@ Editor::~Editor()
     delete this->_playerData;
 }
 
-template<typename T> T Editor::loadValue(std::string specifier)
+std::string Editor::loadValue(std::string specifier)
 {
     /* Returns the value assigned to specifier. */
-    T value;
+    std::string value;
+
     // Create a stringstream and set it's contents to playerData
     std::stringstream playerDataStream;
     playerDataStream.str(*(this->_playerData));
@@ -90,19 +91,59 @@ QString* Editor::loadCharacterNames()
     std::string characterName;
     std::string specifier;
     QString* characterNames = new QString[this->MAX_CHARACTERS];
-    int i;
 
     /* In PlayerData.txt, character names are specified by their number, ranging from
      * 0 to MAX_CHARACTERS, followed by "name" (e.g. "0name : Smurfalicious"). */
-    for (i = 0; i < this->MAX_CHARACTERS; i++)
+    for (int i = 0; i < this->MAX_CHARACTERS; i++)
     {
         // Load the name and store it in characterNames
         specifier = std::to_string(i) + Strings::nameSpecifier;
-        characterName = loadValue<std::string>(specifier);
+        characterName = loadValue(specifier);
         characterNames[i] = QString::fromStdString(characterName);
     }
 
-    this->_numCharacters = i; // Update numCharacters to store the number of characters loaded
-
     return characterNames;
+}
+
+std::unordered_map<std::string, QString>* Editor::loadCharacterValues(std::string ID)
+{
+    /* Loads the settings and stats of the character specified by ID. */
+    std::unordered_map<std::string, QString>* characterValues = new std::unordered_map<std::string, QString>;
+    std::string val;
+
+    /*** Settings ***/
+    (*characterValues)[Strings::nameSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::nameSpecifier));
+    val = this->loadValue(ID + Strings::difficultySpecifier);
+    (*characterValues)[Strings::difficultySpecifier] = QString::fromStdString(Strings::difficulties[std::stoi(val)]);
+    val = this->loadValue(ID + Strings::raceSpecifier);
+    (*characterValues)[Strings::raceSpecifier] = QString::fromStdString(Strings::races[std::stoi(val)]);
+    val = this->loadValue(ID + Strings::variantSpecifier);
+    (*characterValues)[Strings::variantSpecifier] = QString::fromStdString(Strings::variants[std::stoi(val)]);
+    val = this->loadValue(ID + Strings::uniformSpecifier);
+    (*characterValues)[Strings::uniformSpecifier] = QString::fromStdString(Strings::uniforms[std::stoi(val)]);
+    val = this->loadValue(ID + Strings::augmentSpecifier);
+    (*characterValues)[Strings::augmentSpecifier] = QString::fromStdString(Strings::augments[std::stoi(val)]);
+
+    /*** Stats ***/
+    (*characterValues)[Strings::vitalitySpecifier] = QString::fromStdString(this->loadValue(ID + Strings::vitalitySpecifier));
+    (*characterValues)[Strings::dexteritySpecifier] = QString::fromStdString(this->loadValue(ID + Strings::dexteritySpecifier));
+    (*characterValues)[Strings::magicSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::magicSpecifier));
+    (*characterValues)[Strings::strengthSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::strengthSpecifier));
+    (*characterValues)[Strings::techSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::techSpecifier));
+    (*characterValues)[Strings::faithSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::faithSpecifier));
+    (*characterValues)[Strings::characterLevelSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::characterLevelSpecifier));
+    (*characterValues)[Strings::allegianceLevelSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::allegianceLevelSpecifier));
+
+
+    /* Class is a little more complicated because of how it is stored.  First, determine the primary stats
+     * of the character.  Then, use these values to access the array defined in strings.h to determine
+     * the name of the character's class and store it in characterValues as a QString. */
+    int i, j;
+    i = std::stoi(loadValue(ID + Strings::primaryStat1));
+    j = std::stoi(loadValue(ID + Strings::primaryStat2));
+    (*characterValues)[Strings::classSpecifier] = QString::fromStdString(Strings::classes[i][j]);
+
+    // TODO: Health, stamina, mana, max health, max mana, max stamina
+
+    return characterValues;
 }
