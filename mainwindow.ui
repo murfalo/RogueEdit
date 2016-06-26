@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>490</width>
-    <height>325</height>
+    <height>350</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>490</width>
-    <height>325</height>
+    <height>350</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>490</width>
-    <height>325</height>
+    <height>350</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -44,1430 +44,1680 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="verticalLayoutWidget_30">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>466</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="navigationLayout">
-     <item>
-      <widget class="QTabWidget" name="navigationWidget">
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="tabCharacter">
-        <attribute name="title">
-         <string>Character</string>
-        </attribute>
-        <widget class="QWidget" name="">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>202</width>
-           <height>222</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="layoutSettings">
-          <item>
-           <widget class="QGroupBox" name="groupBoxSettings">
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>220</height>
-             </size>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="navigationLayout">
+      <item>
+       <widget class="QTabWidget" name="navigationWidget">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tabCharacter">
+         <attribute name="title">
+          <string>Character</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="layoutSettings">
+            <item>
+             <widget class="QGroupBox" name="groupBoxSettings">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Settings</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="1">
+                <layout class="QVBoxLayout" name="layoutNameEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditName"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="1">
+                <layout class="QVBoxLayout" name="layoutDifficultyEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxDifficultyEdit">
+                   <item>
+                    <property name="text">
+                     <string>Normal</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Ironman</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="1">
+                <layout class="QVBoxLayout" name="layoutClassEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxClassEdit">
+                   <item>
+                    <property name="text">
+                     <string>Aetherknight</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Aethermage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Alchemist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Arcanist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Blademaster</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Bounty Hunter</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Commander</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Darkmage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Datamancer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Dragoon</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Enforcer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gunmage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gunner</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Machinist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Spellblade</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="4" column="0">
+                <layout class="QVBoxLayout" name="layoutVariant">
+                 <item>
+                  <widget class="QLabel" name="labelVariant">
+                   <property name="text">
+                    <string>Variant:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="4" column="1">
+                <layout class="QVBoxLayout" name="layoutVariantEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxVariantEdit">
+                   <item>
+                    <property name="text">
+                     <string>Variant 1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Variant 2</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Variant 3</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="1">
+                <layout class="QVBoxLayout" name="layoutRaceEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBox">
+                   <item>
+                    <property name="text">
+                     <string>Ancient</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Centurion</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Deathrazor</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Drifter</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Fishfolk</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Florbgon</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gekko</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Goblin</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Golem</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Hiveling</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Illuminate</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Lightsworn</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Necro</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Nomad</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Oompa</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Royalite</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Scaled</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Shlaami</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Swampfolk</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Tiki</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Titan</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Trogon</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Wanderer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Wizened</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="0">
+                <layout class="QVBoxLayout" name="layoutClass">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelClass">
+                   <property name="text">
+                    <string>Class:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="5" column="0">
+                <layout class="QVBoxLayout" name="layoutUniform">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelUniform">
+                   <property name="text">
+                    <string>Uniform:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <layout class="QVBoxLayout" name="layoutDifficulty">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelDifficulty">
+                   <property name="text">
+                    <string>Difficulty:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="0">
+                <layout class="QVBoxLayout" name="layoutRace">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelRace">
+                   <property name="text">
+                    <string>Race:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="5" column="1">
+                <layout class="QVBoxLayout" name="layoutUniformEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxUniformEdit">
+                   <item>
+                    <property name="text">
+                     <string>Antihero</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Beehive</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Blacksmith</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Cobalt Mage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Crusader</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Dirtmage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Echo</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Explorer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Fairy</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Fleet Cadet</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gadget Worker</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Hero</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Metalgear</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Minister</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Monster Trainer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Overworld</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Peasant</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Phoenix</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>President</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Pyromancer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Scholar</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Scientist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Seer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Soldier</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="layoutCharacterName">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelCharacterName">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="6" column="1">
+                <layout class="QVBoxLayout" name="layoutAugmentEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxAugmentEdit">
+                   <item>
+                    <property name="text">
+                     <string>Baby Silver</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Beats by Boizu</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Berserker Scarf</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Chamcham Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Crown</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Crusader Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Demon Horns</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Eye Gadget</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Eyepod Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Forsaker Mask</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Glibglob Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Halo</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Lucky Pumpkin</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Mage Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Mech City Beanie</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Oculus Goggles</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Rogue Bandana</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Shmoo Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Shroom Hat</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Slime Hat</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="6" column="0">
+                <layout class="QVBoxLayout" name="layoutAugment">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelAugment">
+                   <property name="text">
+                    <string>Augment:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <layout class="QVBoxLayout" name="layoutStats">
+            <property name="rightMargin">
+             <number>0</number>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>220</height>
-             </size>
+            <property name="bottomMargin">
+             <number>0</number>
             </property>
-            <property name="title">
-             <string>Settings</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="0">
-              <layout class="QVBoxLayout" name="layoutCharacterName">
-               <item>
-                <widget class="QLabel" name="labelCharacterName">
-                 <property name="text">
-                  <string>Name:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="0" column="1">
-              <layout class="QVBoxLayout" name="layoutNameEdit">
-               <item>
-                <widget class="QLineEdit" name="lineEditName"/>
-               </item>
-              </layout>
-             </item>
-             <item row="1" column="0">
-              <layout class="QVBoxLayout" name="layoutLevel">
-               <item>
-                <widget class="QLabel" name="labelLevel">
-                 <property name="text">
-                  <string>Level:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="1" column="1">
-              <layout class="QVBoxLayout" name="layoutLevelEdit">
-               <item>
-                <widget class="QSpinBox" name="spinBoxLevelEdit">
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::UpDownArrows</enum>
-                 </property>
-                 <property name="maximum">
-                  <number>100</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="0">
-              <layout class="QVBoxLayout" name="layoutDifficulty">
-               <item>
-                <widget class="QLabel" name="labelDifficulty">
-                 <property name="text">
-                  <string>Difficulty:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="1">
-              <layout class="QVBoxLayout" name="layoutDifficultyEdit">
-               <item>
-                <widget class="QComboBox" name="comboBoxDifficultyEdit">
-                 <item>
-                  <property name="text">
-                   <string>Normal</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Ironman</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="3" column="0">
-              <layout class="QVBoxLayout" name="layoutRace">
-               <item>
-                <widget class="QLabel" name="labelRace">
-                 <property name="text">
-                  <string>Race:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="3" column="1">
-              <layout class="QVBoxLayout" name="layoutRaceEdit">
-               <item>
-                <widget class="QComboBox" name="comboBox">
-                 <item>
-                  <property name="text">
-                   <string>Ancient</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Centurion</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Deathrazor</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Drifter</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Fishfolk</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Florbgon</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Gekko</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Goblin</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Golem</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Hiveling</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Illuminate</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Lightsworn</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Necro</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Nomad</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Oompa</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Royalite</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Scaled</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Shlaami</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Swampfolk</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Tiki</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Titan</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Trogon</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Wanderer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Wizened</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="0">
-              <layout class="QVBoxLayout" name="layoutClass">
-               <item>
-                <widget class="QLabel" name="labelClass">
-                 <property name="text">
-                  <string>Class:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="4" column="1">
-              <layout class="QVBoxLayout" name="layoutClassEdit">
-               <item>
-                <widget class="QComboBox" name="comboBoxClassEdit">
-                 <item>
-                  <property name="text">
-                   <string>Aetherknight</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Aethermage</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Alchemist</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Arcanist</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Blademaster</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Bounty Hunter</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Commander</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Darkmage</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Datamancer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Dragoon</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Enforcer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Gunmage</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Gunner</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Machinist</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Spellblade</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="5" column="0">
-              <layout class="QVBoxLayout" name="layoutVariant">
-               <item>
-                <widget class="QLabel" name="labelVariant">
-                 <property name="text">
-                  <string>Variant:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="5" column="1">
-              <layout class="QVBoxLayout" name="layoutVariantEdit">
-               <item>
-                <widget class="QComboBox" name="comboBoxVariantEdit">
-                 <item>
-                  <property name="text">
-                   <string>Variant 1</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Variant 2</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Variant 3</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="6" column="0">
-              <layout class="QVBoxLayout" name="layoutUniform">
-               <item>
-                <widget class="QLabel" name="labelUniform">
-                 <property name="text">
-                  <string>Uniform:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="6" column="1">
-              <layout class="QVBoxLayout" name="layoutUniformEdit">
-               <item>
-                <widget class="QComboBox" name="comboBoxUniformEdit">
-                 <item>
-                  <property name="text">
-                   <string>Antihero</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Beehive</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Blacksmith</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Cobalt Mage</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Crusader</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Dirtmage</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Echo</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Explorer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Fairy</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Fleet Cadet</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Gadget Worker</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Hero</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Metalgear</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Minister</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Monster Trainer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Overworld</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Peasant</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Phoenix</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>President</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Pyromancer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Scholar</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Scientist</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Seer</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Soldier</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="7" column="0">
-              <layout class="QVBoxLayout" name="layoutAugment">
-               <item>
-                <widget class="QLabel" name="labelAugment">
-                 <property name="text">
-                  <string>Augment</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="7" column="1">
-              <layout class="QVBoxLayout" name="layoutAugmentEdit">
-               <item>
-                <widget class="QComboBox" name="comboBoxAugmentEdit">
-                 <item>
-                  <property name="text">
-                   <string>Baby Silver</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Beats by Boizu</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Berserker Scarf</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Chamcham Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Crown</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Crusader Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Demon Horns</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Eye Gadget</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Eyepod Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Forsaker Mask</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Glibglob Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Halo</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Lucky Pumpkin</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Mage Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Mech City Beanie</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Oculus Goggles</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Rogue Bandana</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Shmoo Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Shroom Hat</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Slime Hat</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
+            <item>
+             <widget class="QGroupBox" name="groupBoxStats">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>230</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>230</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Stats</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <widget class="QWidget" name="verticalLayoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>10</y>
+                 <width>41</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutVit">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <property name="leftMargin">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
+                <property name="rightMargin">
+                 <number>5</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelVit">
+                  <property name="toolTip">
+                   <string>Vitality</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statVIT.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_2">
+               <property name="geometry">
+                <rect>
+                 <x>37</x>
+                 <y>23</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutVitVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxVitVal">
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="correctionMode">
+                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_8">
+               <property name="geometry">
+                <rect>
+                 <x>80</x>
+                 <y>10</y>
+                 <width>31</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutDex">
+                <property name="leftMargin">
+                 <number>1</number>
+                </property>
+                <property name="topMargin">
+                 <number>10</number>
+                </property>
+                <property name="rightMargin">
+                 <number>4</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelDex">
+                  <property name="toolTip">
+                   <string>Dexterity</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statDEX.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_19">
+               <property name="geometry">
+                <rect>
+                 <x>108</x>
+                 <y>23</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutDexVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxDexVal"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_20">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>10</y>
+                 <width>31</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutMag">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>10</number>
+                </property>
+                <property name="rightMargin">
+                 <number>2</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelMag">
+                  <property name="toolTip">
+                   <string>Magic</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statMAG.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_21">
+               <property name="geometry">
+                <rect>
+                 <x>180</x>
+                 <y>23</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutMagVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxMagVal"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_22">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>40</y>
+                 <width>41</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutStr">
+                <property name="leftMargin">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>7</number>
+                </property>
+                <property name="rightMargin">
+                 <number>5</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>5</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelStr">
+                  <property name="toolTip">
+                   <string>Strength</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statSTR.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_23">
+               <property name="geometry">
+                <rect>
+                 <x>37</x>
+                 <y>51</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutStrVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxStrVal"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_24">
+               <property name="geometry">
+                <rect>
+                 <x>80</x>
+                 <y>40</y>
+                 <width>31</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutTec">
+                <property name="leftMargin">
+                 <number>1</number>
+                </property>
+                <property name="topMargin">
+                 <number>8</number>
+                </property>
+                <property name="rightMargin">
+                 <number>4</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelTec">
+                  <property name="toolTip">
+                   <string>Tech</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statTEC.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_25">
+               <property name="geometry">
+                <rect>
+                 <x>108</x>
+                 <y>51</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutTecVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxTecVal"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_26">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>40</y>
+                 <width>31</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutFai">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>8</number>
+                </property>
+                <property name="rightMargin">
+                 <number>2</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>5</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelFai">
+                  <property name="toolTip">
+                   <string>Faith</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="images.qrc">:/Resources/statFTH.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_27">
+               <property name="geometry">
+                <rect>
+                 <x>180</x>
+                 <y>51</y>
+                 <width>39</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutFaiVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxFaiVal"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_2">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>80</y>
+                 <width>41</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutHealth">
+                <property name="leftMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelHealth">
+                  <property name="text">
+                   <string>Health:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_35">
+               <property name="geometry">
+                <rect>
+                 <x>60</x>
+                 <y>80</y>
+                 <width>45</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutHealthVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxHealthVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_3">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>80</y>
+                 <width>61</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxHealth">
+                <item>
+                 <widget class="QLabel" name="labelMaxHealth">
+                  <property name="text">
+                   <string>Max Health:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_18">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>100</y>
+                 <width>222</width>
+                 <height>25</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutHealthBar">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QProgressBar" name="progressBarHealth">
+                  <property name="minimumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                  <property name="textVisible">
+                   <bool>false</bool>
+                  </property>
+                  <property name="format">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_38">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>140</y>
+                 <width>222</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutManaBar">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QProgressBar" name="progressBarMana">
+                  <property name="minimumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                  <property name="textVisible">
+                   <bool>false</bool>
+                  </property>
+                  <property name="format">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_4">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>120</y>
+                 <width>41</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMana">
+                <property name="leftMargin">
+                 <number>3</number>
+                </property>
+                <property name="topMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelMana">
+                  <property name="text">
+                   <string>Mana:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_39">
+               <property name="geometry">
+                <rect>
+                 <x>60</x>
+                 <y>120</y>
+                 <width>43</width>
+                 <height>23</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutManaVal">
+                <property name="topMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxManaVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_5">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>120</y>
+                 <width>55</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxMana">
+                <property name="topMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelMaxMana">
+                  <property name="text">
+                   <string>Max Mana:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_41">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>180</y>
+                 <width>222</width>
+                 <height>23</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutStaminaBar">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QProgressBar" name="progressBarStamina">
+                  <property name="minimumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>207</width>
+                    <height>15</height>
+                   </size>
+                  </property>
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                  <property name="textVisible">
+                   <bool>false</bool>
+                  </property>
+                  <property name="format">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_6">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>160</y>
+                 <width>46</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutStamina">
+                <property name="leftMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelStamina">
+                  <property name="text">
+                   <string>Stamina:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_42">
+               <property name="geometry">
+                <rect>
+                 <x>60</x>
+                 <y>160</y>
+                 <width>43</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutStaminaVal">
+                <item>
+                 <widget class="QSpinBox" name="spinBoxStaminaVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_7">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>160</y>
+                 <width>67</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxStamina">
+                <item>
+                 <widget class="QLabel" name="labelMaxStamina">
+                  <property name="text">
+                   <string>Max Stamina:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>210</y>
+                 <width>32</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutLevel">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelLevel">
+                  <property name="text">
+                   <string>Level:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_44">
+               <property name="geometry">
+                <rect>
+                 <x>40</x>
+                 <y>210</y>
+                 <width>47</width>
+                 <height>24</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutLevelEdit">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>3</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxLevelEdit">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_13">
+               <property name="geometry">
+                <rect>
+                 <x>90</x>
+                 <y>210</y>
+                 <width>83</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutAllegianceLevel">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelAllegianceLevel">
+                  <property name="text">
+                   <string>Allegiance Level:</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="verticalLayoutWidget_45">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>210</y>
+                 <width>51</width>
+                 <height>24</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="layoutAllegianceLevelEdit">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <property name="leftMargin">
+                 <number>8</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinboxAllegianceLevelEdit">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_8">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>80</y>
+                 <width>61</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxHealthVal">
+                <property name="rightMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxMaxHealthVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_9">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>120</y>
+                 <width>61</width>
+                 <height>23</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxManaVal">
+                <property name="topMargin">
+                 <number>2</number>
+                </property>
+                <property name="rightMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxMaxManaVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="horizontalLayoutWidget_10">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>160</y>
+                 <width>61</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="layoutMaxStaminaVal">
+                <property name="rightMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxMaxStaminaVal">
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <zorder>verticalLayoutWidget_44</zorder>
+              <zorder>verticalLayoutWidget_13</zorder>
+              <zorder>verticalLayoutWidget_45</zorder>
+              <zorder>verticalLayoutWidget</zorder>
+              <zorder>verticalLayoutWidget_2</zorder>
+              <zorder>verticalLayoutWidget_8</zorder>
+              <zorder>verticalLayoutWidget_19</zorder>
+              <zorder>verticalLayoutWidget_20</zorder>
+              <zorder>verticalLayoutWidget_21</zorder>
+              <zorder>verticalLayoutWidget_22</zorder>
+              <zorder>verticalLayoutWidget_23</zorder>
+              <zorder>verticalLayoutWidget_24</zorder>
+              <zorder>verticalLayoutWidget_25</zorder>
+              <zorder>verticalLayoutWidget_26</zorder>
+              <zorder>verticalLayoutWidget_27</zorder>
+              <zorder>horizontalLayoutWidget_2</zorder>
+              <zorder>verticalLayoutWidget_35</zorder>
+              <zorder>horizontalLayoutWidget_3</zorder>
+              <zorder>verticalLayoutWidget_18</zorder>
+              <zorder>verticalLayoutWidget_38</zorder>
+              <zorder>horizontalLayoutWidget_4</zorder>
+              <zorder>verticalLayoutWidget_39</zorder>
+              <zorder>horizontalLayoutWidget_5</zorder>
+              <zorder>verticalLayoutWidget_41</zorder>
+              <zorder>horizontalLayoutWidget_6</zorder>
+              <zorder>verticalLayoutWidget_42</zorder>
+              <zorder>horizontalLayoutWidget_7</zorder>
+              <zorder>horizontalLayoutWidget</zorder>
+              <zorder>horizontalLayoutWidget_8</zorder>
+              <zorder>horizontalLayoutWidget_9</zorder>
+              <zorder>horizontalLayoutWidget_10</zorder>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="">
-         <property name="geometry">
-          <rect>
-           <x>220</x>
-           <y>10</y>
-           <width>232</width>
-           <height>222</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="layoutStats">
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QGroupBox" name="groupBoxStats">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>230</width>
-              <height>220</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>230</width>
-              <height>220</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Stats</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <widget class="QWidget" name="verticalLayoutWidget">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>10</y>
-               <width>41</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutVit">
-              <property name="spacing">
-               <number>6</number>
-              </property>
-              <property name="leftMargin">
-               <number>8</number>
-              </property>
-              <property name="topMargin">
-               <number>9</number>
-              </property>
-              <property name="rightMargin">
-               <number>5</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelVit">
-                <property name="toolTip">
-                 <string>Vitality</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statVIT.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>37</x>
-               <y>23</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutVitVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxVitVal">
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
-                </property>
-                <property name="correctionMode">
-                 <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_8">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>10</y>
-               <width>31</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutDex">
-              <property name="leftMargin">
-               <number>1</number>
-              </property>
-              <property name="topMargin">
-               <number>10</number>
-              </property>
-              <property name="rightMargin">
-               <number>4</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelDex">
-                <property name="toolTip">
-                 <string>Dexterity</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statDEX.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_19">
-             <property name="geometry">
-              <rect>
-               <x>108</x>
-               <y>23</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutDexVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxDexVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_20">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>10</y>
-               <width>31</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutMag">
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>10</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelMag">
-                <property name="toolTip">
-                 <string>Magic</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statMAG.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_21">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>23</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutMagVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxMagVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_22">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>40</y>
-               <width>41</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutStr">
-              <property name="leftMargin">
-               <number>8</number>
-              </property>
-              <property name="topMargin">
-               <number>7</number>
-              </property>
-              <property name="rightMargin">
-               <number>5</number>
-              </property>
-              <property name="bottomMargin">
-               <number>5</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelStr">
-                <property name="toolTip">
-                 <string>Strength</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statSTR.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_23">
-             <property name="geometry">
-              <rect>
-               <x>37</x>
-               <y>51</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutStrVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxStrVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_24">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>40</y>
-               <width>31</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutTec">
-              <property name="leftMargin">
-               <number>1</number>
-              </property>
-              <property name="topMargin">
-               <number>8</number>
-              </property>
-              <property name="rightMargin">
-               <number>4</number>
-              </property>
-              <property name="bottomMargin">
-               <number>6</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelTec">
-                <property name="toolTip">
-                 <string>Tech</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statTEC.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_25">
-             <property name="geometry">
-              <rect>
-               <x>108</x>
-               <y>51</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutTecVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxTecVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_26">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>40</y>
-               <width>31</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutFai">
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>8</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>5</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelFai">
-                <property name="toolTip">
-                 <string>Faith</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::PlainText</enum>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="images.qrc">:/Resources/statFTH.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_27">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>51</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutFaiVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxFaiVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_2">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>80</y>
-               <width>41</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutHealth">
-              <property name="leftMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelHealth">
-                <property name="text">
-                 <string>Health:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_35">
-             <property name="geometry">
-              <rect>
-               <x>60</x>
-               <y>80</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutHealthVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxHealthVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_3">
-             <property name="geometry">
-              <rect>
-               <x>110</x>
-               <y>80</y>
-               <width>61</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutMaxHealth">
-              <item>
-               <widget class="QLabel" name="labelMaxHealth">
-                <property name="text">
-                 <string>Max Health:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_36">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>80</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutMaxHealthVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxMaxHealthVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_18">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>100</y>
-               <width>222</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutHealthBar">
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="QProgressBar" name="progressBarHealth">
-                <property name="minimumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="value">
-                 <number>24</number>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="format">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_37">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>120</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutMaxManaVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxMaxManaVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_38">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>140</y>
-               <width>222</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutManaBar">
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="QProgressBar" name="progressBarMana">
-                <property name="minimumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="value">
-                 <number>24</number>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="format">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_4">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>120</y>
-               <width>41</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutMana">
-              <property name="leftMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelMana">
-                <property name="text">
-                 <string>Mana:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_39">
-             <property name="geometry">
-              <rect>
-               <x>60</x>
-               <y>120</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutManaVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxManaVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_5">
-             <property name="geometry">
-              <rect>
-               <x>110</x>
-               <y>120</y>
-               <width>55</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutMaxMana">
-              <item>
-               <widget class="QLabel" name="labelMaxMana">
-                <property name="text">
-                 <string>Max Mana:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_40">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>160</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutMaxStaminaVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxMaxStaminaVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_41">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>180</y>
-               <width>222</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutStaminaBar">
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="QProgressBar" name="progressBarStamina">
-                <property name="minimumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>207</width>
-                  <height>15</height>
-                 </size>
-                </property>
-                <property name="value">
-                 <number>24</number>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="format">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_6">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>160</y>
-               <width>46</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutStamina">
-              <property name="leftMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="labelStamina">
-                <property name="text">
-                 <string>Stamina:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="verticalLayoutWidget_42">
-             <property name="geometry">
-              <rect>
-               <x>60</x>
-               <y>160</y>
-               <width>39</width>
-               <height>22</height>
-              </rect>
-             </property>
-             <layout class="QVBoxLayout" name="layoutStaminaVal">
-              <item>
-               <widget class="QSpinBox" name="spinBoxStaminaVal"/>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="horizontalLayoutWidget_7">
-             <property name="geometry">
-              <rect>
-               <x>110</x>
-               <y>160</y>
-               <width>67</width>
-               <height>21</height>
-              </rect>
-             </property>
-             <layout class="QHBoxLayout" name="layoutMaxStamina">
-              <item>
-               <widget class="QLabel" name="labelMaxStamina">
-                <property name="text">
-                 <string>Max Stamina:</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <zorder>verticalLayoutWidget</zorder>
-            <zorder>verticalLayoutWidget_2</zorder>
-            <zorder>verticalLayoutWidget_8</zorder>
-            <zorder>verticalLayoutWidget_19</zorder>
-            <zorder>verticalLayoutWidget_20</zorder>
-            <zorder>verticalLayoutWidget_21</zorder>
-            <zorder>verticalLayoutWidget_22</zorder>
-            <zorder>verticalLayoutWidget_23</zorder>
-            <zorder>verticalLayoutWidget_24</zorder>
-            <zorder>verticalLayoutWidget_25</zorder>
-            <zorder>verticalLayoutWidget_26</zorder>
-            <zorder>verticalLayoutWidget_27</zorder>
-            <zorder>horizontalLayoutWidget_2</zorder>
-            <zorder>verticalLayoutWidget_35</zorder>
-            <zorder>horizontalLayoutWidget_3</zorder>
-            <zorder>verticalLayoutWidget_36</zorder>
-            <zorder>verticalLayoutWidget_18</zorder>
-            <zorder>verticalLayoutWidget_37</zorder>
-            <zorder>verticalLayoutWidget_38</zorder>
-            <zorder>horizontalLayoutWidget_4</zorder>
-            <zorder>verticalLayoutWidget_39</zorder>
-            <zorder>horizontalLayoutWidget_5</zorder>
-            <zorder>verticalLayoutWidget_40</zorder>
-            <zorder>verticalLayoutWidget_41</zorder>
-            <zorder>horizontalLayoutWidget_6</zorder>
-            <zorder>verticalLayoutWidget_42</zorder>
-            <zorder>horizontalLayoutWidget_7</zorder>
-            <zorder>labelMaxHealth</zorder>
-           </widget>
-          </item>
-         </layout>
+        <widget class="QWidget" name="tabInventory">
+         <attribute name="title">
+          <string>Inventory</string>
+         </attribute>
         </widget>
        </widget>
-       <widget class="QWidget" name="tabInventory">
-        <attribute name="title">
-         <string>Inventory</string>
-        </attribute>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="sizeGripEnabled">
