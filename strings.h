@@ -1,5 +1,6 @@
 #ifndef STRINGS_H
 #define STRINGS_H
+
 #pragma once
 #include <string>
 #include <QString>
@@ -36,5 +37,14 @@ namespace Strings
     static const std::string intSpecifier = "System.Int32";
     static const std::string stringSpecifier = "System.String";
     static const std::string nameSpecifier = "name";
+
+    static const int NUM_CLASSES = 15;   // Number of character classes
+    static const int NUM_STATS = 6;
+    static const std::string classes[NUM_STATS][NUM_STATS] = { { NULL, "Enforcer", "Gunner", "Machinist", "Darkmage", "Aethermage" },
+                                                               { "Enforcer", NULL, "Blademaster", "Dragoon", "Spellblade", "Aetherknight" },
+                                                               { "Gunner", "Blademaster", NULL, "Bounty Hunter", "Gunmage", "Commander" },
+                                                               { "Machinist", "Dragoon", "Bounty Hunter", NULL, "Datamancer", "Alchemist" },
+                                                               { "Darkmage", "Spellblade", "Gunmage", "Datamancer", NULL, "Arcanist" },
+                                                               { "Aethermage", "Aetherknight", "Commander", "Alchemist", "Arcanist", NULL }};
 }
 #endif
