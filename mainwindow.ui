@@ -110,6 +110,31 @@
               </layout>
              </item>
              <item row="1" column="0">
+              <layout class="QVBoxLayout" name="layoutLevel">
+               <item>
+                <widget class="QLabel" name="labelLevel">
+                 <property name="text">
+                  <string>Level:</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1">
+              <layout class="QVBoxLayout" name="layoutLevelEdit">
+               <item>
+                <widget class="QSpinBox" name="spinBoxLevelEdit">
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::UpDownArrows</enum>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0">
               <layout class="QVBoxLayout" name="layoutDifficulty">
                <item>
                 <widget class="QLabel" name="labelDifficulty">
@@ -120,7 +145,7 @@
                </item>
               </layout>
              </item>
-             <item row="1" column="1">
+             <item row="2" column="1">
               <layout class="QVBoxLayout" name="layoutDifficultyEdit">
                <item>
                 <widget class="QComboBox" name="comboBoxDifficultyEdit">
@@ -138,7 +163,7 @@
                </item>
               </layout>
              </item>
-             <item row="2" column="0">
+             <item row="3" column="0">
               <layout class="QVBoxLayout" name="layoutRace">
                <item>
                 <widget class="QLabel" name="labelRace">
@@ -149,7 +174,7 @@
                </item>
               </layout>
              </item>
-             <item row="2" column="1">
+             <item row="3" column="1">
               <layout class="QVBoxLayout" name="layoutRaceEdit">
                <item>
                 <widget class="QComboBox" name="comboBox">
@@ -277,7 +302,7 @@
                </item>
               </layout>
              </item>
-             <item row="3" column="0">
+             <item row="4" column="0">
               <layout class="QVBoxLayout" name="layoutClass">
                <item>
                 <widget class="QLabel" name="labelClass">
@@ -288,7 +313,7 @@
                </item>
               </layout>
              </item>
-             <item row="3" column="1">
+             <item row="4" column="1">
               <layout class="QVBoxLayout" name="layoutClassEdit">
                <item>
                 <widget class="QComboBox" name="comboBoxClassEdit">
@@ -371,7 +396,7 @@
                </item>
               </layout>
              </item>
-             <item row="4" column="0">
+             <item row="5" column="0">
               <layout class="QVBoxLayout" name="layoutVariant">
                <item>
                 <widget class="QLabel" name="labelVariant">
@@ -382,7 +407,7 @@
                </item>
               </layout>
              </item>
-             <item row="4" column="1">
+             <item row="5" column="1">
               <layout class="QVBoxLayout" name="layoutVariantEdit">
                <item>
                 <widget class="QComboBox" name="comboBoxVariantEdit">
@@ -405,7 +430,7 @@
                </item>
               </layout>
              </item>
-             <item row="5" column="0">
+             <item row="6" column="0">
               <layout class="QVBoxLayout" name="layoutUniform">
                <item>
                 <widget class="QLabel" name="labelUniform">
@@ -416,7 +441,7 @@
                </item>
               </layout>
              </item>
-             <item row="5" column="1">
+             <item row="6" column="1">
               <layout class="QVBoxLayout" name="layoutUniformEdit">
                <item>
                 <widget class="QComboBox" name="comboBoxUniformEdit">
@@ -544,10 +569,10 @@
                </item>
               </layout>
              </item>
-             <item row="6" column="0">
-              <layout class="QVBoxLayout" name="layoutUniform_2">
+             <item row="7" column="0">
+              <layout class="QVBoxLayout" name="layoutAugment">
                <item>
-                <widget class="QLabel" name="labelUniform_2">
+                <widget class="QLabel" name="labelAugment">
                  <property name="text">
                   <string>Augment</string>
                  </property>
@@ -555,10 +580,10 @@
                </item>
               </layout>
              </item>
-             <item row="6" column="1">
-              <layout class="QVBoxLayout" name="layoutUniformEdit_2">
+             <item row="7" column="1">
+              <layout class="QVBoxLayout" name="layoutAugmentEdit">
                <item>
-                <widget class="QComboBox" name="comboBoxUniformEdit_2">
+                <widget class="QComboBox" name="comboBoxAugmentEdit">
                  <item>
                   <property name="text">
                    <string>Baby Silver</string>
@@ -767,7 +792,14 @@
              </property>
              <layout class="QVBoxLayout" name="layoutVitVal">
               <item>
-               <widget class="QSpinBox" name="spinBoxVitVal"/>
+               <widget class="QSpinBox" name="spinBoxVitVal">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="correctionMode">
+                 <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -1181,9 +1213,9 @@
                <height>22</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutMaxHealthVal_4">
+             <layout class="QVBoxLayout" name="layoutMaxManaVal">
               <item>
-               <widget class="QSpinBox" name="spinBoxMaxHealthVal_4"/>
+               <widget class="QSpinBox" name="spinBoxMaxManaVal"/>
               </item>
              </layout>
             </widget>
@@ -1196,12 +1228,12 @@
                <height>21</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutHealthBar_2">
+             <layout class="QVBoxLayout" name="layoutManaBar">
               <property name="leftMargin">
                <number>2</number>
               </property>
               <item>
-               <widget class="QProgressBar" name="progressBarHealth_2">
+               <widget class="QProgressBar" name="progressBarMana">
                 <property name="minimumSize">
                  <size>
                   <width>207</width>
@@ -1236,12 +1268,12 @@
                <height>21</height>
               </rect>
              </property>
-             <layout class="QHBoxLayout" name="layoutHealth_8">
+             <layout class="QHBoxLayout" name="layoutMana">
               <property name="leftMargin">
                <number>3</number>
               </property>
               <item>
-               <widget class="QLabel" name="labelHealth_8">
+               <widget class="QLabel" name="labelMana">
                 <property name="text">
                  <string>Mana:</string>
                 </property>
@@ -1258,9 +1290,9 @@
                <height>22</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutHealthVal_6">
+             <layout class="QVBoxLayout" name="layoutManaVal">
               <item>
-               <widget class="QSpinBox" name="spinBoxHealthVal_6"/>
+               <widget class="QSpinBox" name="spinBoxManaVal"/>
               </item>
              </layout>
             </widget>
@@ -1273,9 +1305,9 @@
                <height>21</height>
               </rect>
              </property>
-             <layout class="QHBoxLayout" name="layoutMaxHealth_4">
+             <layout class="QHBoxLayout" name="layoutMaxMana">
               <item>
-               <widget class="QLabel" name="labelMaxHealth_4">
+               <widget class="QLabel" name="labelMaxMana">
                 <property name="text">
                  <string>Max Mana:</string>
                 </property>
@@ -1292,9 +1324,9 @@
                <height>22</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutMaxHealthVal_5">
+             <layout class="QVBoxLayout" name="layoutMaxStaminaVal">
               <item>
-               <widget class="QSpinBox" name="spinBoxMaxHealthVal_5"/>
+               <widget class="QSpinBox" name="spinBoxMaxStaminaVal"/>
               </item>
              </layout>
             </widget>
@@ -1307,12 +1339,12 @@
                <height>23</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutHealthBar_3">
+             <layout class="QVBoxLayout" name="layoutStaminaBar">
               <property name="leftMargin">
                <number>2</number>
               </property>
               <item>
-               <widget class="QProgressBar" name="progressBarHealth_3">
+               <widget class="QProgressBar" name="progressBarStamina">
                 <property name="minimumSize">
                  <size>
                   <width>207</width>
@@ -1347,12 +1379,12 @@
                <height>21</height>
               </rect>
              </property>
-             <layout class="QHBoxLayout" name="layoutHealth_9">
+             <layout class="QHBoxLayout" name="layoutStamina">
               <property name="leftMargin">
                <number>3</number>
               </property>
               <item>
-               <widget class="QLabel" name="labelHealth_9">
+               <widget class="QLabel" name="labelStamina">
                 <property name="text">
                  <string>Stamina:</string>
                 </property>
@@ -1369,9 +1401,9 @@
                <height>22</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="layoutHealthVal_7">
+             <layout class="QVBoxLayout" name="layoutStaminaVal">
               <item>
-               <widget class="QSpinBox" name="spinBoxHealthVal_7"/>
+               <widget class="QSpinBox" name="spinBoxStaminaVal"/>
               </item>
              </layout>
             </widget>
@@ -1384,9 +1416,9 @@
                <height>21</height>
               </rect>
              </property>
-             <layout class="QHBoxLayout" name="layoutMaxHealth_5">
+             <layout class="QHBoxLayout" name="layoutMaxStamina">
               <item>
-               <widget class="QLabel" name="labelMaxHealth_5">
+               <widget class="QLabel" name="labelMaxStamina">
                 <property name="text">
                  <string>Max Stamina:</string>
                 </property>
