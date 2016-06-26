@@ -5,16 +5,16 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    _ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
-    this->e = new Editor();
+    _ui->setupUi(this);
+    this->_e = new Editor();
 }
 
 MainWindow::~MainWindow()
 {
-    delete this->ui;
-    delete this->e;
+    delete this->_ui;
+    delete this->_e;
 }
 
 void MainWindow::createCharacterActions()
@@ -22,7 +22,7 @@ void MainWindow::createCharacterActions()
     /* Creates a dropdown to load characters and an option to save changes on
      * the main tool bar. */
     QAction* characterNameAction;
-    QString* characterNames = this->e->loadCharacterNames(); // Load character names from file
+    QString* characterNames = this->_e->loadCharacterNames(); // Load character names from file
     if (characterNames->size() == 0) std::abort();           // Abort if no characters were found
     QToolBar* mainToolBar = this->findChild<QToolBar*>(Strings::toolbarObjectName);
     QMenu* characterMenu = new QMenu(Strings::characterMenuObjectName);
@@ -57,6 +57,8 @@ void MainWindow::createCharacterActions()
     mainToolBar->addAction(saveCharacterAction);
 }
 
+/* Handlers */
+
 void MainWindow::characterNameActionHandler()
 {
     /* This function occurs when a player name is clicked in the loadCharacterDropdown.
@@ -74,5 +76,6 @@ void MainWindow::characterNameActionHandler()
 
 void MainWindow::saveCharacterHandler()
 {
-    this->e->save();
+    /* Saves information to file when "Save Character" is clicked. */
+    this->_e->save();
 }

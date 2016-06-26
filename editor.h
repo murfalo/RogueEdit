@@ -1,5 +1,6 @@
 #ifndef EDITOR_H
 #define EDITOR_H
+
 #pragma once
 #include <QtCore>
 #include <QMenu>
@@ -23,11 +24,12 @@ public:
     void save();                                     // Save playerData to file
     QString* loadCharacterNames();                   // Load in characters from file
 
-private:
-    std::string playerDataLocation;    // Location of file
-    std::string tmpDataLocation;       // Location to store temporary data when saving
-    std::string* playerData;           // Pointer to contents of file in memory
-    int numCharacters = 0;             // Number of characters in file
     const int MAX_CHARACTERS = 6;      // Maximum number of characters allowed by RogueLands
+
+private:
+    std::string _playerDataLocation;    // Location of file
+    std::string _tmpDataLocation;       // Location to store temporary data when saving
+    std::string* _playerData;           // Pointer to contents of file in memory
+    int _numCharacters = 0;             // Number of characters in file
 };
 #endif

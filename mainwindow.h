@@ -23,7 +23,7 @@ public slots:
     void saveCharacterHandler();
 
 private:
-    Editor* e;
-    Ui::MainWindow *ui;
+    Editor* _e;
+    Ui::MainWindow *_ui;
 };
 #endif

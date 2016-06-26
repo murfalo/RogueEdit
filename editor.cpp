@@ -9,20 +9,20 @@ Editor::Editor()
         username = qgetenv("USERNAME");
 
     // The location of the save file is different on Windows and Mac
-    this->playerDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::playerDataSuffix;
-    this->tmpDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::tmpDataSuffix;
+    this->_playerDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::playerDataSuffix;
+    this->_tmpDataLocation = Strings::playerDataPrefix + username.toStdString() + Strings::tmpDataSuffix;
 
     // Open a stream and load contents into memory
-    std::ifstream playerDataStream(this->playerDataLocation);
+    std::ifstream playerDataStream(this->_playerDataLocation);
     if (playerDataStream.fail()) std::abort(); // TODO: Implement more graceful exception handling.
-    this->playerData = new std::string((std::istreambuf_iterator<char>(playerDataStream)),
+    this->_playerData = new std::string((std::istreambuf_iterator<char>(playerDataStream)),
                                        std::istreambuf_iterator<char>());
     playerDataStream.close();
 }
 
 Editor::~Editor()
 {
-    delete this->playerData;
+    delete this->_playerData;
 }
 
 template<typename T> T Editor::loadValue(std::string specifier)
@@ -31,7 +31,7 @@ template<typename T> T Editor::loadValue(std::string specifier)
     T value;
     // Create a stringstream and set it's contents to playerData
     std::stringstream playerDataStream;
-    playerDataStream.str(*(this->playerData));
+    playerDataStream.str(*(this->_playerData));
 
     std::string word;
 
@@ -56,13 +56,13 @@ void Editor::replaceValue(std::string specifier, std::string oldValue, std::stri
     std::string newString = specifier + Strings::paddedSeperator + newValue; // String to be inserted
 
     // Find the location at which to replace
-    std::size_t position = this->playerData->find(oldString);
+    std::size_t position = this->_playerData->find(oldString);
 
     // Erase oldString at position from playerData
-    this->playerData->erase(position, oldString.length());
+    this->_playerData->erase(position, oldString.length());
 
     // Insert newString into playerData at position
-    this->playerData->insert(position, newString);
+    this->_playerData->insert(position, newString);
 }
 
 void Editor::save()
@@ -72,14 +72,14 @@ void Editor::save()
      * the original PlayerPrefs.txt with the temporary file. */
 
     // First, output the edited playerData into tmpDataLocation
-    std::ofstream saveStream(this->tmpDataLocation);
-    saveStream << *(this->playerData);
+    std::ofstream saveStream(this->_tmpDataLocation);
+    saveStream << *(this->_playerData);
     if (saveStream.fail()) std::abort();
     saveStream.close();
 
     // Next, overwrite the original playerData and replace it with the new playerData
-    std::remove(this->playerDataLocation.c_str());
-    std::rename(this->tmpDataLocation.c_str(), (const char*) this->playerDataLocation.c_str());
+    std::remove(this->_playerDataLocation.c_str());
+    std::rename(this->_tmpDataLocation.c_str(), (const char*) this->_playerDataLocation.c_str());
 }
 
 QString* Editor::loadCharacterNames()
@@ -102,7 +102,7 @@ QString* Editor::loadCharacterNames()
         characterNames[i] = QString::fromStdString(characterName);
     }
 
-    this->numCharacters = i; // Update numCharacters to store the number of characters loaded
+    this->_numCharacters = i; // Update numCharacters to store the number of characters loaded
 
     return characterNames;
 }
