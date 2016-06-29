@@ -78,6 +78,7 @@ namespace Strings
     static const std::string techSpecifier = "pStat4";
     static const std::string faithSpecifier = "pStat5";
     static const std::string characterLevelSpecifier = "level";
+    static const std::string characterExperienceSpecifier = "exp";
     static const std::string allegianceLevelSpecifier = "aq";
 
 

@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
+#include <regex>
 #include "strings.h"
 
 // Define an item as an object with an ID and a name

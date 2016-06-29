@@ -94,7 +94,14 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLineEdit" name="lineEditName"/>
+                  <widget class="QLineEdit" name="lineEditName">
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="maxLength">
+                    <number>32767</number>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -761,7 +768,7 @@
                  <number>5</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>3</number>
+                 <number>2</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelVit">
@@ -796,11 +803,32 @@
                <layout class="QVBoxLayout" name="layoutVitVal">
                 <item>
                  <widget class="QSpinBox" name="spinBoxVitVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="buttonSymbols">
                    <enum>QAbstractSpinBox::UpDownArrows</enum>
                   </property>
                   <property name="correctionMode">
                    <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
                   </property>
                  </widget>
                 </item>
@@ -826,7 +854,7 @@
                  <number>4</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>3</number>
+                 <number>2</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelDex">
@@ -860,7 +888,29 @@
                </property>
                <layout class="QVBoxLayout" name="layoutDexVal">
                 <item>
-                 <widget class="QSpinBox" name="spinBoxDexVal"/>
+                 <widget class="QSpinBox" name="spinBoxDexVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -884,7 +934,7 @@
                  <number>2</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>3</number>
+                 <number>2</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelMag">
@@ -918,7 +968,29 @@
                </property>
                <layout class="QVBoxLayout" name="layoutMagVal">
                 <item>
-                 <widget class="QSpinBox" name="spinBoxMagVal"/>
+                 <widget class="QSpinBox" name="spinBoxMagVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -942,7 +1014,7 @@
                  <number>5</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>5</number>
+                 <number>4</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelStr">
@@ -976,7 +1048,29 @@
                </property>
                <layout class="QVBoxLayout" name="layoutStrVal">
                 <item>
-                 <widget class="QSpinBox" name="spinBoxStrVal"/>
+                 <widget class="QSpinBox" name="spinBoxStrVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -1000,7 +1094,7 @@
                  <number>4</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>6</number>
+                 <number>4</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelTec">
@@ -1034,7 +1128,29 @@
                </property>
                <layout class="QVBoxLayout" name="layoutTecVal">
                 <item>
-                 <widget class="QSpinBox" name="spinBoxTecVal"/>
+                 <widget class="QSpinBox" name="spinBoxTecVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -1058,7 +1174,7 @@
                  <number>2</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>5</number>
+                 <number>4</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelFai">
@@ -1092,7 +1208,29 @@
                </property>
                <layout class="QVBoxLayout" name="layoutFaiVal">
                 <item>
-                 <widget class="QSpinBox" name="spinBoxFaiVal"/>
+                 <widget class="QSpinBox" name="spinBoxFaiVal">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>41</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>41</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="maximum">
+                   <number>999</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -1506,7 +1644,7 @@
                    <enum>QAbstractSpinBox::UpDownArrows</enum>
                   </property>
                   <property name="maximum">
-                   <number>100</number>
+                   <number>999</number>
                   </property>
                  </widget>
                 </item>
@@ -1577,7 +1715,7 @@
                    <enum>QAbstractSpinBox::UpDownArrows</enum>
                   </property>
                   <property name="maximum">
-                   <number>100</number>
+                   <number>999</number>
                   </property>
                  </widget>
                 </item>
@@ -1602,7 +1740,7 @@
                 <item>
                  <widget class="QLabel" name="labelMaxHealthVal">
                   <property name="text">
-                   <string>100</string>
+                   <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1633,7 +1771,7 @@
                 <item>
                  <widget class="QLabel" name="labelMaxManaVal">
                   <property name="text">
-                   <string>100</string>
+                   <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1661,7 +1799,7 @@
                 <item>
                  <widget class="QLabel" name="labelMaxStaminaVal">
                   <property name="text">
-                   <string>100</string>
+                   <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

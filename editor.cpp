@@ -32,7 +32,7 @@ Editor::~Editor()
 std::string Editor::loadValue(std::string specifier)
 {
     /* Returns the value assigned to specifier. */
-    std::string value;
+    std::string value = "";
 
     // Create a stringstream and set it's contents to playerData
     std::stringstream playerDataStream(*(this->_playerData));
@@ -47,7 +47,7 @@ std::string Editor::loadValue(std::string specifier)
     while(playerDataStream >> word && word != Strings::terminator)
     {
         if (word != Strings::separator && word != Strings::intSpecifier && word != Strings::stringSpecifier)
-            value = word;
+            value = value.empty() ? word : value + " " + word;
     }
 
     return value;
@@ -101,7 +101,7 @@ QString* Editor::loadCharacterNames()
     {
         // Load the name and store it in characterNames
         specifier = std::to_string(i) + Strings::nameSpecifier;
-        characterName = loadValue(specifier);
+        characterName = this->loadValue(specifier);
         characterNames[i] = QString::fromStdString(characterName);
     }
 
@@ -121,7 +121,7 @@ void Editor::loadCharacterValues(std::string ID)
     for (int i = 0; i < Strings::NUM_COMBOBOXES; i++)
     {
         val = this->loadValue(ID + Strings::comboBoxSpecifiers[i]);
-        (*characterValues)[Strings::comboBoxSpecifiers[i]] = QString::fromStdString((Strings::comboBoxArrays[i])[std::stoi(val)]);
+        (*characterValues)[Strings::comboBoxSpecifiers[i]] = QString::fromStdString(val);
     }
 
     // Load spinBoxes
