@@ -154,7 +154,7 @@ void MainWindow::on_lineEditName_editingFinished()
     characterNameAction->setText(this->findChild<QLineEdit*>(Strings::nameEditObjectName)->displayText());
 
     // Update the value in playerData
-    this->_e->replaceValue(Strings::nameSpecifier, oldValue, newValue.toStdString());
+    this->_e->replaceValue(this->_e->currentID + Strings::nameSpecifier, oldValue, newValue.toStdString());
 }
 
 void MainWindow::on_comboBoxDifficultyEdit_currentTextChanged(const QString& newDifficulty)
@@ -189,7 +189,7 @@ void MainWindow::on_comboBoxClassEdit_currentTextChanged(const QString& newClass
     // Load the primary stats of the character
     std::string oldStat1 = this->_e->loadValue(this->_e->currentID + Strings::primaryStat1);
     std::string oldStat2 = this->_e->loadValue(this->_e->currentID + Strings::primaryStat2);
-    std::string oldClass = this->_e->loadValue(this->_e->currentID + Strings::classSpecifier);
+    std::string oldClass = (*this->_e->characterValues)[Strings::classSpecifier].toStdString();
 
     // Find the index of the new string
     int newValue;
@@ -207,6 +207,8 @@ done:
     this->_e->replaceValue(this->_e->currentID + Strings::primaryStat1, oldStat1, std::to_string(indices[0]));
     this->_e->replaceValue(this->_e->currentID + Strings::primaryStat2, oldStat2, std::to_string(indices[1]));
     this->_e->replaceValue(this->_e->currentID + Strings::classSpecifier, oldClass, std::to_string(newValue));
+    (*this->_e->characterValues)[Strings::classSpecifier] = QString::number(newValue);
+
 }
 
 void MainWindow::on_spinBoxVitVal_valueChanged(const QString& newVit)
@@ -242,6 +244,25 @@ void MainWindow::on_spinBoxFaiVal_valueChanged(const QString& newFai)
 void MainWindow::on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel)
 {
     this->simpleSpinBoxChangedHandler(newCharacterLevel, Strings::characterLevelSpecifier);
+
+    // Calculate experience
+    int level = newCharacterLevel.toInt();
+    int requiredExperience = 36;
+    int previousExperienceGain = 26;
+
+    // Don't ask me why the experience formula is so odd
+    if (level == 1) requiredExperience = 0;
+    else if (level == 2) requiredExperience = 10;
+    else
+    {
+        for (int i = 3; i < level; i++)
+        {
+            previousExperienceGain += 3 * i;
+            requiredExperience += previousExperienceGain;
+        }
+    }
+
+    this->simpleSpinBoxChangedHandler(QString::number(requiredExperience), Strings::characterExperienceSpecifier);
 }
 
 void MainWindow::on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel)

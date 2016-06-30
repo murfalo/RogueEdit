@@ -20,6 +20,9 @@ Editor::Editor()
     if (playerDataStream.fail()) std::abort(); // TODO: Implement more graceful exception handling.
     this->_playerData = new std::string((std::istreambuf_iterator<char>(playerDataStream)),
                                        std::istreambuf_iterator<char>());
+
+    // The space is semi-important, treasure it always
+    *this->_playerData = " " + *this->_playerData;
     playerDataStream.close();
 }
 
@@ -56,8 +59,8 @@ std::string Editor::loadValue(std::string specifier)
 void Editor::replaceValue(std::string specifier, std::string oldValue, std::string newValue)
 {
     /* Replaces oldValue with newValue in this->playerData. */
-    std::string oldString = specifier + Strings::paddedSeperator + oldValue; // String to be replaced
-    std::string newString = specifier + Strings::paddedSeperator + newValue; // String to be inserted
+    std::string oldString = " " + specifier + Strings::paddedSeperator + oldValue; // String to be replaced
+    std::string newString = " " + specifier + Strings::paddedSeperator + newValue; // String to be inserted
 
     // Find the location at which to replace
     std::size_t position = this->_playerData->find(oldString);
@@ -77,7 +80,7 @@ void Editor::save()
 
     // First, output the edited playerData into tmpDataLocation
     std::ofstream saveStream(this->_tmpDataLocation);
-    saveStream << *(this->_playerData);
+    saveStream << this->_playerData->substr(1, this->_playerData->size() - 1);  // Ignore the extra space at the beginning
     if (saveStream.fail()) std::abort();
     saveStream.close();
 
@@ -114,8 +117,9 @@ void Editor::loadCharacterValues(std::string ID)
     std::string val;
     this->currentID = ID;  // Update the current ID to the new ID
 
-    // Load and store the name (the only LineEdit)
+    // Load and store the name and experience
     (*characterValues)[Strings::nameSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::nameSpecifier));
+    (*characterValues)[Strings::characterExperienceSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::characterExperienceSpecifier));
 
     // Load comboBoxes
     for (int i = 0; i < Strings::NUM_COMBOBOXES; i++)
