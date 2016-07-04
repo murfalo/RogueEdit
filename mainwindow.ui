@@ -61,7 +61,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tabCharacter">
          <attribute name="title">
@@ -74,13 +74,13 @@
              <widget class="QGroupBox" name="groupBoxSettings">
               <property name="minimumSize">
                <size>
-                <width>200</width>
+                <width>205</width>
                 <height>240</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>200</width>
+                <width>205</width>
                 <height>240</height>
                </size>
               </property>
@@ -88,6 +88,20 @@
                <string>Settings</string>
               </property>
               <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="layoutCharacterName">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelCharacterName">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
                <item row="0" column="1">
                 <layout class="QVBoxLayout" name="layoutNameEdit">
                  <property name="spacing">
@@ -100,6 +114,20 @@
                    </property>
                    <property name="maxLength">
                     <number>32767</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <layout class="QVBoxLayout" name="layoutDifficulty">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelDifficulty">
+                   <property name="text">
+                    <string>Difficulty:</string>
                    </property>
                   </widget>
                  </item>
@@ -126,125 +154,16 @@
                  </item>
                 </layout>
                </item>
-               <item row="3" column="1">
-                <layout class="QVBoxLayout" name="layoutClassEdit">
+               <item row="2" column="0">
+                <layout class="QVBoxLayout" name="layoutRace">
                  <property name="spacing">
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QComboBox" name="comboBoxClassEdit">
-                   <item>
-                    <property name="text">
-                     <string>Aetherknight</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Aethermage</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Alchemist</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Arcanist</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Blademaster</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Bounty Hunter</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Commander</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Darkmage</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Datamancer</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Dragoon</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Enforcer</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Gunmage</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Gunner</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Machinist</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Spellblade</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="4" column="0">
-                <layout class="QVBoxLayout" name="layoutVariant">
-                 <item>
-                  <widget class="QLabel" name="labelVariant">
+                  <widget class="QLabel" name="labelRace">
                    <property name="text">
-                    <string>Variant:</string>
+                    <string>Race:</string>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="4" column="1">
-                <layout class="QVBoxLayout" name="layoutVariantEdit">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QComboBox" name="comboBoxVariantEdit">
-                   <item>
-                    <property name="text">
-                     <string>Variant 1</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Variant 2</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Variant 3</string>
-                    </property>
-                   </item>
                   </widget>
                  </item>
                 </layout>
@@ -394,7 +313,165 @@
                  </item>
                 </layout>
                </item>
+               <item row="3" column="1">
+                <layout class="QVBoxLayout" name="layoutClassEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxClassEdit">
+                   <item>
+                    <property name="text">
+                     <string>Aetherknight</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Aethermage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Alchemist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Arcanist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Blademaster</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Bounty Hunter</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Commander</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Darkmage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Datamancer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Dragoon</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Enforcer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gunmage</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Gunner</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Machinist</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Spellblade</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="4" column="0">
+                <layout class="QVBoxLayout" name="layoutAllegiance">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="labelAllegiance">
+                   <property name="text">
+                    <string>Allegiance:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="4" column="1">
+                <layout class="QVBoxLayout" name="layoutAllegianceEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxAllegianceEdit">
+                   <item>
+                    <property name="text">
+                     <string>Galactic Fleet</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Starlight Rebellion</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
                <item row="5" column="0">
+                <layout class="QVBoxLayout" name="layoutVariant">
+                 <item>
+                  <widget class="QLabel" name="labelVariant">
+                   <property name="text">
+                    <string>Variant:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="5" column="1">
+                <layout class="QVBoxLayout" name="layoutVariantEdit">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxVariantEdit">
+                   <item>
+                    <property name="text">
+                     <string>Variant 1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Variant 2</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Variant 3</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="6" column="0">
                 <layout class="QVBoxLayout" name="layoutUniform">
                  <property name="spacing">
                   <number>0</number>
@@ -408,35 +485,7 @@
                  </item>
                 </layout>
                </item>
-               <item row="1" column="0">
-                <layout class="QVBoxLayout" name="layoutDifficulty">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="labelDifficulty">
-                   <property name="text">
-                    <string>Difficulty:</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="2" column="0">
-                <layout class="QVBoxLayout" name="layoutRace">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="labelRace">
-                   <property name="text">
-                    <string>Race:</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="5" column="1">
+               <item row="6" column="1">
                 <layout class="QVBoxLayout" name="layoutUniformEdit">
                  <property name="spacing">
                   <number>0</number>
@@ -567,21 +616,21 @@
                  </item>
                 </layout>
                </item>
-               <item row="0" column="0">
-                <layout class="QVBoxLayout" name="layoutCharacterName">
+               <item row="7" column="0">
+                <layout class="QVBoxLayout" name="layoutAugment">
                  <property name="spacing">
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="labelCharacterName">
+                  <widget class="QLabel" name="labelAugment">
                    <property name="text">
-                    <string>Name:</string>
+                    <string>Augment:</string>
                    </property>
                   </widget>
                  </item>
                 </layout>
                </item>
-               <item row="6" column="1">
+               <item row="7" column="1">
                 <layout class="QVBoxLayout" name="layoutAugmentEdit">
                  <property name="spacing">
                   <number>0</number>
@@ -688,20 +737,6 @@
                      <string>Slime Hat</string>
                     </property>
                    </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="6" column="0">
-                <layout class="QVBoxLayout" name="layoutAugment">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="labelAugment">
-                   <property name="text">
-                    <string>Augment:</string>
-                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -1588,7 +1623,7 @@
                  <x>10</x>
                  <y>200</y>
                  <width>45</width>
-                 <height>21</height>
+                 <height>28</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="layoutLevel">
@@ -1596,7 +1631,7 @@
                  <number>2</number>
                 </property>
                 <property name="topMargin">
-                 <number>3</number>
+                 <number>6</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelLevel">
@@ -1613,7 +1648,7 @@
                  <x>40</x>
                  <y>200</y>
                  <width>47</width>
-                 <height>27</height>
+                 <height>37</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutLevelVal">
@@ -1622,6 +1657,9 @@
                 </property>
                 <property name="leftMargin">
                  <number>3</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
                  <number>3</number>
@@ -1656,7 +1694,7 @@
                  <x>90</x>
                  <y>200</y>
                  <width>122</width>
-                 <height>21</height>
+                 <height>29</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutAllegianceLevel">
@@ -1667,7 +1705,7 @@
                  <number>2</number>
                 </property>
                 <property name="topMargin">
-                 <number>3</number>
+                 <number>6</number>
                 </property>
                 <item>
                  <widget class="QLabel" name="labelAllegianceLevel">
@@ -1684,7 +1722,7 @@
                  <x>170</x>
                  <y>200</y>
                  <width>51</width>
-                 <height>27</height>
+                 <height>33</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutAllegianceLevelVal">
@@ -1693,6 +1731,9 @@
                 </property>
                 <property name="leftMargin">
                  <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>4</number>
                 </property>
                 <property name="bottomMargin">
                  <number>3</number>
@@ -1845,10 +1886,654 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tabInventory">
+        <widget class="QWidget" name="tabItems">
          <attribute name="title">
-          <string>Inventory</string>
+          <string>Items</string>
          </attribute>
+         <widget class="QGroupBox" name="groupBoxItemEditor">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>181</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QLabel" name="labelItemName">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>59</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Item Name:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEditItemName">
+           <property name="geometry">
+            <rect>
+             <x>88</x>
+             <y>10</y>
+             <width>81</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelItemLevel">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>36</y>
+             <width>55</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Item Level:</string>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="spinBoxItemLevelEdit">
+           <property name="geometry">
+            <rect>
+             <x>88</x>
+             <y>36</y>
+             <width>81</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="spinBoxItemQuantityEdit">
+           <property name="geometry">
+            <rect>
+             <x>88</x>
+             <y>62</y>
+             <width>81</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelItemQuantity">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>62</y>
+             <width>72</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Item Quantity:</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelItemRarity">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>88</y>
+             <width>59</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Item Rarity:</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBoxRarityEdit">
+           <property name="geometry">
+            <rect>
+             <x>88</x>
+             <y>88</y>
+             <width>81</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>Normal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Rare</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Epic</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Legendary</string>
+            </property>
+           </item>
+          </widget>
+         </widget>
+         <widget class="QTreeWidget" name="treeWidgetItemBrowser">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>256</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="horizontalScrollMode">
+           <enum>QAbstractItemView::ScrollPerPixel</enum>
+          </property>
+          <property name="indentation">
+           <number>20</number>
+          </property>
+          <property name="uniformRowHeights">
+           <bool>false</bool>
+          </property>
+          <property name="itemsExpandable">
+           <bool>true</bool>
+          </property>
+          <property name="allColumnsShowFocus">
+           <bool>false</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+          <property name="expandsOnDoubleClick">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>2</number>
+          </property>
+          <attribute name="headerVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="headerDefaultSectionSize">
+           <number>130</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Inventory Browser</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </column>
+          <item>
+           <property name="text">
+            <string>Combat Chips</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
+           <property name="whatsThis">
+            <string/>
+           </property>
+           <property name="font">
+            <font>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <item>
+            <property name="text">
+             <string extracomment="1">None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+          </item>
+          <item>
+           <property name="text">
+            <string>Drones</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+          </item>
+          <item>
+           <property name="text">
+            <string>Equipped</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Weapon</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Shield</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Helmet</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Armor</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Ring 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string>Ring 2</string>
+            </property>
+           </item>
+          </item>
+          <item>
+           <property name="text">
+            <string>Inventory</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+          </item>
+         </widget>
         </widget>
        </widget>
       </item>

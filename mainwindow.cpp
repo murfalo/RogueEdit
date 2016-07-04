@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     _ui->setupUi(this);
     this->_e = new Editor();
+    this->_itemCompleter = new QCompleter(Items::itemList, this);
+    this->_itemCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+    this->_combatChipCompleter = new QCompleter(Items::combatChipsList, this);
+    this->_combatChipCompleter->setCaseSensitivity(Qt::CaseInsensitive);
 }
 
 MainWindow::~MainWindow()
@@ -21,15 +25,15 @@ void MainWindow::createCharacterActions()
      * the main tool bar. */
     QAction* characterNameAction;
     QString* characterNames = this->_e->loadCharacterNames(); // Load character names from file
-    if (characterNames->size() == 0) std::abort();           // Abort if no characters were found
     QToolBar* mainToolBar = this->findChild<QToolBar*>(Strings::toolbarObjectName);
     QMenu* characterMenu = new QMenu(Strings::characterMenuObjectName);
 
     // Add an action to characterMenu for each non-empty item in characterNames
-    for (int i = 0; i <= characterNames->size(); i++)
+    for (int i = 0; i < this->_e->MAX_CHARACTERS; i++)
     {
-        if (characterNames[i].isEmpty()) break;
+        if (characterNames[i].isEmpty()) continue;
         characterNameAction = new QAction(characterNames[i], this);
+
         // Set the object name to the ID of the character
         characterNameAction->setObjectName(QString::number(i));
         characterNameAction->setToolTip("Load " + characterNames[i]);
@@ -83,6 +87,50 @@ void MainWindow::updateCharacterValues()
     }
 }
 
+void MainWindow::updateCharacterItemBrowser()
+{
+    /* Updates the Item Browser with inventory and combat chips */
+    // Identify the item browser
+    QTreeWidget* itemBrowser = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName);
+
+    // Load values!
+    // Currently only loads the first six combat chips
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserCombatChipsIndex, 0, Items::HOTBAR_END, Strings::combatChipSpecifier);
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserDronesIndex, Items::DRONE_BEGIN, Items::DRONE_END, "");
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserEquippedIndex, Items::EQUIPPED_BEGIN, Items::EQUIPPED_END, "");
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserInventoryIndex, Items::HOTBAR_BEGIN, Items::INVENTORY_STORAGE_END, "");
+}
+
+void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
+                                      int topLevelIndex,
+                                      const int beginIndex,
+                                      const int endIndex,
+                                      std::string type)
+{
+    /* Loads the children of topLevelIndex in itemBrowser from beginIndex to endIndex.
+     * Input type as "" for most cases. */
+    QTreeWidgetItem* topLevelItem = itemBrowser->topLevelItem(topLevelIndex);
+
+    // Stuff changes slightly when we're working on combat chips rather than standard items
+    std::string specifierEnd = (type == Strings::combatChipSpecifier) ? "" : Strings::idSpecifier;
+    const std::string* itemArray = (type == Strings::combatChipSpecifier) ? &Items::combatChips[0] : &Items::items[0];
+
+    QTreeWidgetItem* child;
+    std::string value;
+
+    for (int i = beginIndex; i < endIndex; i++)
+    {
+        // Load the ID and the corresponding item string
+        value = this->_e->loadValue(this->_e->currentID + type + std::to_string(i) + specifierEnd);
+        value = itemArray[std::stoi(value)];
+        if (value.empty()) value = "None";
+
+        // Update the text in the item browser
+        child = topLevelItem->child((beginIndex == 0) ? i : i % beginIndex); // Avoid accidentally doing modulo 0
+        child->setText(0, QString::fromStdString(value));
+    }
+}
+
 void MainWindow::simpleComboBoxChangedHandler(const QString& newValue,
                                               const std::string specifier,
                                               const std::string* arrayBasePointer,
@@ -127,8 +175,11 @@ void MainWindow::characterNameActionHandler()
     loadCharacterDropdown->setDefaultAction(sender);
 
     /* Load the character's values and update the UI */
-    this->_e->loadCharacterValues((sender->objectName()).toStdString());
+    this->_e->currentID = (sender->objectName()).toStdString();
+    this->_e->loadCharacterValues();
+    this->_e->loadCharacterItemBrowser();
     this->updateCharacterValues();
+    this->updateCharacterItemBrowser();
 
     // Enable interaction
     this->findChild<QTabWidget*>(Strings::navigationObjectName)->setDisabled(false);
@@ -180,6 +231,11 @@ void MainWindow::on_comboBoxUniformEdit_currentIndexChanged(const QString& newUn
 void MainWindow::on_comboBoxAugmentEdit_currentIndexChanged(const QString& newAugment)
 {
     this->simpleComboBoxChangedHandler(newAugment, Strings::augmentSpecifier, &Strings::augments[0], Strings::NUM_AUGMENTS);
+}
+
+void MainWindow::on_comboBoxAllegianceEdit_currentIndexChanged(const QString& newAllegiance)
+{
+    this->simpleComboBoxChangedHandler(newAllegiance, Strings::allegianceSpecifier, &Strings::allegiances[0], Strings::NUM_ALLEGIANCES);
 }
 
 void MainWindow::on_comboBoxClassEdit_currentTextChanged(const QString& newClass)
@@ -268,4 +324,31 @@ void MainWindow::on_spinBoxLevelVal_valueChanged(const QString& newCharacterLeve
 void MainWindow::on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel)
 {
     this->simpleSpinBoxChangedHandler(newAllegianceLevel, Strings::allegianceLevelSpecifier);
+}
+
+void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+{
+    /* Handles on-click for the item browser! */
+
+    QGroupBox* itemEditor = this->findChild<QGroupBox*>(Strings::itemEditorObjectName);
+
+    // Disable editor if user clicks on a top-level item
+    if (current->parent() == NULL) {
+        itemEditor->setEnabled(false);
+        return;
+    }
+
+    // Otherwise enable the editor!
+    itemEditor->setEnabled(true);
+
+    // Update the Line Edit's completer
+    QLineEdit* itemNameEdit = itemEditor->findChild<QLineEdit*>(Strings::itemNameEditObjectName);
+
+    if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
+        itemNameEdit->setCompleter(this->_combatChipCompleter);
+    else
+        itemNameEdit->setCompleter(this->_itemCompleter);
+    // Update the Line Edit's text
+    itemNameEdit->setText(current->text(0));
+
 }

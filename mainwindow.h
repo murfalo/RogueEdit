@@ -4,6 +4,8 @@
 #pragma once
 #include <QMainWindow>
 #include <QToolButton>
+#include <QCompleter>
+#include "items.h"
 #include "editor.h"
 #include "strings.h"
 #include "ui_mainwindow.h"
@@ -20,12 +22,18 @@ public:
     explicit MainWindow(QWidget* parent = 0);
     void createCharacterActions();  // Create character actions in toolbar
     void updateCharacterValues();
+    void updateCharacterItemBrowser();
     void MainWindow::simpleComboBoxChangedHandler(const QString& newValue,
                                                   const std::string specifier,
                                                   const std::string* arrayBasePointer,
                                                   const int arraySize);
     void MainWindow::simpleSpinBoxChangedHandler(const QString& newValue,
                                                  const std::string specifier);
+    void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
+                                          int topLevelIndex,
+                                          const int beginIndex,
+                                          const int endIndex,
+                                          std::string extraSpecifier = "");
     ~MainWindow();
 
 private slots:
@@ -37,6 +45,7 @@ private slots:
     void on_comboBoxDifficultyEdit_currentTextChanged(const QString& newDifficulty);
     void on_comboBoxRaceEdit_currentTextChanged(const QString& newRace);
     void on_comboBoxClassEdit_currentTextChanged(const QString& newClass);
+    void on_comboBoxAllegianceEdit_currentIndexChanged(const QString& newAllegiance);
     void on_comboBoxVariantEdit_currentIndexChanged(const QString& newVariant);
     void on_comboBoxUniformEdit_currentIndexChanged(const QString& newUniform);
     void on_comboBoxAugmentEdit_currentIndexChanged(const QString& newAugment);
@@ -49,9 +58,12 @@ private slots:
     void on_spinBoxFaiVal_valueChanged(const QString& newFai);
     void on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel);
     void on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel);
+    void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
 private:
     Editor* _e;
-    Ui::MainWindow *_ui;
+    QCompleter* _itemCompleter;
+    QCompleter* _combatChipCompleter;
+    Ui::MainWindow* _ui;
 };
 #endif

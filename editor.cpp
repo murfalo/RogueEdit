@@ -3,8 +3,10 @@
 
 Editor::Editor()
 {
-    // Allocate memory for characterValues
+    // Allocate memory
     this->characterValues = new std::unordered_map<std::string, QString>;
+    this->inventory = new int[Items::NUM_INVENTORY_SLOTS];
+    this->combatChips = new int[Items::NUM_COMBAT_CHIP_SLOTS];
 
     // Determine the username
     QString username = qgetenv("USER");
@@ -29,6 +31,8 @@ Editor::Editor()
 Editor::~Editor()
 {
     delete this->characterValues;
+    delete this->inventory;
+    delete this->combatChips;
     delete this->_playerData;
 }
 
@@ -111,24 +115,36 @@ QString* Editor::loadCharacterNames()
     return characterNames;
 }
 
-void Editor::loadCharacterValues(std::string ID)
+void Editor::loadCharacterValues()
 {
     /* Loads the settings and stats of the character specified by ID. */
     std::string val;
-    this->currentID = ID;  // Update the current ID to the new ID
 
     // Load and store the name and experience
-    (*characterValues)[Strings::nameSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::nameSpecifier));
-    (*characterValues)[Strings::characterExperienceSpecifier] = QString::fromStdString(this->loadValue(ID + Strings::characterExperienceSpecifier));
+    (*this->characterValues)[Strings::nameSpecifier] = QString::fromStdString(this->loadValue(this->currentID + Strings::nameSpecifier));
+    (*this->characterValues)[Strings::characterExperienceSpecifier] = QString::fromStdString(this->loadValue(this->currentID + Strings::characterExperienceSpecifier));
 
     // Load comboBoxes
     for (int i = 0; i < Strings::NUM_COMBOBOXES; i++)
     {
-        val = this->loadValue(ID + Strings::comboBoxSpecifiers[i]);
-        (*characterValues)[Strings::comboBoxSpecifiers[i]] = QString::fromStdString(val);
+        val = this->loadValue(this->currentID + Strings::comboBoxSpecifiers[i]);
+        (*this->characterValues)[Strings::comboBoxSpecifiers[i]] = QString::fromStdString(val);
     }
 
     // Load spinBoxes
     for (int i = 0; i < Strings::NUM_SPINBOXES; i++)
-        (*characterValues)[Strings::spinBoxSpecifiers[i]] = QString::fromStdString(this->loadValue(ID + Strings::spinBoxSpecifiers[i]));
+        (*this->characterValues)[Strings::spinBoxSpecifiers[i]] = QString::fromStdString(this->loadValue(this->currentID + Strings::spinBoxSpecifiers[i]));
+}
+
+void Editor::loadCharacterItemBrowser()
+{
+    /* Loads the combat chips and inventory of the character specified by ID*/
+
+    // Load the inventory of the character specified by ID into this->inventory */
+    for (int i = 0; i < Items::NUM_INVENTORY_SLOTS; i++)
+        this->inventory[i] = std::stoi(this->loadValue(this->currentID + std::to_string(i) + Strings::idSpecifier));
+
+    // Load the combat chips of the character specified by ID into this->combatChips */
+    for (int i = 0; i < Items::NUM_COMBAT_CHIP_SLOTS; i++)
+        this->combatChips[i] = std::stoi(this->loadValue(this->currentID + Strings::combatChipSpecifier + std::to_string(i)));
 }

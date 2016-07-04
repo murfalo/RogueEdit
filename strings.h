@@ -29,6 +29,22 @@ namespace Strings
     static const QString loadCharacterDropdownObjectName = "dropdownLoad_Character";
     static const QString saveCharacterActionText = "Save Character";
 
+    /* Item Tab */
+
+    // Object names
+    static const QString itemBrowserObjectName = "treeWidgetItemBrowser";
+    static const QString itemEditorObjectName = "groupBoxItemEditor";
+    static const QString itemNameEditObjectName = "lineEditItemName";
+
+    // Titles for top level items
+    static const QString itemBrowserCombatChipsTitle = "Combat Chips";
+
+    // Indexes for top level items
+    static const int itemBrowserCombatChipsIndex = 0;
+    static const int itemBrowserDronesIndex = 1;
+    static const int itemBrowserEquippedIndex = 2;
+    static const int itemBrowserInventoryIndex = 3;
+
     /* Character Tab */
 
     static const QString nameEditObjectName = "lineEditName";
@@ -40,6 +56,7 @@ namespace Strings
     static const QString variantEditObjectName = "comboBoxVariantEdit";
     static const QString uniformEditObjectName = "comboBoxUniformEdit";
     static const QString augmentEditObjectName = "comboBoxAugmentEdit";
+    static const QString allegianceEditObjectName = "comboBoxAllegianceEdit";
 
     // spinBoxes
     static const QString vitalityEditObjectName = "spinBoxVitVal";
@@ -62,6 +79,7 @@ namespace Strings
     /*** Specifiers ***/
     static const std::string intSpecifier = "System.Int32";
     static const std::string stringSpecifier = "System.String";
+    static const std::string idSpecifier = "id";
     static const std::string nameSpecifier = "name";
     static const std::string difficultySpecifier = "prof";
     static const std::string raceSpecifier = "race";
@@ -80,6 +98,8 @@ namespace Strings
     static const std::string characterLevelSpecifier = "level";
     static const std::string characterExperienceSpecifier = "exp";
     static const std::string allegianceLevelSpecifier = "aq";
+    static const std::string allegianceSpecifier = "allegiance";
+    static const std::string combatChipSpecifier = "cc";
 
 
     /*** Stats and Settings */
@@ -92,6 +112,7 @@ namespace Strings
     static const int NUM_VARIANTS = 3;
     static const int NUM_UNIFORMS = 24;
     static const int NUM_AUGMENTS = 25;
+    static const int NUM_ALLEGIANCES = 2;
 
     /* Difficulty */
     static const std::string difficulties[NUM_DIFFICULTIES] = { "Normal", "Ironman"};
@@ -130,11 +151,14 @@ namespace Strings
                                                         "Chamcham Hat", "Demon Horns", "Forsaker Mask", "Shroom Hat", "Halo", "Creator Mask",
                                                         "Rebellion Headpiece", "Gas Mask" };
 
+    /* Allegiances */
+    static const std::string allegiances[NUM_ALLEGIANCES] = {"Galactic Fleet", "Starlight Rebellion"};
+
     /*** Arrays for Iteration ***/
 
     // Total number of spinBoxes and comboBoxes on the character tab
     static const int NUM_SPINBOXES = 8;
-    static const int NUM_COMBOBOXES = 6;
+    static const int NUM_COMBOBOXES = 7;
 
     // Arrays for use in spinBox iteration
     static const QString spinBoxObjectNames[NUM_SPINBOXES] = { vitalityEditObjectName, dexterityEditObjectName, magicEditObjectName,
@@ -146,11 +170,14 @@ namespace Strings
 
     // Arrays for use in comboBox iteration
     static const QString comboBoxObjectNames[NUM_COMBOBOXES] = { difficultyEditObjectName, raceEditObjectName, classEditObjectName,
-                                                                 variantEditObjectName, uniformEditObjectName, augmentEditObjectName };
+                                                                 variantEditObjectName, uniformEditObjectName, augmentEditObjectName,
+                                                                 allegianceEditObjectName };
     static const std::string* comboBoxArrays[NUM_COMBOBOXES] = { &difficulties[0], &races[0], &classes[0],
-                                                                 &variants[0], &uniforms[0], &augments[0] };
+                                                                 &variants[0], &uniforms[0], &augments[0],
+                                                                 &allegiances[0] };
     static const std::string comboBoxSpecifiers[NUM_COMBOBOXES] = { difficultySpecifier, raceSpecifier, classSpecifier,
-                                                                    variantSpecifier, uniformSpecifier, augmentSpecifier };
+                                                                    variantSpecifier, uniformSpecifier, augmentSpecifier,
+                                                                    allegianceSpecifier };
 }
 
 #endif

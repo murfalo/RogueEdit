@@ -7,7 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
-#include <regex>
+#include "items.h"
 #include "strings.h"
 
 // Define an item as an object with an ID and a name
@@ -23,14 +23,17 @@ public:
     void replaceValue(std::string specifier,                 // Replaces a value in file
                               std::string oldValue,
                               std::string newValue);
-    void save();                               // Save playerData to file
-    QString* loadCharacterNames();             // Load in characters from file
-    void loadCharacterValues(std::string ID);  // Load character settings and stats
+    void save();                                   // Save playerData to file
+    QString* loadCharacterNames();                 // Load in characters from file
+    void loadCharacterValues();                    // Load character settings and stats
+    void loadCharacterItemBrowser();               // Load inventory of character specified by ID
 
-    const int MAX_CHARACTERS = 6;                               // Maximum number of characters allowed by RogueLands
-    const int NUM_CHARACTER_VALUES = 20;                        // Number of settings and stats per character
+    static const int MAX_CHARACTERS = 6;       // Maximum number of characters allowed by Roguelands
+
     std::string currentID;                                      // ID of the current character
     std::unordered_map<std::string, QString>* characterValues;  // Maps a specifier string to the character's associated value in QString form
+    int* inventory;                                             // Maps an index to an item ID
+    int* combatChips;                                           // Maps an index to a combat chip ID
 
 private:
     std::string _playerDataLocation;    // Location of file
