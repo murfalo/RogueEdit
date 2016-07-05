@@ -1,4 +1,3 @@
-#pragma once
 #include "mainwindow.h"
 #include "editor.h"
 #include "strings.h"

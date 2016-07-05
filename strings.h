@@ -15,7 +15,9 @@ namespace Strings
     static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
 #elif defined(Q_OS_MAC)
-    // Not yet implemented
+    static const std::string playerDataPrefix = "/Users/";
+    static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
 #endif
 
     static const QString appTitle = "RogueEdit";

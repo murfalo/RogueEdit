@@ -23,17 +23,17 @@ public:
     void createCharacterActions();  // Create character actions in toolbar
     void updateCharacterValues();
     void updateCharacterItemBrowser();
-    void MainWindow::simpleComboBoxChangedHandler(const QString& newValue,
-                                                  const std::string specifier,
-                                                  const std::string* arrayBasePointer,
-                                                  const int arraySize);
-    void MainWindow::simpleSpinBoxChangedHandler(const QString& newValue,
-                                                 const std::string specifier);
-    void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
-                                          int topLevelIndex,
-                                          const int beginIndex,
-                                          const int endIndex,
-                                          std::string extraSpecifier = "");
+    void simpleComboBoxChangedHandler(const QString& newValue,
+                                      const std::string specifier,
+                                      const std::string* arrayBasePointer,
+                                      const int arraySize);
+    void simpleSpinBoxChangedHandler(const QString& newValue,
+                                     const std::string specifier);
+    void loadTopLevelChildren(QTreeWidget* itemBrowser,
+                              int topLevelIndex,
+                              const int beginIndex,
+                              const int endIndex,
+                              std::string extraSpecifier = "");
     ~MainWindow();
 
 private slots:
