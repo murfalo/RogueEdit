@@ -11,9 +11,10 @@ namespace Strings
 {
     /*** Save Location ***/
 #if defined(Q_OS_WIN)
-    static const std::string playerDataPrefix = "C:/Users/";
-    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
+    static const std::string playerDataPrefix = "C:/Users/AppData/LocalLow/DefaultCompany/Roguelands/";
+	// If the code to add the prefex to a suffix breaks, add a slash (/) to the front of each of the next two strings
+    static const std::string playerDataSuffix = "PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = ".txt";
 #elif defined(Q_OS_MAC)
     static const std::string playerDataPrefix = "/Users/";
     static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
