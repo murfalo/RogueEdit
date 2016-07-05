@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     _ui->setupUi(this);
     this->_e = new Editor();
+
+    // Forcefully make item browser pretty
+    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnWidth(2,50);
+    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnHidden(2,true);
+
     this->_itemCompleter = new QCompleter(Items::itemList, this);
     this->_itemCompleter->setCaseSensitivity(Qt::CaseInsensitive);
     this->_combatChipCompleter = new QCompleter(Items::combatChipsList, this);
@@ -166,6 +171,9 @@ void MainWindow::characterNameActionHandler()
 {
     /* This function occurs when a player name is clicked in the loadCharacterDropdown.
      * Currently, it is very basic and functionality will be added in the future. */
+    // Temporarily disable interaction
+    this->setEnabled(false);
+
     // Determine the name of the character that was clicked and set the editor's current ID accordingly
     QString characterID = QObject::sender()->objectName();
 
@@ -182,7 +190,8 @@ void MainWindow::characterNameActionHandler()
     this->updateCharacterItemBrowser();
 
     // Enable interaction
-    this->findChild<QTabWidget*>(Strings::navigationObjectName)->setDisabled(false);
+    this->setEnabled(true);
+    this->findChild<QTabWidget*>(Strings::navigationObjectName)->setEnabled(true);
 }
 
 void MainWindow::saveCharacterHandler()
@@ -341,14 +350,62 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
     // Otherwise enable the editor!
     itemEditor->setEnabled(true);
 
-    // Update the Line Edit's completer
+    // Load in relevant fields
     QLineEdit* itemNameEdit = itemEditor->findChild<QLineEdit*>(Strings::itemNameEditObjectName);
+    QSpinBox* itemLevelEdit = itemEditor->findChild<QSpinBox*>(Strings::itemLevelEditObjectName);
+    QSpinBox* itemQuantityEdit = itemEditor->findChild<QSpinBox*>(Strings::itemQuantityEditObjectName);
+    QComboBox* itemRarityEdit = itemEditor->findChild<QComboBox*>(Strings::itemRarityEditObjectName);
 
     if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
+    {
         itemNameEdit->setCompleter(this->_combatChipCompleter);
+
+        // Combat chips do not have a level, quantity, or rarity
+        itemLevelEdit->setEnabled(false);
+        itemQuantityEdit->setEnabled(false);
+        itemRarityEdit->setEnabled(false);
+    }
     else
+    {
         itemNameEdit->setCompleter(this->_itemCompleter);
+        itemLevelEdit->setEnabled(true);
+        itemQuantityEdit->setEnabled(true);
+        itemRarityEdit->setEnabled(true);
+    }
     // Update the Line Edit's text
     itemNameEdit->setText(current->text(0));
 
+}
+
+void MainWindow::on_lineEditItemName_editingFinished()
+{
+    // Determine whether a combat chip or normal item is being edited
+    std::string oldValueDescriptor = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem()->text(2).toStdString();
+    const QString* itemArray = (oldValueDescriptor[0] == 'c') ? &Items::combatChipsList[0] : &Items::itemList[0];
+    const int maxSize = (oldValueDescriptor[0] == 'c') ? Items::LARGEST_COMBAT_CHIP : Items::LARGEST_ID;
+
+    // Determine the new value
+    int newValue = NULL;
+    QString newName = this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->displayText();
+    for (int i = 0; i < maxSize; i++)
+    {
+        if (itemArray[i] == newName)
+        {
+            newValue = i;
+            break;
+        }
+    }
+
+    if (newValue == NULL) return;  // Stop if the new name does not correspond to an item
+
+    // Determine the old value
+    std::string specifier = this->_e->currentID + oldValueDescriptor;
+    specifier = (oldValueDescriptor[0] == 'c') ? specifier : specifier + Strings::idSpecifier; // Combat chips don't have "id" at the end of their specifier
+    std::string oldValue = this->_e->loadValue(specifier);
+
+    // Update the user interface
+    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem()->setText(0, newName);
+
+    // Replace the old value with the new value
+    this->_e->replaceValue(specifier, oldValue, std::to_string(newValue));
 }

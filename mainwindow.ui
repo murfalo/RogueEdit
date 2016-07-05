@@ -1899,136 +1899,87 @@
             <x>10</x>
             <y>10</y>
             <width>181</width>
-            <height>241</height>
+            <height>131</height>
            </rect>
           </property>
           <property name="title">
-           <string/>
+           <string>Item Editor</string>
           </property>
-          <widget class="QLabel" name="labelItemName">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>59</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Item Name:</string>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="lineEditItemName">
-           <property name="geometry">
-            <rect>
-             <x>88</x>
-             <y>10</y>
-             <width>81</width>
-             <height>20</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelItemLevel">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>36</y>
-             <width>55</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Item Level:</string>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxItemLevelEdit">
-           <property name="geometry">
-            <rect>
-             <x>88</x>
-             <y>36</y>
-             <width>81</width>
-             <height>20</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QSpinBox" name="spinBoxItemQuantityEdit">
-           <property name="geometry">
-            <rect>
-             <x>88</x>
-             <y>62</y>
-             <width>81</width>
-             <height>20</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelItemQuantity">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>62</y>
-             <width>72</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Item Quantity:</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="labelItemRarity">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>88</y>
-             <width>59</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Item Rarity:</string>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="comboBoxRarityEdit">
-           <property name="geometry">
-            <rect>
-             <x>88</x>
-             <y>88</y>
-             <width>81</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <item>
-            <property name="text">
-             <string>Normal</string>
-            </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelItemName">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Item Name:</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Rare</string>
-            </property>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEditItemName"/>
            </item>
-           <item>
-            <property name="text">
-             <string>Epic</string>
-            </property>
+           <item row="1" column="0">
+            <widget class="QLabel" name="labelItemLevel">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Item Level:</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Legendary</string>
-            </property>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="spinBoxItemLevelEdit"/>
            </item>
-          </widget>
+           <item row="2" column="0">
+            <widget class="QLabel" name="labelItemQuantity">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Item Quantity:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="spinBoxItemQuantityEdit"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="labelItemRarity">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Item Rarity:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="comboBoxItemRarityEdit">
+             <item>
+              <property name="text">
+               <string>Normal</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Rare</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Epic</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Legendary</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QTreeWidget" name="treeWidgetItemBrowser">
           <property name="geometry">
@@ -2064,13 +2015,13 @@
            <bool>true</bool>
           </property>
           <property name="columnCount">
-           <number>2</number>
+           <number>3</number>
           </property>
           <attribute name="headerVisible">
            <bool>false</bool>
           </attribute>
           <attribute name="headerDefaultSectionSize">
-           <number>130</number>
+           <number>125</number>
           </attribute>
           <column>
            <property name="text">
@@ -2080,6 +2031,11 @@
           <column>
            <property name="text">
             <string>Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Descriptor</string>
            </property>
           </column>
           <item>
@@ -2100,6 +2056,9 @@
            <property name="text">
             <string/>
            </property>
+           <property name="text">
+            <string/>
+           </property>
            <item>
             <property name="text">
              <string extracomment="1">None</string>
@@ -2107,13 +2066,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>cc0</string>
             </property>
            </item>
            <item>
@@ -2123,13 +2077,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>cc1</string>
             </property>
            </item>
            <item>
@@ -2139,6 +2088,9 @@
             <property name="text">
              <string/>
             </property>
+            <property name="text">
+             <string>cc2</string>
+            </property>
            </item>
            <item>
             <property name="text">
@@ -2146,12 +2098,40 @@
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="text">
+             <string>cc3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>cc4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>cc5</string>
             </property>
            </item>
           </item>
           <item>
            <property name="text">
             <string>Drones</string>
+           </property>
+           <property name="text">
+            <string/>
            </property>
            <property name="text">
             <string/>
@@ -2163,13 +2143,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>42</string>
             </property>
            </item>
            <item>
@@ -2178,12 +2153,29 @@
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="text">
+             <string>43</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>44</string>
             </property>
            </item>
           </item>
           <item>
            <property name="text">
             <string>Equipped</string>
+           </property>
+           <property name="text">
+            <string/>
            </property>
            <property name="text">
             <string/>
@@ -2195,6 +2187,9 @@
             <property name="text">
              <string>Weapon</string>
             </property>
+            <property name="text">
+             <string>36</string>
+            </property>
            </item>
            <item>
             <property name="text">
@@ -2202,6 +2197,9 @@
             </property>
             <property name="text">
              <string>Shield</string>
+            </property>
+            <property name="text">
+             <string>37</string>
             </property>
            </item>
            <item>
@@ -2211,6 +2209,9 @@
             <property name="text">
              <string>Helmet</string>
             </property>
+            <property name="text">
+             <string>38</string>
+            </property>
            </item>
            <item>
             <property name="text">
@@ -2218,6 +2219,9 @@
             </property>
             <property name="text">
              <string>Armor</string>
+            </property>
+            <property name="text">
+             <string>39</string>
             </property>
            </item>
            <item>
@@ -2227,6 +2231,9 @@
             <property name="text">
              <string>Ring 1</string>
             </property>
+            <property name="text">
+             <string>40</string>
+            </property>
            </item>
            <item>
             <property name="text">
@@ -2235,11 +2242,17 @@
             <property name="text">
              <string>Ring 2</string>
             </property>
+            <property name="text">
+             <string>41</string>
+            </property>
            </item>
           </item>
           <item>
            <property name="text">
             <string>Inventory</string>
+           </property>
+           <property name="text">
+            <string/>
            </property>
            <property name="text">
             <string/>
@@ -2251,13 +2264,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>0</string>
             </property>
            </item>
            <item>
@@ -2267,13 +2275,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>1</string>
             </property>
            </item>
            <item>
@@ -2283,13 +2286,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>2</string>
             </property>
            </item>
            <item>
@@ -2299,13 +2297,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>3</string>
             </property>
            </item>
            <item>
@@ -2315,13 +2308,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>4</string>
             </property>
            </item>
            <item>
@@ -2331,13 +2319,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>5</string>
             </property>
            </item>
            <item>
@@ -2347,13 +2330,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>6</string>
             </property>
            </item>
            <item>
@@ -2363,13 +2341,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>7</string>
             </property>
            </item>
            <item>
@@ -2379,13 +2352,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>8</string>
             </property>
            </item>
            <item>
@@ -2395,13 +2363,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>9</string>
             </property>
            </item>
            <item>
@@ -2411,13 +2374,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>10</string>
             </property>
            </item>
            <item>
@@ -2427,13 +2385,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>11</string>
             </property>
            </item>
            <item>
@@ -2443,13 +2396,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>12</string>
             </property>
            </item>
            <item>
@@ -2459,13 +2407,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>13</string>
             </property>
            </item>
            <item>
@@ -2475,13 +2418,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>14</string>
             </property>
            </item>
            <item>
@@ -2491,13 +2429,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>15</string>
             </property>
            </item>
            <item>
@@ -2507,13 +2440,8 @@
             <property name="text">
              <string/>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>None</string>
-            </property>
-            <property name="text">
-             <string/>
+             <string>16</string>
             </property>
            </item>
            <item>
@@ -2523,6 +2451,9 @@
             <property name="text">
              <string/>
             </property>
+            <property name="text">
+             <string>17</string>
+            </property>
            </item>
            <item>
             <property name="text">
@@ -2530,6 +2461,196 @@
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="text">
+             <string>18</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>19</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>20</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>21</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>22</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>23</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>24</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>25</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>26</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>27</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>28</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>29</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>30</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>31</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>32</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>33</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>34</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="text">
+             <string>35</string>
             </property>
            </item>
           </item>

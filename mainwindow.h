@@ -60,6 +60,8 @@ private slots:
     void on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel);
     void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
+    void on_lineEditItemName_editingFinished();
+
 private:
     Editor* _e;
     QCompleter* _itemCompleter;

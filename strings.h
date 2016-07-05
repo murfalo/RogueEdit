@@ -35,6 +35,9 @@ namespace Strings
     static const QString itemBrowserObjectName = "treeWidgetItemBrowser";
     static const QString itemEditorObjectName = "groupBoxItemEditor";
     static const QString itemNameEditObjectName = "lineEditItemName";
+    static const QString itemLevelEditObjectName = "spinBoxItemLevelEdit";
+    static const QString itemQuantityEditObjectName = "spinBoxItemQuantityEdit";
+    static const QString itemRarityEditObjectName = "comboBoxItemRarityEdit";
 
     // Titles for top level items
     static const QString itemBrowserCombatChipsTitle = "Combat Chips";
