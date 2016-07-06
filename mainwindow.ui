@@ -1896,10 +1896,10 @@
           </property>
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>10</y>
+            <x>9</x>
+            <y>26</y>
             <width>181</width>
-            <height>131</height>
+            <height>141</height>
            </rect>
           </property>
           <property name="title">
@@ -1984,14 +1984,29 @@
          <widget class="QTreeWidget" name="treeWidgetItemBrowser">
           <property name="geometry">
            <rect>
-            <x>200</x>
-            <y>10</y>
-            <width>256</width>
-            <height>241</height>
+            <x>204</x>
+            <y>26</y>
+            <width>251</width>
+            <height>220</height>
            </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>220</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>220</height>
+           </size>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
           </property>
           <property name="horizontalScrollMode">
            <enum>QAbstractItemView::ScrollPerPixel</enum>
@@ -2021,7 +2036,7 @@
            <bool>false</bool>
           </attribute>
           <attribute name="headerDefaultSectionSize">
-           <number>125</number>
+           <number>150</number>
           </attribute>
           <column>
            <property name="text">
@@ -2067,7 +2082,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc0</string>
+             <string>0</string>
             </property>
            </item>
            <item>
@@ -2078,7 +2093,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc1</string>
+             <string>1</string>
             </property>
            </item>
            <item>
@@ -2089,7 +2104,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc2</string>
+             <string>2</string>
             </property>
            </item>
            <item>
@@ -2100,7 +2115,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc3</string>
+             <string>3</string>
             </property>
            </item>
            <item>
@@ -2111,7 +2126,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc4</string>
+             <string>4</string>
             </property>
            </item>
            <item>
@@ -2122,7 +2137,7 @@
              <string/>
             </property>
             <property name="text">
-             <string>cc5</string>
+             <string>5</string>
             </property>
            </item>
           </item>

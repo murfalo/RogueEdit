@@ -9,71 +9,22 @@
  * to go through and change everything if the Roguelands save format changes slightly. */
 namespace Strings
 {
-    /*** Save Location ***/
+    /*** Save Location and Style ***/
 #if defined(Q_OS_WIN)
     static const std::string playerDataPrefix = "C:/Users/";
     static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
+    static const QString appStyle = "WindowsVista";
 #elif defined(Q_OS_MAC)
     static const std::string playerDataPrefix = "/Users/";
     static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
+    static const QString appStyle = "Fusion";
 #endif
 
     static const QString appTitle = "RogueEdit";
 
-    /*** User Interface ***/
-
-    /* Toolbar and Navigation */
-    static const QString toolbarObjectName = "mainToolBar";
-    static const QString navigationObjectName = "navigationWidget";
-    static const QString characterMenuObjectName = "menuCharacter";
-    static const QString loadCharacterDropdownObjectName = "dropdownLoad_Character";
-    static const QString saveCharacterActionText = "Save Character";
-
-    /* Item Tab */
-
-    // Object names
-    static const QString itemBrowserObjectName = "treeWidgetItemBrowser";
-    static const QString itemEditorObjectName = "groupBoxItemEditor";
-    static const QString itemNameEditObjectName = "lineEditItemName";
-    static const QString itemLevelEditObjectName = "spinBoxItemLevelEdit";
-    static const QString itemQuantityEditObjectName = "spinBoxItemQuantityEdit";
-    static const QString itemRarityEditObjectName = "comboBoxItemRarityEdit";
-
-    // Titles for top level items
-    static const QString itemBrowserCombatChipsTitle = "Combat Chips";
-
-    // Indexes for top level items
-    static const int itemBrowserCombatChipsIndex = 0;
-    static const int itemBrowserDronesIndex = 1;
-    static const int itemBrowserEquippedIndex = 2;
-    static const int itemBrowserInventoryIndex = 3;
-
-    /* Character Tab */
-
-    static const QString nameEditObjectName = "lineEditName";
-
-    // comboBoxes
-    static const QString difficultyEditObjectName = "comboBoxDifficultyEdit";
-    static const QString raceEditObjectName = "comboBoxRaceEdit";
-    static const QString classEditObjectName = "comboBoxClassEdit";
-    static const QString variantEditObjectName = "comboBoxVariantEdit";
-    static const QString uniformEditObjectName = "comboBoxUniformEdit";
-    static const QString augmentEditObjectName = "comboBoxAugmentEdit";
-    static const QString allegianceEditObjectName = "comboBoxAllegianceEdit";
-
-    // spinBoxes
-    static const QString vitalityEditObjectName = "spinBoxVitVal";
-    static const QString dexterityEditObjectName = "spinBoxDexVal";
-    static const QString magicEditObjectName = "spinBoxMagVal";
-    static const QString strengthEditObjectName = "spinBoxStrVal";
-    static const QString techEditObjectName = "spinBoxTecVal";
-    static const QString faithEditObjectName = "spinBoxFaiVal";
-    static const QString characterLevelObjectName = "spinBoxLevelVal";
-    static const QString allegianceLevelObjectName = "spinBoxAllegianceLevelVal";
-
-    /*** Parsing  ***/
+    /************ Parsing  ************/
 
     //Current representation: "specifier : value : type; "
     static const std::string separator = ":";              // Seperates information for a specifier
@@ -102,12 +53,85 @@ namespace Strings
     static const std::string faithSpecifier = "pStat5";
     static const std::string characterLevelSpecifier = "level";
     static const std::string characterExperienceSpecifier = "exp";
+    static const std::string itemExperienceSpecifier = "exp";
+    static const std::string itemQuantitySpecifier = "q";
+    static const std::string itemRaritySpecifier = "tier";
     static const std::string allegianceLevelSpecifier = "aq";
     static const std::string allegianceSpecifier = "allegiance";
     static const std::string combatChipSpecifier = "cc";
 
+    /************ User Interface ************/
 
-    /*** Stats and Settings */
+    /*** Toolbar and Navigation ***/
+    static const QString toolbarObjectName = "mainToolBar";
+    static const QString navigationObjectName = "navigationWidget";
+    static const QString characterMenuObjectName = "menuCharacter";
+    static const QString loadCharacterDropdownObjectName = "dropdownLoad_Character";
+    static const QString saveCharacterActionText = "Save Character";
+
+    /*** Item Tab ***/
+
+    // Object names
+    static const QString itemBrowserObjectName = "treeWidgetItemBrowser";
+    static const QString itemEditorObjectName = "groupBoxItemEditor";
+    static const QString itemNameEditObjectName = "lineEditItemName";
+    static const QString itemLevelEditObjectName = "spinBoxItemLevelEdit";
+    static const QString itemQuantityEditObjectName = "spinBoxItemQuantityEdit";
+    static const QString itemRarityEditObjectName = "comboBoxItemRarityEdit";
+
+    // Titles for top level items
+    static const QString itemBrowserCombatChipsTitle = "Combat Chips";
+
+    // Indexes for top level items
+    static const int itemBrowserCombatChipsIndex = 0;
+    static const int itemBrowserDronesIndex = 1;
+    static const int itemBrowserEquippedIndex = 2;
+    static const int itemBrowserInventoryIndex = 3;
+
+    // Constants for determining array size
+    static const int ITEM_TAB_NUM_SPINBOXES = 2;
+    static const int ITEM_TAB_NUM_COMBOBOXES = 1;
+    static const int NUM_RARITIES = 4;
+
+    // Arrays of values for comboBoxes
+    static const std::string rarities[NUM_RARITIES] = { "Normal", "Rare", "Epic", "Legendary" };
+
+    // Arrays for use in spinBox iteration
+    static const QString iSpinBoxObjectNames[ITEM_TAB_NUM_SPINBOXES] = { itemLevelEditObjectName, itemQuantityEditObjectName };
+    static const std::string iSpinBoxSpecifiers[ITEM_TAB_NUM_SPINBOXES] = { itemExperienceSpecifier, itemQuantitySpecifier };
+
+    // Arrays for use in comboBox iteration
+    static const QString iComboBoxObjectNames[ITEM_TAB_NUM_COMBOBOXES] = { itemRarityEditObjectName };
+    static const std::string* iComboBoxArrays[ITEM_TAB_NUM_COMBOBOXES] = { &rarities[0] };
+    static const std::string iComboBoxSpecifiers[ITEM_TAB_NUM_COMBOBOXES] = { itemRaritySpecifier };
+
+    // Arrays for use in comboBox iteration
+
+    /*** Character Tab ***/
+
+    static const QString nameEditObjectName = "lineEditName";
+
+    // comboBoxes
+    static const QString difficultyEditObjectName = "comboBoxDifficultyEdit";
+    static const QString raceEditObjectName = "comboBoxRaceEdit";
+    static const QString classEditObjectName = "comboBoxClassEdit";
+    static const QString variantEditObjectName = "comboBoxVariantEdit";
+    static const QString uniformEditObjectName = "comboBoxUniformEdit";
+    static const QString augmentEditObjectName = "comboBoxAugmentEdit";
+    static const QString allegianceEditObjectName = "comboBoxAllegianceEdit";
+
+    // spinBoxes
+    static const QString vitalityEditObjectName = "spinBoxVitVal";
+    static const QString dexterityEditObjectName = "spinBoxDexVal";
+    static const QString magicEditObjectName = "spinBoxMagVal";
+    static const QString strengthEditObjectName = "spinBoxStrVal";
+    static const QString techEditObjectName = "spinBoxTecVal";
+    static const QString faithEditObjectName = "spinBoxFaiVal";
+    static const QString characterLevelObjectName = "spinBoxLevelVal";
+    static const QString allegianceLevelObjectName = "spinBoxAllegianceLevelVal";
+
+
+    /*** Character Tab ***/
 
     // Constant integers used to determine array/map sizes
     static const int NUM_DIFFICULTIES = 2;
@@ -159,30 +183,30 @@ namespace Strings
     /* Allegiances */
     static const std::string allegiances[NUM_ALLEGIANCES] = {"Galactic Fleet", "Starlight Rebellion"};
 
-    /*** Arrays for Iteration ***/
+    /* Arrays for Iteration */
 
     // Total number of spinBoxes and comboBoxes on the character tab
-    static const int NUM_SPINBOXES = 8;
-    static const int NUM_COMBOBOXES = 7;
+    static const int CHARACTER_TAB_NUM_SPINBOXES = 8;
+    static const int CHARACTER_TAB_NUM_COMBOBOXES = 7;
 
     // Arrays for use in spinBox iteration
-    static const QString spinBoxObjectNames[NUM_SPINBOXES] = { vitalityEditObjectName, dexterityEditObjectName, magicEditObjectName,
-                                                               strengthEditObjectName, techEditObjectName, faithEditObjectName,
-                                                               characterLevelObjectName, allegianceLevelObjectName };
-    static const std::string spinBoxSpecifiers[NUM_SPINBOXES] = { vitalitySpecifier, dexteritySpecifier, magicSpecifier,
-                                                                  strengthSpecifier, techSpecifier, faithSpecifier,
-                                                                  characterLevelSpecifier, allegianceLevelSpecifier};
+    static const QString cSpinBoxObjectNames[CHARACTER_TAB_NUM_SPINBOXES] = { vitalityEditObjectName, dexterityEditObjectName, magicEditObjectName,
+                                                                              strengthEditObjectName, techEditObjectName, faithEditObjectName,
+                                                                              characterLevelObjectName, allegianceLevelObjectName };
+    static const std::string cSpinBoxSpecifiers[CHARACTER_TAB_NUM_SPINBOXES] = { vitalitySpecifier, dexteritySpecifier, magicSpecifier,
+                                                                                 strengthSpecifier, techSpecifier, faithSpecifier,
+                                                                                 characterLevelSpecifier, allegianceLevelSpecifier};
 
     // Arrays for use in comboBox iteration
-    static const QString comboBoxObjectNames[NUM_COMBOBOXES] = { difficultyEditObjectName, raceEditObjectName, classEditObjectName,
-                                                                 variantEditObjectName, uniformEditObjectName, augmentEditObjectName,
-                                                                 allegianceEditObjectName };
-    static const std::string* comboBoxArrays[NUM_COMBOBOXES] = { &difficulties[0], &races[0], &classes[0],
-                                                                 &variants[0], &uniforms[0], &augments[0],
-                                                                 &allegiances[0] };
-    static const std::string comboBoxSpecifiers[NUM_COMBOBOXES] = { difficultySpecifier, raceSpecifier, classSpecifier,
-                                                                    variantSpecifier, uniformSpecifier, augmentSpecifier,
-                                                                    allegianceSpecifier };
+    static const QString cComboBoxObjectNames[CHARACTER_TAB_NUM_COMBOBOXES] = { difficultyEditObjectName, raceEditObjectName, classEditObjectName,
+                                                                                variantEditObjectName, uniformEditObjectName, augmentEditObjectName,
+                                                                                allegianceEditObjectName };
+    static const std::string* cComboBoxArrays[CHARACTER_TAB_NUM_COMBOBOXES] = { &difficulties[0], &races[0], &classes[0],
+                                                                                &variants[0], &uniforms[0], &augments[0],
+                                                                                &allegiances[0] };
+    static const std::string cComboBoxSpecifiers[CHARACTER_TAB_NUM_COMBOBOXES] = { difficultySpecifier, raceSpecifier, classSpecifier,
+                                                                                   variantSpecifier, uniformSpecifier, augmentSpecifier,
+                                                                                   allegianceSpecifier };
 }
 
 #endif

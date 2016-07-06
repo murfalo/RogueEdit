@@ -33,7 +33,7 @@ public:
                               int topLevelIndex,
                               const int beginIndex,
                               const int endIndex,
-                              std::string extraSpecifier = "");
+                              std::string type = "");
     ~MainWindow();
 
 private slots:

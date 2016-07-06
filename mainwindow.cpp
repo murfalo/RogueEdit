@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->_e = new Editor();
 
     // Forcefully make item browser pretty
-    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnWidth(2,50);
+    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnWidth(2,30);
     this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnHidden(2,true);
 
     this->_itemCompleter = new QCompleter(Items::itemList, this);
@@ -77,18 +77,18 @@ void MainWindow::updateCharacterValues()
     name->setText((*(this->_e->characterValues))[Strings::nameSpecifier]);
 
     // Update comboBoxes
-    for (int i = 0; i < Strings::NUM_COMBOBOXES; i++)
+    for (int i = 0; i < Strings::CHARACTER_TAB_NUM_COMBOBOXES; i++)
     {
-        comboBox = this->findChild<QComboBox*>(Strings::comboBoxObjectNames[i]);
-        comboText = QString::fromStdString(Strings::comboBoxArrays[i][(*this->_e->characterValues)[Strings::comboBoxSpecifiers[i]].toInt()]);
+        comboBox = this->findChild<QComboBox*>(Strings::cComboBoxObjectNames[i]);
+        comboText = QString::fromStdString(Strings::cComboBoxArrays[i][(*this->_e->characterValues)[Strings::cComboBoxSpecifiers[i]].toInt()]);
         comboBox->setCurrentIndex(comboBox->findText(comboText));
     }
 
     // Update spinBoxes
-    for (int i = 0; i < Strings::NUM_SPINBOXES; i++)
+    for (int i = 0; i < Strings::CHARACTER_TAB_NUM_SPINBOXES; i++)
     {
-        spinBox = this->findChild<QSpinBox*>(Strings::spinBoxObjectNames[i]);
-        spinBox->setValue((*this->_e->characterValues)[Strings::spinBoxSpecifiers[i]].toInt());
+        spinBox = this->findChild<QSpinBox*>(Strings::cSpinBoxObjectNames[i]);
+        spinBox->setValue((*this->_e->characterValues)[Strings::cSpinBoxSpecifiers[i]].toInt());
     }
 }
 
@@ -101,9 +101,13 @@ void MainWindow::updateCharacterItemBrowser()
     // Load values!
     // Currently only loads the first six combat chips
     this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserCombatChipsIndex, 0, Items::HOTBAR_END, Strings::combatChipSpecifier);
-    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserDronesIndex, Items::DRONE_BEGIN, Items::DRONE_END, "");
-    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserEquippedIndex, Items::EQUIPPED_BEGIN, Items::EQUIPPED_END, "");
-    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserInventoryIndex, Items::HOTBAR_BEGIN, Items::INVENTORY_STORAGE_END, "");
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserDronesIndex, Items::DRONE_BEGIN, Items::DRONE_END);
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserEquippedIndex, Items::EQUIPPED_BEGIN, Items::EQUIPPED_END);
+    this->loadTopLevelChildren(itemBrowser, Strings::itemBrowserInventoryIndex, Items::HOTBAR_BEGIN, Items::INVENTORY_STORAGE_END);
+
+    // Update the LineEdit if an item is already selected
+    if (itemBrowser->currentItem())
+        this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->setText(itemBrowser->currentItem()->text(0));
 }
 
 void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
@@ -117,8 +121,8 @@ void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
     QTreeWidgetItem* topLevelItem = itemBrowser->topLevelItem(topLevelIndex);
 
     // Stuff changes slightly when we're working on combat chips rather than standard items
-    std::string specifierEnd = (type == Strings::combatChipSpecifier) ? "" : Strings::idSpecifier;
-    const std::string* itemArray = (type == Strings::combatChipSpecifier) ? &Items::combatChips[0] : &Items::items[0];
+    int* itemIDArray = (type == Strings::combatChipSpecifier) ? &this->_e->combatChips[0] : &this->_e->inventory[0];
+    const std::string* itemNamesArray = (type == Strings::combatChipSpecifier) ? &Items::combatChips[0] : &Items::items[0];
 
     QTreeWidgetItem* child;
     std::string value;
@@ -126,8 +130,7 @@ void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
     for (int i = beginIndex; i < endIndex; i++)
     {
         // Load the ID and the corresponding item string
-        value = this->_e->loadValue(this->_e->currentID + type + std::to_string(i) + specifierEnd);
-        value = itemArray[std::stoi(value)];
+        value = itemNamesArray[itemIDArray[i]];
         if (value.empty()) value = "None";
 
         // Update the text in the item browser
@@ -338,7 +341,6 @@ void MainWindow::on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAll
 void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
     /* Handles on-click for the item browser! */
-
     QGroupBox* itemEditor = this->findChild<QGroupBox*>(Strings::itemEditorObjectName);
 
     // Disable editor if user clicks on a top-level item
@@ -352,44 +354,67 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
 
     // Load in relevant fields
     QLineEdit* itemNameEdit = itemEditor->findChild<QLineEdit*>(Strings::itemNameEditObjectName);
-    QSpinBox* itemLevelEdit = itemEditor->findChild<QSpinBox*>(Strings::itemLevelEditObjectName);
-    QSpinBox* itemQuantityEdit = itemEditor->findChild<QSpinBox*>(Strings::itemQuantityEditObjectName);
-    QComboBox* itemRarityEdit = itemEditor->findChild<QComboBox*>(Strings::itemRarityEditObjectName);
+    QSpinBox* spinBox;
+    QComboBox* comboBox;
 
+    // Check if the item under the combat chips top-level item (i.e. is the item a combat chip?)
     if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
     {
         itemNameEdit->setCompleter(this->_combatChipCompleter);
 
-        // Combat chips do not have a level, quantity, or rarity
-        itemLevelEdit->setEnabled(false);
-        itemQuantityEdit->setEnabled(false);
-        itemRarityEdit->setEnabled(false);
+        // Combat chips do not have any editable attributes besides name/ID
+        // Disable comboBoxes
+        for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
+        {
+            comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
+            comboBox->setEnabled(false);
+        }
+        // Disable spinBoxes
+        for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
+        {
+            spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
+            spinBox->setEnabled(false);
+        }
     }
-    else
+    else // The item is a normal item with editable attributes
     {
         itemNameEdit->setCompleter(this->_itemCompleter);
-        itemLevelEdit->setEnabled(true);
-        itemQuantityEdit->setEnabled(true);
-        itemRarityEdit->setEnabled(true);
+        // Enable comboBoxes
+        for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
+        {
+            comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
+            comboBox->setEnabled(true);
+        }
+        // Enable spinBoxes
+        for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
+        {
+            spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
+            spinBox->setEnabled(true);
+        }
     }
     // Update the Line Edit's text
     itemNameEdit->setText(current->text(0));
-
 }
 
+/* Item name edit handler */
 void MainWindow::on_lineEditItemName_editingFinished()
 {
     // Determine whether a combat chip or normal item is being edited
-    std::string oldValueDescriptor = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem()->text(2).toStdString();
-    const QString* itemArray = (oldValueDescriptor[0] == 'c') ? &Items::combatChipsList[0] : &Items::itemList[0];
-    const int maxSize = (oldValueDescriptor[0] == 'c') ? Items::LARGEST_COMBAT_CHIP : Items::LARGEST_ID;
+    QTreeWidgetItem* current = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem();
+    QString parentName = current->parent()->text(0);
+
+    // Determine which structures to use based on whether or not item is a combat chip
+    bool isCombatChip = parentName == Strings::itemBrowserCombatChipsTitle;
+    int* itemIDArray = isCombatChip ? &this->_e->combatChips[0] : &this->_e->inventory[0];
+    const QString* itemNameArray = isCombatChip ? &Items::combatChipsList[0] : &Items::itemList[0];
+    const int maxSize = isCombatChip ? Items::LARGEST_COMBAT_CHIP : Items::LARGEST_ID;
 
     // Determine the new value
     int newValue = NULL;
     QString newName = this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->displayText();
     for (int i = 0; i < maxSize; i++)
     {
-        if (itemArray[i] == newName)
+        if (itemNameArray[i] == newName)
         {
             newValue = i;
             break;
@@ -399,12 +424,17 @@ void MainWindow::on_lineEditItemName_editingFinished()
     if (newValue == NULL) return;  // Stop if the new name does not correspond to an item
 
     // Determine the old value
-    std::string specifier = this->_e->currentID + oldValueDescriptor;
-    specifier = (oldValueDescriptor[0] == 'c') ? specifier : specifier + Strings::idSpecifier; // Combat chips don't have "id" at the end of their specifier
-    std::string oldValue = this->_e->loadValue(specifier);
+    std::string index = current->text(2).toStdString();
+    std::string oldValue = std::to_string(itemIDArray[std::stoi(index)]);  // Item indexes are stored in column 2
 
-    // Update the user interface
-    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem()->setText(0, newName);
+    // Determine the specifier
+    std::string specifier = isCombatChip ? this->_e->currentID + Strings::combatChipSpecifier + index:
+                                           this->_e->currentID + index + Strings::idSpecifier;
+
+    // Update the user interface and itemIDArray
+    current->setText(0, newName);
+    itemIDArray[std::stoi(index)] = newValue;
+
 
     // Replace the old value with the new value
     this->_e->replaceValue(specifier, oldValue, std::to_string(newValue));

@@ -2,6 +2,7 @@
 #include "editor.h"
 #include "strings.h"
 #include <QApplication>
+#include <QStyleFactory>
 
 int main(int argc, char *argv[])
 {
@@ -11,8 +12,9 @@ int main(int argc, char *argv[])
     // Add character names from PlayerData.txt to menu bar under "Load Character"
     w.createCharacterActions();
 
-    w.setWindowTitle(Strings::appTitle);
+    qDebug() << QStyleFactory::keys();
     w.show();
 
+    a.setStyle(Strings::appStyle);
     return a.exec();
 }

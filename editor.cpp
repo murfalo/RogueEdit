@@ -125,15 +125,15 @@ void Editor::loadCharacterValues()
     (*this->characterValues)[Strings::characterExperienceSpecifier] = QString::fromStdString(this->loadValue(this->currentID + Strings::characterExperienceSpecifier));
 
     // Load comboBoxes
-    for (int i = 0; i < Strings::NUM_COMBOBOXES; i++)
+    for (int i = 0; i < Strings::CHARACTER_TAB_NUM_COMBOBOXES; i++)
     {
-        val = this->loadValue(this->currentID + Strings::comboBoxSpecifiers[i]);
-        (*this->characterValues)[Strings::comboBoxSpecifiers[i]] = QString::fromStdString(val);
+        val = this->loadValue(this->currentID + Strings::cComboBoxSpecifiers[i]);
+        (*this->characterValues)[Strings::cComboBoxSpecifiers[i]] = QString::fromStdString(val);
     }
 
     // Load spinBoxes
-    for (int i = 0; i < Strings::NUM_SPINBOXES; i++)
-        (*this->characterValues)[Strings::spinBoxSpecifiers[i]] = QString::fromStdString(this->loadValue(this->currentID + Strings::spinBoxSpecifiers[i]));
+    for (int i = 0; i < Strings::CHARACTER_TAB_NUM_SPINBOXES; i++)
+        (*this->characterValues)[Strings::cSpinBoxSpecifiers[i]] = QString::fromStdString(this->loadValue(this->currentID + Strings::cSpinBoxSpecifiers[i]));
 }
 
 void Editor::loadCharacterItemBrowser()
