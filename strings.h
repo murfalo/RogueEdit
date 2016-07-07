@@ -85,15 +85,11 @@ namespace Strings
     static const std::string rarities[NUM_RARITIES] = { "Normal", "Rare", "Epic", "Legendary" };
 
     // Arrays for use in spinBox iteration
-    static const QString iSpinBoxObjectNames[ITEM_TAB_NUM_SPINBOXES] = { itemLevelEditObjectName, itemQuantityEditObjectName };
     static const std::string iSpinBoxSpecifiers[ITEM_TAB_NUM_SPINBOXES] = { itemExperienceSpecifier, itemQuantitySpecifier };
 
     // Arrays for use in comboBox iteration
-    static const QString iComboBoxObjectNames[ITEM_TAB_NUM_COMBOBOXES] = { itemRarityEditObjectName };
     static const std::string* iComboBoxArrays[ITEM_TAB_NUM_COMBOBOXES] = { &rarities[0] };
     static const std::string iComboBoxSpecifiers[ITEM_TAB_NUM_COMBOBOXES] = { itemRaritySpecifier };
-
-    // Arrays for use in comboBox iteration
 
     /*** Character Tab ***/
 

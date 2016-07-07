@@ -23,10 +23,11 @@ public:
     void replaceValue(std::string specifier,                 // Replaces a value in file
                               std::string oldValue,
                               std::string newValue);
-    void save();                                   // Save playerData to file
+    void save();                                   // Save player data to file
     QString* loadCharacterNames();                 // Load in characters from file
     void loadCharacterValues();                    // Load character settings and stats
     void loadCharacterItemBrowser();               // Load inventory of character specified by ID
+    void loadPlayerData();                         // Loads data from file
 
     static const int MAX_CHARACTERS = 6;       // Maximum number of characters allowed by Roguelands
 

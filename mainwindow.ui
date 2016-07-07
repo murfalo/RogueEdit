@@ -971,10 +971,10 @@
                </property>
                <layout class="QVBoxLayout" name="layoutMag">
                 <property name="leftMargin">
-                 <number>6</number>
+                 <number>5</number>
                 </property>
                 <property name="topMargin">
-                 <number>6</number>
+                 <number>5</number>
                 </property>
                 <property name="rightMargin">
                  <number>3</number>
@@ -1211,7 +1211,7 @@
                </property>
                <layout class="QVBoxLayout" name="layoutFai">
                 <property name="leftMargin">
-                 <number>6</number>
+                 <number>5</number>
                 </property>
                 <property name="topMargin">
                  <number>3</number>
@@ -1308,7 +1308,7 @@
                  <x>60</x>
                  <y>80</y>
                  <width>45</width>
-                 <height>35</height>
+                 <height>37</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutHealthVal">
@@ -1469,7 +1469,7 @@
                  <x>60</x>
                  <y>120</y>
                  <width>43</width>
-                 <height>27</height>
+                 <height>28</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutManaVal">
@@ -1590,7 +1590,7 @@
                  <x>60</x>
                  <y>160</y>
                  <width>43</width>
-                 <height>35</height>
+                 <height>37</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="layoutStaminaVal">
@@ -1924,13 +1924,16 @@
            <rect>
             <x>9</x>
             <y>9</y>
-            <width>205</width>
-            <height>151</height>
+            <width>201</width>
+            <height>161</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="layoutItemEditor">
            <item>
             <widget class="QGroupBox" name="groupBoxItemEditor">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="title">
               <string>Item Editor</string>
              </property>

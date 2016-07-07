@@ -343,19 +343,14 @@ void setiSpinandComboBoxesEnabled(QGroupBox* itemEditor, bool val)
 {
     /* Helper for ItemBrowser_currentItemChanged handler. Calls setEnabled(val) on each of the
      * spin and combo boxes on the item tab. */
-    QSpinBox* spinBox;
-    QComboBox* comboBox;
+    QList<QComboBox*> iComboBoxes = itemEditor->findChildren<QComboBox*>();
+    QList<QSpinBox*> iSpinBoxes = itemEditor->findChildren<QSpinBox*>();
 
-    for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
-    {
-        comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
-        comboBox->setEnabled(val);
-    }
-    for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
-    {
-        spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
-        spinBox->setEnabled(val);
-    }
+    for (int i = 0; i < iComboBoxes.length(); i++)
+        iComboBoxes[i]->setEnabled(val);
+
+    for (int i = 0; i < iSpinBoxes.length(); i++)
+        iSpinBoxes[i]->setEnabled(val);
 }
 
 void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current)
@@ -367,13 +362,13 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
 
     // Disable editing if user clicks on a top-level item
     if (current->parent() == 0) {
-        itemNameEdit->setEnabled(false);
-        setiSpinandComboBoxesEnabled(itemEditor, false);
+        itemEditor->setEnabled(false);
+        itemNameEdit->clear();
         return;
     }
 
     // Otherwise enable the name edit
-    itemNameEdit->setEnabled(true);
+    itemEditor->setEnabled(true);
 
     // Update the Line Edit's text
     itemNameEdit->setText(current->text(0));
