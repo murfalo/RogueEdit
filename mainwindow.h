@@ -58,7 +58,7 @@ private slots:
     void on_spinBoxFaiVal_valueChanged(const QString& newFai);
     void on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel);
     void on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel);
-    void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current);
 
     void on_lineEditItemName_editingFinished();
 

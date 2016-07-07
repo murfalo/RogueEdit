@@ -11,10 +11,10 @@ int main(int argc, char *argv[])
 
     // Add character names from PlayerData.txt to menu bar under "Load Character"
     w.createCharacterActions();
-
-    qDebug() << QStyleFactory::keys();
     w.show();
 
     a.setStyle(Strings::appStyle);
+    a.setStyleSheet(Strings::appStyleSheet);
+
     return a.exec();
 }

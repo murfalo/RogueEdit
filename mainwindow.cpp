@@ -1,4 +1,3 @@
-#pragma once
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -9,8 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     this->_e = new Editor();
 
     // Forcefully make item browser pretty
-    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnWidth(2,30);
-    this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->setColumnHidden(2,true);
+    QTreeWidget* itemBrowser = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName);
+    itemBrowser->setColumnWidth(2,0);
+    itemBrowser->setColumnHidden(2,true);
+    itemBrowser->setColumnWidth(1,30);
 
     this->_itemCompleter = new QCompleter(Items::itemList, this);
     this->_itemCompleter->setCaseSensitivity(Qt::CaseInsensitive);
@@ -31,13 +32,13 @@ void MainWindow::createCharacterActions()
     QAction* characterNameAction;
     QString* characterNames = this->_e->loadCharacterNames(); // Load character names from file
     QToolBar* mainToolBar = this->findChild<QToolBar*>(Strings::toolbarObjectName);
-    QMenu* characterMenu = new QMenu(Strings::characterMenuObjectName);
+    QMenu* characterMenu = new QMenu(Strings::characterMenuObjectName, mainToolBar);
 
     // Add an action to characterMenu for each non-empty item in characterNames
     for (int i = 0; i < this->_e->MAX_CHARACTERS; i++)
     {
         if (characterNames[i].isEmpty()) continue;
-        characterNameAction = new QAction(characterNames[i], this);
+        characterNameAction = new QAction(characterNames[i], characterMenu);
 
         // Set the object name to the ID of the character
         characterNameAction->setObjectName(QString::number(i));
@@ -50,7 +51,7 @@ void MainWindow::createCharacterActions()
     }
 
     // Kludge in a dropdown inside the toolbar
-    QToolButton* loadCharacterDropdown = new QToolButton;
+    QToolButton* loadCharacterDropdown = new QToolButton(characterMenu);
     loadCharacterDropdown->setObjectName(Strings::loadCharacterDropdownObjectName);
     loadCharacterDropdown->setToolButtonStyle(Qt::ToolButtonTextOnly);
     loadCharacterDropdown->setPopupMode(QToolButton::MenuButtonPopup);
@@ -131,7 +132,7 @@ void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
     {
         // Load the ID and the corresponding item string
         value = itemNamesArray[itemIDArray[i]];
-        if (value.empty()) value = "None";
+        if (value.empty()) value = Strings::noItemPlaceholder.toStdString();
 
         // Update the text in the item browser
         child = topLevelItem->child((beginIndex == 0) ? i : i % beginIndex); // Avoid accidentally doing modulo 0
@@ -338,24 +339,44 @@ void MainWindow::on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAll
     this->simpleSpinBoxChangedHandler(newAllegianceLevel, Strings::allegianceLevelSpecifier);
 }
 
-void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+void setiSpinandComboBoxesEnabled(QGroupBox* itemEditor, bool val)
+{
+    /* Helper for ItemBrowser_currentItemChanged handler. Calls setEnabled(val) on each of the
+     * spin and combo boxes on the item tab. */
+    QSpinBox* spinBox;
+    QComboBox* comboBox;
+
+    for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
+    {
+        comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
+        comboBox->setEnabled(val);
+    }
+    for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
+    {
+        spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
+        spinBox->setEnabled(val);
+    }
+}
+
+void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current)
 {
     /* Handles on-click for the item browser! */
+    // Load in relevant fields
     QGroupBox* itemEditor = this->findChild<QGroupBox*>(Strings::itemEditorObjectName);
+    QLineEdit* itemNameEdit = itemEditor->findChild<QLineEdit*>(Strings::itemNameEditObjectName);
 
-    // Disable editor if user clicks on a top-level item
-    if (current->parent() == NULL) {
-        itemEditor->setEnabled(false);
+    // Disable editing if user clicks on a top-level item
+    if (current->parent() == 0) {
+        itemNameEdit->setEnabled(false);
+        setiSpinandComboBoxesEnabled(itemEditor, false);
         return;
     }
 
-    // Otherwise enable the editor!
-    itemEditor->setEnabled(true);
+    // Otherwise enable the name edit
+    itemNameEdit->setEnabled(true);
 
-    // Load in relevant fields
-    QLineEdit* itemNameEdit = itemEditor->findChild<QLineEdit*>(Strings::itemNameEditObjectName);
-    QSpinBox* spinBox;
-    QComboBox* comboBox;
+    // Update the Line Edit's text
+    itemNameEdit->setText(current->text(0));
 
     // Check if the item under the combat chips top-level item (i.e. is the item a combat chip?)
     if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
@@ -363,37 +384,18 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
         itemNameEdit->setCompleter(this->_combatChipCompleter);
 
         // Combat chips do not have any editable attributes besides name/ID
-        // Disable comboBoxes
-        for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
-        {
-            comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
-            comboBox->setEnabled(false);
-        }
-        // Disable spinBoxes
-        for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
-        {
-            spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
-            spinBox->setEnabled(false);
-        }
+        // Disable combo and spinBoxes
+        setiSpinandComboBoxesEnabled(itemEditor, false);
     }
     else // The item is a normal item with editable attributes
     {
         itemNameEdit->setCompleter(this->_itemCompleter);
-        // Enable comboBoxes
-        for (int i = 0; i < Strings::ITEM_TAB_NUM_COMBOBOXES; i++)
-        {
-            comboBox = itemEditor->findChild<QComboBox*>(Strings::iComboBoxObjectNames[i]);
-            comboBox->setEnabled(true);
-        }
-        // Enable spinBoxes
-        for (int i = 0; i < Strings::ITEM_TAB_NUM_SPINBOXES; i++)
-        {
-            spinBox = itemEditor->findChild<QSpinBox*>(Strings::iSpinBoxObjectNames[i]);
-            spinBox->setEnabled(true);
-        }
+
+        if (current->text(0) == Strings::noItemPlaceholder)
+            setiSpinandComboBoxesEnabled(itemEditor, false);  // Don't enable combo/spin boxes if no item
+        else
+            setiSpinandComboBoxesEnabled(itemEditor, true);
     }
-    // Update the Line Edit's text
-    itemNameEdit->setText(current->text(0));
 }
 
 /* Item name edit handler */
@@ -404,13 +406,13 @@ void MainWindow::on_lineEditItemName_editingFinished()
     QString parentName = current->parent()->text(0);
 
     // Determine which structures to use based on whether or not item is a combat chip
-    bool isCombatChip = parentName == Strings::itemBrowserCombatChipsTitle;
+    bool isCombatChip = (parentName == Strings::itemBrowserCombatChipsTitle);
     int* itemIDArray = isCombatChip ? &this->_e->combatChips[0] : &this->_e->inventory[0];
     const QString* itemNameArray = isCombatChip ? &Items::combatChipsList[0] : &Items::itemList[0];
     const int maxSize = isCombatChip ? Items::LARGEST_COMBAT_CHIP : Items::LARGEST_ID;
 
     // Determine the new value
-    int newValue = NULL;
+    int newValue = -1;
     QString newName = this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->displayText();
     for (int i = 0; i < maxSize; i++)
     {
@@ -421,10 +423,11 @@ void MainWindow::on_lineEditItemName_editingFinished()
         }
     }
 
-    if (newValue == NULL) return;  // Stop if the new name does not correspond to an item
+    if (newValue == -1) return;  // Stop if the new name does not correspond to an item
 
     // Determine the old value
     std::string index = current->text(2).toStdString();
+    QString oldText = current->text(0);
     std::string oldValue = std::to_string(itemIDArray[std::stoi(index)]);  // Item indexes are stored in column 2
 
     // Determine the specifier
@@ -435,6 +438,9 @@ void MainWindow::on_lineEditItemName_editingFinished()
     current->setText(0, newName);
     itemIDArray[std::stoi(index)] = newValue;
 
+    // Enable item editing if the item was previously unset
+    if (oldText == Strings::noItemPlaceholder)
+        setiSpinandComboBoxesEnabled(this->findChild<QGroupBox*>(Strings::itemEditorObjectName), true);
 
     // Replace the old value with the new value
     this->_e->replaceValue(specifier, oldValue, std::to_string(newValue));

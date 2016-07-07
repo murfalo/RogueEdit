@@ -9,19 +9,6 @@
  * to go through and change everything if the Roguelands save format changes slightly. */
 namespace Strings
 {
-    /*** Save Location and Style ***/
-#if defined(Q_OS_WIN)
-    static const std::string playerDataPrefix = "C:/Users/";
-    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
-    static const QString appStyle = "WindowsVista";
-#elif defined(Q_OS_MAC)
-    static const std::string playerDataPrefix = "/Users/";
-    static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
-    static const QString appStyle = "Fusion";
-#endif
-
     static const QString appTitle = "RogueEdit";
 
     /************ Parsing  ************/
@@ -79,8 +66,9 @@ namespace Strings
     static const QString itemQuantityEditObjectName = "spinBoxItemQuantityEdit";
     static const QString itemRarityEditObjectName = "comboBoxItemRarityEdit";
 
-    // Titles for top level items
+    // Strings for item names
     static const QString itemBrowserCombatChipsTitle = "Combat Chips";
+    static const QString noItemPlaceholder = "None";
 
     // Indexes for top level items
     static const int itemBrowserCombatChipsIndex = 0;
@@ -207,6 +195,21 @@ namespace Strings
     static const std::string cComboBoxSpecifiers[CHARACTER_TAB_NUM_COMBOBOXES] = { difficultySpecifier, raceSpecifier, classSpecifier,
                                                                                    variantSpecifier, uniformSpecifier, augmentSpecifier,
                                                                                    allegianceSpecifier };
+
+    /*** Save Location and Styling ***/
+#if defined(Q_OS_WIN)
+    static const std::string playerDataPrefix = "C:/Users/";
+    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
+    static const QString appStyle = "WindowsVista";
+    static const QString appStyleSheet = "* { font-family: \"Segoe UI\"; font-size: 11px; font-weight: normal }";
+#elif defined(Q_OS_MAC)
+    static const std::string playerDataPrefix = "/Users/";
+    static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
+    static const QString appStyle = "Fusion";
+    static const QString appStyleSheet = "* { font-family: \"Arial\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxDifficultyEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxRaceEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxClassEdit QAbstractScrollArea { min-height: 300px; } QComboBox#comboBoxAllegianceEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxVariantEdit QAbstractScrollArea { min-height: 60px; } QComboBox#comboBoxUniformEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxAugmentEdit QAbstractScrollArea { min-height: 400px; } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 80px; }";
+#endif
 }
 
 #endif
