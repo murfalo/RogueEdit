@@ -153,7 +153,7 @@ void Editor::loadCharacterItemBrowser()
         specifierPrefix = this->currentID + std::to_string(i);
         setting.exp = this->loadValue(specifierPrefix + Strings::itemExperienceSpecifier);
         setting.quantity = this->loadValue(specifierPrefix + Strings::itemQuantitySpecifier);
-        setting.rarity = Strings::rarities[std::stoi(this->loadValue(specifierPrefix + Strings::itemRaritySpecifier))];
+        setting.rarity = this->loadValue(specifierPrefix + Strings::itemRaritySpecifier);
         this->itemSettings[i] = setting;
     }
 

@@ -535,3 +535,34 @@ void MainWindow::on_spinBoxItemLevelEdit_valueChanged(const QString& newLevel)
     this->_e->replaceValue(this->_e->currentID + index + Strings::itemExperienceSpecifier, oldValue, std::to_string(newValue));
     this->_e->itemSettings[std::stoi(index)].exp = std::to_string(newValue);
 }
+
+void MainWindow::on_spinBoxItemQuantityEdit_valueChanged(const QString& newQuantity)
+{
+    // Determine the old value
+    QTreeWidgetItem* current = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem();
+    std::string index = current->text(2).toStdString();
+    std::string oldValue = this->_e->itemSettings[std::stoi(index)].quantity;
+
+    // Update playerData and itemSettings
+    this->_e->replaceValue(this->_e->currentID + index + Strings::itemQuantitySpecifier, oldValue, newQuantity.toStdString());
+    this->_e->itemSettings[std::stoi(index)].quantity = newQuantity.toStdString();
+}
+
+void MainWindow::on_comboBoxItemRarityEdit_currentIndexChanged(const QString& newRarity)
+{
+    // Determine the old value
+    QTreeWidgetItem* current = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem();
+    std::string index = current->text(2).toStdString();
+    std::string oldValue = this->_e->itemSettings[std::stoi(index)].rarity;
+
+    int newValue;
+    for (newValue = 0; newValue < Strings::NUM_RARITIES; newValue++)
+        if (Strings::rarities[newValue] == newRarity.toStdString()) break;
+
+    // Update playerData and itemSettings
+    qDebug() << QString::fromStdString(this->_e->currentID + index + Strings::itemRaritySpecifier);
+    qDebug() << QString::fromStdString(oldValue);
+    qDebug() << QString::number(newValue);
+    this->_e->replaceValue(this->_e->currentID + index + Strings::itemRaritySpecifier, oldValue, std::to_string(newValue));
+    this->_e->itemSettings[std::stoi(index)].rarity = std::to_string(newValue);
+}

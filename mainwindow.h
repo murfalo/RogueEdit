@@ -43,6 +43,7 @@ private slots:
     void saveCharacterHandler();
 
     void on_lineEditName_editingFinished();
+    // Character Tab
 
     void on_comboBoxDifficultyEdit_currentTextChanged(const QString& newDifficulty);
     void on_comboBoxRaceEdit_currentTextChanged(const QString& newRace);
@@ -60,9 +61,13 @@ private slots:
     void on_spinBoxFaiVal_valueChanged(const QString& newFai);
     void on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel);
     void on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel);
+
+    // Item Tab
     void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current);
     void on_lineEditItemName_editingFinished();
     void on_spinBoxItemLevelEdit_valueChanged(const QString& newLevel);
+    void on_spinBoxItemQuantityEdit_valueChanged(const QString& newValue);
+    void on_comboBoxItemRarityEdit_currentIndexChanged(const QString& newQuantity);
 
 private:
     Editor* _e;
