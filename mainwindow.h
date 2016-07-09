@@ -34,6 +34,7 @@ public:
                               const int beginIndex,
                               const int endIndex,
                               std::string type = "");
+     QCompleter* determineCompleter(QTreeWidgetItem* currentItem);
     ~MainWindow();
 
 private slots:
@@ -64,8 +65,6 @@ private slots:
 
 private:
     Editor* _e;
-    QCompleter* _itemCompleter;
-    QCompleter* _combatChipCompleter;
     Ui::MainWindow* _ui;
 };
 #endif

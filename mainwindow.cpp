@@ -12,11 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     itemBrowser->setColumnWidth(2,0);
     itemBrowser->setColumnHidden(2,true);
     itemBrowser->setColumnWidth(1,30);
-
-    this->_itemCompleter = new QCompleter(Items::itemList, this);
-    this->_itemCompleter->setCaseSensitivity(Qt::CaseInsensitive);
-    this->_combatChipCompleter = new QCompleter(Items::combatChipsList, this);
-    this->_combatChipCompleter->setCaseSensitivity(Qt::CaseInsensitive);
 }
 
 MainWindow::~MainWindow()
@@ -123,16 +118,20 @@ void MainWindow::loadTopLevelChildren(QTreeWidget* itemBrowser,
 
     // Stuff changes slightly when we're working on combat chips rather than standard items
     int* itemIDArray = (type == Strings::combatChipSpecifier) ? &this->_e->combatChips[0] : &this->_e->inventory[0];
-    const std::string* itemNamesArray = (type == Strings::combatChipSpecifier) ? &Items::combatChips[0] : &Items::items[0];
+    const std::unordered_map<int, std::string>* itemNamesMap = (type == Strings::combatChipSpecifier) ? &Items::combatChips : &Items::items;
 
     QTreeWidgetItem* child;
     std::string value;
+    std::unordered_map<int, std::string>::const_iterator it;
 
     for (int i = beginIndex; i < endIndex; i++)
     {
         // Load the ID and the corresponding item string
-        value = itemNamesArray[itemIDArray[i]];
-        if (value.empty()) value = Strings::noItemPlaceholder.toStdString();
+        it = itemNamesMap->find(itemIDArray[i]);
+        if (it == itemNamesMap->end())
+            value = Strings::noItemPlaceholder.toStdString();
+        else
+            value = it->second;
 
         // Update the text in the item browser
         child = topLevelItem->child((beginIndex == 0) ? i : i % beginIndex); // Avoid accidentally doing modulo 0
@@ -353,6 +352,37 @@ void setiSpinandComboBoxesEnabled(QGroupBox* itemEditor, bool val)
         iSpinBoxes[i]->setEnabled(val);
 }
 
+QCompleter* MainWindow::determineCompleter(QTreeWidgetItem* currentItem)
+{
+    /* Uses parentName to determine which completer to fill the QLineEdit with in the Item Editor
+     * given the node that is currently selected. */
+    QString parentName = currentItem->parent()->text(0);
+    QString typeName = currentItem->text(1);
+
+    if (parentName == Strings::itemBrowserCombatChipsTitle)
+        return &Items::combatChipCompleter;
+    else if (parentName == Strings::itemBrowserDronesTitle)
+        return &Items::droneCompleter;
+    else if (parentName == Strings::itemBrowserInventoryTitle)
+        return &Items::itemCompleter;
+    else if (parentName == Strings::itemBrowserEquippedTitle)
+    {
+        if (typeName == Strings::itemBrowserEquippedWeaponTitle)
+            return &Items::weaponCompleter;
+        else if (typeName == Strings::itemBrowserEquippedShieldTitle)
+            return &Items::shieldCompleter;
+        else if (typeName == Strings::itemBrowserEquippedArmorTitle)
+            return &Items::armorCompleter;
+        else if (typeName == Strings::itemBrowserEquippedHelmetTitle)
+            return &Items::helmCompleter;
+        else if (typeName == Strings::itemBrowserEquippedRingOneTitle || typeName == Strings::itemBrowserEquippedRingTwoTitle)
+            return &Items::ringCompleter;
+    }
+
+    // If nothing worked, be very sad
+    return NULL;
+}
+
 void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current)
 {
     /* Handles on-click for the item browser! */
@@ -363,29 +393,23 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
     // Disable editing if user clicks on a top-level item
     if (current->parent() == 0) {
         itemEditor->setEnabled(false);
+        itemNameEdit->setCompleter(NULL);
         itemNameEdit->clear();
         return;
     }
 
+    // Update the Line Edit's text and completer
+    itemNameEdit->setText(current->text(0));
+    itemNameEdit->setCompleter(this->determineCompleter(current));
+
     // Otherwise enable the name edit
     itemEditor->setEnabled(true);
 
-    // Update the Line Edit's text
-    itemNameEdit->setText(current->text(0));
-
     // Check if the item under the combat chips top-level item (i.e. is the item a combat chip?)
     if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
-    {
-        itemNameEdit->setCompleter(this->_combatChipCompleter);
-
-        // Combat chips do not have any editable attributes besides name/ID
-        // Disable combo and spinBoxes
-        setiSpinandComboBoxesEnabled(itemEditor, false);
-    }
+        setiSpinandComboBoxesEnabled(itemEditor, false);  // Only a CombatChip's name can be edited
     else // The item is a normal item with editable attributes
     {
-        itemNameEdit->setCompleter(this->_itemCompleter);
-
         if (current->text(0) == Strings::noItemPlaceholder)
             setiSpinandComboBoxesEnabled(itemEditor, false);  // Don't enable combo/spin boxes if no item
         else
@@ -403,17 +427,16 @@ void MainWindow::on_lineEditItemName_editingFinished()
     // Determine which structures to use based on whether or not item is a combat chip
     bool isCombatChip = (parentName == Strings::itemBrowserCombatChipsTitle);
     int* itemIDArray = isCombatChip ? &this->_e->combatChips[0] : &this->_e->inventory[0];
-    const QString* itemNameArray = isCombatChip ? &Items::combatChipsList[0] : &Items::itemList[0];
-    const int maxSize = isCombatChip ? Items::LARGEST_COMBAT_CHIP : Items::LARGEST_ID;
+    const std::unordered_map<int, std::string>* itemNameMap = isCombatChip ? &Items::combatChips : &Items::items;
 
     // Determine the new value
     int newValue = -1;
-    QString newName = this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->displayText();
-    for (int i = 0; i < maxSize; i++)
+    std::string newName = this->findChild<QLineEdit*>(Strings::itemNameEditObjectName)->displayText().toStdString();
+    for (auto i = itemNameMap->begin(); i != itemNameMap->end(); ++i)
     {
-        if (itemNameArray[i] == newName)
+        if (i->second == newName)
         {
-            newValue = i;
+            newValue = i->first;
             break;
         }
     }
@@ -430,11 +453,11 @@ void MainWindow::on_lineEditItemName_editingFinished()
                                            this->_e->currentID + index + Strings::idSpecifier;
 
     // Update the user interface and itemIDArray
-    current->setText(0, newName);
+    current->setText(0, QString::fromStdString(newName));
     itemIDArray[std::stoi(index)] = newValue;
 
-    // Enable item editing if the item was previously unset
-    if (oldText == Strings::noItemPlaceholder)
+    // Enable item editing if the item was previously unset and the item isn't a combat chip
+    if (oldText == Strings::noItemPlaceholder && !isCombatChip)
         setiSpinandComboBoxesEnabled(this->findChild<QGroupBox*>(Strings::itemEditorObjectName), true);
 
     // Replace the old value with the new value

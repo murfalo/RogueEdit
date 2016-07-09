@@ -5,11 +5,26 @@
 #include <string>
 #include <QString>
 
-/* Namespace for strings! Some of these may be pedantic but it is necessary to avoid having
- * to go through and change everything if the Roguelands save format changes slightly. */
+/* Namespace for handling items and stuff! Some of these may be pedantic but it makes it easy to change
+ * stuff later on if necessary. */
 namespace Strings
 {
     static const QString appTitle = "RogueEdit";
+
+    /*** Save Location and Styling ***/
+#if defined(Q_OS_WIN)
+    static const std::string playerDataPrefix = "C:/Users/";
+    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
+    static const QString appStyle = "WindowsVista";
+    static const QString appStyleSheet = "* { font-family: \"Segoe UI\"; font-size: 11px; font-weight: normal }";
+#elif defined(Q_OS_MAC)
+    static const std::string playerDataPrefix = "/Users/";
+    static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
+    static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
+    static const QString appStyle = "Fusion";
+    static const QString appStyleSheet = "* { font-family: \"Arial\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxDifficultyEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxRaceEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxClassEdit QAbstractScrollArea { min-height: 300px; } QComboBox#comboBoxAllegianceEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxVariantEdit QAbstractScrollArea { min-height: 60px; } QComboBox#comboBoxUniformEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxAugmentEdit QAbstractScrollArea { min-height: 400px; } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 80px; }";
+#endif
 
     /************ Parsing  ************/
 
@@ -66,8 +81,19 @@ namespace Strings
     static const QString itemQuantityEditObjectName = "spinBoxItemQuantityEdit";
     static const QString itemRarityEditObjectName = "comboBoxItemRarityEdit";
 
-    // Strings for item names
+    // Titles for identifying the position of currently selected QTreeWidgetItem
     static const QString itemBrowserCombatChipsTitle = "Combat Chips";
+    static const QString itemBrowserDronesTitle = "Drones";
+    static const QString itemBrowserEquippedTitle = "Equipped";
+    static const QString itemBrowserInventoryTitle = "Inventory";
+    static const QString itemBrowserEquippedWeaponTitle = "Weapon";
+    static const QString itemBrowserEquippedShieldTitle = "Shield";
+    static const QString itemBrowserEquippedHelmetTitle = "Helmet";
+    static const QString itemBrowserEquippedArmorTitle = "Armor";
+    static const QString itemBrowserEquippedRingOneTitle = "Ring 1";
+    static const QString itemBrowserEquippedRingTwoTitle = "Ring 2";
+
+    // Placeholder where item ID = 0 or some other non-existant ID
     static const QString noItemPlaceholder = "None";
 
     // Indexes for top level items
@@ -191,21 +217,6 @@ namespace Strings
     static const std::string cComboBoxSpecifiers[CHARACTER_TAB_NUM_COMBOBOXES] = { difficultySpecifier, raceSpecifier, classSpecifier,
                                                                                    variantSpecifier, uniformSpecifier, augmentSpecifier,
                                                                                    allegianceSpecifier };
-
-    /*** Save Location and Styling ***/
-#if defined(Q_OS_WIN)
-    static const std::string playerDataPrefix = "C:/Users/";
-    static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
-    static const QString appStyle = "WindowsVista";
-    static const QString appStyleSheet = "* { font-family: \"Segoe UI\"; font-size: 11px; font-weight: normal }";
-#elif defined(Q_OS_MAC)
-    static const std::string playerDataPrefix = "/Users/";
-    static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
-    static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
-    static const QString appStyle = "Fusion";
-    static const QString appStyleSheet = "* { font-family: \"Arial\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxDifficultyEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxRaceEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxClassEdit QAbstractScrollArea { min-height: 300px; } QComboBox#comboBoxAllegianceEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxVariantEdit QAbstractScrollArea { min-height: 60px; } QComboBox#comboBoxUniformEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxAugmentEdit QAbstractScrollArea { min-height: 400px; } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 80px; }";
-#endif
 }
 
 #endif
