@@ -10,8 +10,8 @@
 #include "items.h"
 #include "strings.h"
 
-// Define an item as an object with an ID and a name
-struct Item { int ID; std::string name; };
+// Define an item as an object with a quantity, level, and rarity
+struct ItemSettings { std::string exp; std::string quantity; std::string rarity; };
 
 class Editor
 {
@@ -33,8 +33,9 @@ public:
 
     std::string currentID;                                      // ID of the current character
     std::unordered_map<std::string, QString>* characterValues;  // Maps a specifier string to the character's associated value in QString form
-    int* inventory;                                             // Maps an index to an item ID
+    int* inventory;                                             // Maps an index to an item
     int* combatChips;                                           // Maps an index to a combat chip ID
+    ItemSettings* itemSettings;                                 // Maps an index to ItemSettings
 
 private:
     std::string _playerDataLocation;    // Location of file

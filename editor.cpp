@@ -5,6 +5,7 @@ Editor::Editor()
     // Allocate memory
     this->characterValues = new std::unordered_map<std::string, QString>;
     this->inventory = new int[Items::NUM_INVENTORY_SLOTS];
+    this->itemSettings = new ItemSettings[Items::NUM_INVENTORY_SLOTS];
     this->combatChips = new int[Items::NUM_COMBAT_CHIP_SLOTS];
 
     // Determine the username
@@ -29,9 +30,10 @@ Editor::Editor()
 
 Editor::~Editor()
 {
-    delete this->characterValues;
-    delete this->inventory;
-    delete this->combatChips;
+    delete[] this->characterValues;
+    delete[] this->inventory;
+    delete[] this->combatChips;
+    delete[] this->itemSettings;
     delete this->_playerData;
 }
 
@@ -138,10 +140,22 @@ void Editor::loadCharacterValues()
 void Editor::loadCharacterItemBrowser()
 {
     /* Loads the combat chips and inventory of the character specified by ID*/
+    ItemSettings setting;
+    std::string specifierPrefix;
 
     // Load the inventory of the character specified by ID into this->inventory */
     for (int i = 0; i < Items::NUM_INVENTORY_SLOTS; i++)
         this->inventory[i] = std::stoi(this->loadValue(this->currentID + std::to_string(i) + Strings::idSpecifier));
+
+    // Load in item settings
+    for (int i = 0; i < Items::NUM_INVENTORY_SLOTS; i++)
+    {
+        specifierPrefix = this->currentID + std::to_string(i);
+        setting.exp = this->loadValue(specifierPrefix + Strings::itemExperienceSpecifier);
+        setting.quantity = this->loadValue(specifierPrefix + Strings::itemQuantitySpecifier);
+        setting.rarity = Strings::rarities[std::stoi(this->loadValue(specifierPrefix + Strings::itemRaritySpecifier))];
+        this->itemSettings[i] = setting;
+    }
 
     // Load the combat chips of the character specified by ID into this->combatChips */
     for (int i = 0; i < Items::NUM_COMBAT_CHIP_SLOTS; i++)

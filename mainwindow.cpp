@@ -338,20 +338,6 @@ void MainWindow::on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAll
     this->simpleSpinBoxChangedHandler(newAllegianceLevel, Strings::allegianceLevelSpecifier);
 }
 
-void setiSpinandComboBoxesEnabled(QGroupBox* itemEditor, bool val)
-{
-    /* Helper for ItemBrowser_currentItemChanged handler. Calls setEnabled(val) on each of the
-     * spin and combo boxes on the item tab. */
-    QList<QComboBox*> iComboBoxes = itemEditor->findChildren<QComboBox*>();
-    QList<QSpinBox*> iSpinBoxes = itemEditor->findChildren<QSpinBox*>();
-
-    for (int i = 0; i < iComboBoxes.length(); i++)
-        iComboBoxes[i]->setEnabled(val);
-
-    for (int i = 0; i < iSpinBoxes.length(); i++)
-        iSpinBoxes[i]->setEnabled(val);
-}
-
 QCompleter* MainWindow::determineCompleter(QTreeWidgetItem* currentItem)
 {
     /* Uses parentName to determine which completer to fill the QLineEdit with in the Item Editor
@@ -383,6 +369,56 @@ QCompleter* MainWindow::determineCompleter(QTreeWidgetItem* currentItem)
     return NULL;
 }
 
+void MainWindow::updateiSpinandComboBoxes(QTreeWidgetItem* current)
+{
+    /* Helper for ItemBrowser_currentItemChanged handler. Updates each of the spin
+     * and combo boxes in the item editor to contain current values. */
+    QGroupBox* itemEditor = this->findChild<QGroupBox*>(Strings::itemEditorObjectName);
+    QList<QComboBox*> iComboBoxes = itemEditor->findChildren<QComboBox*>();
+    QList<QSpinBox*> iSpinBoxes = itemEditor->findChildren<QSpinBox*>();
+    std::string specifier;
+
+    for (int i = 0; i < iComboBoxes.length(); i++)
+    {
+        specifier = this->_e->currentID + current->text(2).toStdString() + Strings::iComboBoxSpecifiers[i];
+        iComboBoxes[i]->setCurrentIndex(iComboBoxes[i]->findText(QString::fromStdString(Strings::iComboBoxArrays[i][std::stoi(this->_e->loadValue(specifier))])));
+    }
+
+    for (int i = 0; i < iSpinBoxes.length(); i++)
+    {
+        specifier = this->_e->currentID + current->text(2).toStdString() + Strings::iSpinBoxSpecifiers[i];
+        iSpinBoxes[i]->setValue(std::stoi(this->_e->loadValue(specifier)));
+    }
+}
+
+void setiSpinandComboBoxesEnabled(QGroupBox* itemEditor, bool val)
+{
+    /* Helper for ItemBrowser_currentItemChanged handler. Calls setEnabled(val) on each of the
+     * spin and combo boxes on the item tab. */
+    QList<QComboBox*> iComboBoxes = itemEditor->findChildren<QComboBox*>();
+    QList<QSpinBox*> iSpinBoxes = itemEditor->findChildren<QSpinBox*>();
+
+    for (int i = 0; i < iComboBoxes.length(); i++)
+        iComboBoxes[i]->setEnabled(val);
+
+    for (int i = 0; i < iSpinBoxes.length(); i++)
+        iSpinBoxes[i]->setEnabled(val);
+}
+
+void cleariSpinandComboBoxes(QGroupBox* itemEditor)
+{
+    /* Helper for ItemBrowser_currentItemChanged handler. Clears each of the spin
+     * and combo boxes in the item editor. */
+    QList<QComboBox*> iComboBoxes = itemEditor->findChildren<QComboBox*>();
+    QList<QSpinBox*> iSpinBoxes = itemEditor->findChildren<QSpinBox*>();
+
+    for (int i = 0; i < iComboBoxes.length(); i++)
+        iComboBoxes[i]->setCurrentIndex(-1);
+
+    for (int i = 0; i < iSpinBoxes.length(); i++)
+        iSpinBoxes[i]->setValue(0);
+}
+
 void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current)
 {
     /* Handles on-click for the item browser! */
@@ -407,9 +443,15 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
 
     // Check if the item under the combat chips top-level item (i.e. is the item a combat chip?)
     if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle)
+    {
         setiSpinandComboBoxesEnabled(itemEditor, false);  // Only a CombatChip's name can be edited
+        cleariSpinandComboBoxes(itemEditor);
+    }
     else // The item is a normal item with editable attributes
     {
+        // Update the spinBoxes and comboBoxes
+        this->updateiSpinandComboBoxes(current);
+
         if (current->text(0) == Strings::noItemPlaceholder)
             setiSpinandComboBoxesEnabled(itemEditor, false);  // Don't enable combo/spin boxes if no item
         else
@@ -462,4 +504,34 @@ void MainWindow::on_lineEditItemName_editingFinished()
 
     // Replace the old value with the new value
     this->_e->replaceValue(specifier, oldValue, std::to_string(newValue));
+}
+
+void MainWindow::on_spinBoxItemLevelEdit_valueChanged(const QString& newLevel)
+{
+    // Find the old value
+    QTreeWidgetItem* current = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem();
+    std::string index = current->text(2).toStdString();
+    std::string oldValue = this->_e->itemSettings[std::stoi(index)].exp;
+
+    // Determine the new value
+    int newValue;
+
+    // Use Roguelands formula to convert newLevel to exp
+    switch (newLevel.toInt())
+    {
+    case 2:  newValue = Items::itemLevel2exp;  break;
+    case 3:  newValue = Items::itemLevel3exp;  break;
+    case 4:  newValue = Items::itemLevel4exp;  break;
+    case 5:  newValue = Items::itemLevel5exp;  break;
+    case 6:  newValue = Items::itemLevel6exp;  break;
+    case 7:  newValue = Items::itemLevel7exp;  break;
+    case 8:  newValue = Items::itemLevel8exp;  break;
+    case 9:  newValue = Items::itemLevel9exp;  break;
+    case 10: newValue = Items::itemLevel10exp; break;
+    default: newValue = Items::itemLevel1exp;
+    }
+
+    // Replace the value and update itemSettings
+    this->_e->replaceValue(this->_e->currentID + index + Strings::itemExperienceSpecifier, oldValue, std::to_string(newValue));
+    this->_e->itemSettings[std::stoi(index)].exp = std::to_string(newValue);
 }

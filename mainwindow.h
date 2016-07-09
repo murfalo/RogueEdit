@@ -35,6 +35,7 @@ public:
                               const int endIndex,
                               std::string type = "");
      QCompleter* determineCompleter(QTreeWidgetItem* currentItem);
+     void updateiSpinandComboBoxes(QTreeWidgetItem* current);
     ~MainWindow();
 
 private slots:
@@ -60,8 +61,8 @@ private slots:
     void on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel);
     void on_spinBoxAllegianceLevelVal_valueChanged(const QString& newAllegianceLevel);
     void on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *current);
-
     void on_lineEditItemName_editingFinished();
+    void on_spinBoxItemLevelEdit_valueChanged(const QString& newLevel);
 
 private:
     Editor* _e;
