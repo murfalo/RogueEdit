@@ -30,7 +30,7 @@ Editor::Editor()
 
 Editor::~Editor()
 {
-    delete[] this->characterValues;
+    delete this->characterValues;
     delete[] this->inventory;
     delete[] this->combatChips;
     delete[] this->itemSettings;
