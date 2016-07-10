@@ -28,15 +28,19 @@ public:
     void loadCharacterValues();                    // Load character settings and stats
     void loadCharacterItemBrowser();               // Load inventory of character specified by ID
     void loadPlayerData();                         // Loads data from file
+    int calculateItemLevelFromExperience(int exp);
+    int calculateItemExperienceFromLevel(int level);
+
 
     static const int MAX_CHARACTERS = 6;       // Maximum number of characters allowed by Roguelands
 
     std::string currentID;                                      // ID of the current character
+    int* equippedStats();                                       // Returns a pointer to an array to the stats provided by equipped items
+
     std::unordered_map<std::string, QString>* characterValues;  // Maps a specifier string to the character's associated value in QString form
     int* inventory;                                             // Maps an index to an item
     int* combatChips;                                           // Maps an index to a combat chip ID
     ItemSettings* itemSettings;                                 // Maps an index to ItemSettings
-
 private:
     std::string _playerDataLocation;    // Location of file
     std::string _tmpDataLocation;       // Location to store temporary data when saving

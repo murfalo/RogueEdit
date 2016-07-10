@@ -72,7 +72,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tabCharacter">
          <attribute name="title">
@@ -1562,65 +1562,6 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="horizontalLayoutWidget_6">
-               <property name="geometry">
-                <rect>
-                 <x>10</x>
-                 <y>160</y>
-                 <width>60</width>
-                 <height>21</height>
-                </rect>
-               </property>
-               <layout class="QHBoxLayout" name="layoutStamina">
-                <property name="leftMargin">
-                 <number>3</number>
-                </property>
-                <item>
-                 <widget class="QLabel" name="labelStamina">
-                  <property name="text">
-                   <string>Stamina:</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="verticalLayoutWidget_42">
-               <property name="geometry">
-                <rect>
-                 <x>60</x>
-                 <y>160</y>
-                 <width>43</width>
-                 <height>37</height>
-                </rect>
-               </property>
-               <layout class="QVBoxLayout" name="layoutStaminaVal">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>12</number>
-                </property>
-                <item>
-                 <widget class="QSpinBox" name="spinBoxStaminaVal">
-                  <property name="minimumSize">
-                   <size>
-                    <width>41</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>41</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
               <widget class="QWidget" name="horizontalLayoutWidget_7">
                <property name="geometry">
                 <rect>
@@ -1902,8 +1843,6 @@
               <zorder>verticalLayoutWidget_39</zorder>
               <zorder>horizontalLayoutWidget_5</zorder>
               <zorder>verticalLayoutWidget_41</zorder>
-              <zorder>horizontalLayoutWidget_6</zorder>
-              <zorder>verticalLayoutWidget_42</zorder>
               <zorder>horizontalLayoutWidget_7</zorder>
               <zorder>horizontalLayoutWidget</zorder>
               <zorder>horizontalLayoutWidget_8</zorder>

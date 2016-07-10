@@ -42,8 +42,8 @@ private slots:
     void characterNameActionHandler();
     void saveCharacterHandler();
 
-    void on_lineEditName_editingFinished();
     // Character Tab
+    void on_lineEditName_editingFinished();
 
     void on_comboBoxDifficultyEdit_currentTextChanged(const QString& newDifficulty);
     void on_comboBoxRaceEdit_currentTextChanged(const QString& newRace);

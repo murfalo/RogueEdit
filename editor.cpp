@@ -161,3 +161,69 @@ void Editor::loadCharacterItemBrowser()
     for (int i = 0; i < Items::NUM_COMBAT_CHIP_SLOTS; i++)
         this->combatChips[i] = std::stoi(this->loadValue(this->currentID + Strings::combatChipSpecifier + std::to_string(i)));
 }
+
+int *Editor::equippedStats()
+{
+    int* equippedStats = new int[Items::NUM_STATS];
+    Items::Equippable currentEquippable(0,0,0,0,0,0);
+    int itemLevel;
+    int itemRarityBonus;
+
+    // Initialize everything to 0
+    for (int i = 0; i < Items::NUM_STATS; i++)
+        equippedStats[i] = 0;
+
+    // Loop through the inventory and update equipped stats!
+    for (int i = Items::EQUIPPED_BEGIN; i < Items::EQUIPPED_END; i++)
+    {
+        // Load in values associated with current equippable index
+        currentEquippable = Items::equippables.find(this->inventory[i])->second;
+        itemLevel = this->calculateItemLevelFromExperience(std::stoi(this->itemSettings[i].exp));
+        itemRarityBonus = std::stoi(this->itemSettings[i].rarity) * Items::itemRarityBonusMultiplier;
+
+        // Stat Bonus = Item Stat * Item Level + Item Rarity * 3 (iff Item Stat != 0)
+        equippedStats[Items::vitalityIndex] += (currentEquippable.vitality) ? currentEquippable.vitality * itemLevel + itemRarityBonus : 0;
+        equippedStats[Items::dexterityIndex] += (currentEquippable.dexterity) ? currentEquippable.dexterity * itemLevel + itemRarityBonus : 0;
+        equippedStats[Items::magicIndex] += (currentEquippable.magic) ? currentEquippable.magic * itemLevel + itemRarityBonus : 0;
+        equippedStats[Items::strengthIndex] += (currentEquippable.strength) ? currentEquippable.strength * itemLevel + itemRarityBonus : 0;
+        equippedStats[Items::techIndex] += (currentEquippable.tech) ? currentEquippable.tech * itemLevel + itemRarityBonus : 0;
+        equippedStats[Items::faithIndex] += (currentEquippable.faith) ? currentEquippable.faith * itemLevel + itemRarityBonus : 0;
+    }
+
+    return equippedStats;
+}
+
+int Editor::calculateItemLevelFromExperience(int exp)
+{
+    // Takes exp and returns the associated item level
+    if      (exp >= Items::itemLevel10exp) return 10;
+    else if (exp >= Items::itemLevel9exp) return 9;
+    else if (exp >= Items::itemLevel8exp) return 8;
+    else if (exp >= Items::itemLevel7exp) return 7;
+    else if (exp >= Items::itemLevel6exp) return 6;
+    else if (exp >= Items::itemLevel5exp) return 5;
+    else if (exp >= Items::itemLevel4exp) return 4;
+    else if (exp >= Items::itemLevel3exp) return 3;
+    else if (exp >= Items::itemLevel2exp) return 2;
+
+    // Default to returning one
+    return 1;
+}
+
+int Editor::calculateItemExperienceFromLevel(int level)
+{
+    // Use Roguelands formula to convert newLevel to exp
+    switch (level)
+    {
+    case 2:  return Items::itemLevel2exp;
+    case 3:  return Items::itemLevel3exp;
+    case 4:  return Items::itemLevel4exp;
+    case 5:  return Items::itemLevel5exp;
+    case 6:  return Items::itemLevel6exp;
+    case 7:  return Items::itemLevel7exp;
+    case 8:  return Items::itemLevel8exp;
+    case 9:  return Items::itemLevel9exp;
+    case 10: return Items::itemLevel10exp;
+    default: return Items::itemLevel1exp;
+    }
+}

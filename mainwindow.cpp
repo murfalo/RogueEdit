@@ -437,6 +437,9 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
     // Update the Line Edit's text and completer
     itemNameEdit->setText(current->text(0));
     itemNameEdit->setCompleter(this->determineCompleter(current));
+    itemNameEdit->completer()->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
+    itemNameEdit->completer()->setCaseSensitivity(Qt::CaseInsensitive);
+    itemNameEdit->completer()->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
 
     // Otherwise enable the name edit
     itemEditor->setEnabled(true);
@@ -514,22 +517,7 @@ void MainWindow::on_spinBoxItemLevelEdit_valueChanged(const QString& newLevel)
     std::string oldValue = this->_e->itemSettings[std::stoi(index)].exp;
 
     // Determine the new value
-    int newValue;
-
-    // Use Roguelands formula to convert newLevel to exp
-    switch (newLevel.toInt())
-    {
-    case 2:  newValue = Items::itemLevel2exp;  break;
-    case 3:  newValue = Items::itemLevel3exp;  break;
-    case 4:  newValue = Items::itemLevel4exp;  break;
-    case 5:  newValue = Items::itemLevel5exp;  break;
-    case 6:  newValue = Items::itemLevel6exp;  break;
-    case 7:  newValue = Items::itemLevel7exp;  break;
-    case 8:  newValue = Items::itemLevel8exp;  break;
-    case 9:  newValue = Items::itemLevel9exp;  break;
-    case 10: newValue = Items::itemLevel10exp; break;
-    default: newValue = Items::itemLevel1exp;
-    }
+    int newValue = this->_e->calculateItemExperienceFromLevel(newLevel.toInt());
 
     // Replace the value and update itemSettings
     this->_e->replaceValue(this->_e->currentID + index + Strings::itemExperienceSpecifier, oldValue, std::to_string(newValue));
@@ -560,9 +548,6 @@ void MainWindow::on_comboBoxItemRarityEdit_currentIndexChanged(const QString& ne
         if (Strings::rarities[newValue] == newRarity.toStdString()) break;
 
     // Update playerData and itemSettings
-    qDebug() << QString::fromStdString(this->_e->currentID + index + Strings::itemRaritySpecifier);
-    qDebug() << QString::fromStdString(oldValue);
-    qDebug() << QString::number(newValue);
     this->_e->replaceValue(this->_e->currentID + index + Strings::itemRaritySpecifier, oldValue, std::to_string(newValue));
     this->_e->itemSettings[std::stoi(index)].rarity = std::to_string(newValue);
 }

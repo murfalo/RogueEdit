@@ -10,10 +10,10 @@ int main(int argc, char *argv[])
     // Add character names from PlayerData.txt to menu bar under "Load Character"
     w.createCharacterActions();
     w.setWindowTitle(Strings::appTitle);
-    w.show();
 
     a.setStyle(Strings::appStyle);
     a.setStyleSheet(Strings::appStyleSheet);
 
+    w.show();
     return a.exec();
 }

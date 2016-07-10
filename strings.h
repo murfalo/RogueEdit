@@ -61,6 +61,8 @@ namespace Strings
     static const std::string allegianceLevelSpecifier = "aq";
     static const std::string allegianceSpecifier = "allegiance";
     static const std::string combatChipSpecifier = "cc";
+    static const std::string characterCurrentHealthSpecifier = "health";
+    static const std::string characterCurrentManaSpecifier = "mana";
 
     /************ User Interface ************/
 
