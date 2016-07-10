@@ -156,7 +156,7 @@ void Editor::loadCharacterItemBrowser()
 int *Editor::equippedStats()
 {
     int* equippedStats = new int[Items::NUM_STATS];
-    Items::Equippable currentEquippable(0,0,0,0,0,0);
+    Items::Equippable currentEquippable;
     int itemLevel;
     int itemRarityBonus;
 
