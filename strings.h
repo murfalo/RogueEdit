@@ -17,7 +17,7 @@ namespace Strings
     static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
     static const QString appStyle = "WindowsVista";
-    static const QString appStyleSheet = "* { font-family: \"Segoe UI\"; font-size: 11px; font-weight: normal }";
+    static const QString appStyleSheet = "* { font-family: \"Tahoma\"; font-size: 11px; font-weight: normal }";
 #elif defined(Q_OS_MAC)
     static const std::string playerDataPrefix = "/Users/";
     static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
@@ -61,7 +61,7 @@ namespace Strings
     static const std::string allegianceLevelSpecifier = "aq";
     static const std::string allegianceSpecifier = "allegiance";
     static const std::string combatChipSpecifier = "cc";
-    static const std::string characterCurrentHealthSpecifier = "health";
+    static const std::string characterCurrentHealthSpecifier = "hp";
     static const std::string characterCurrentManaSpecifier = "mana";
 
     /************ User Interface ************/
@@ -141,6 +141,8 @@ namespace Strings
     static const QString faithEditObjectName = "spinBoxFaiVal";
     static const QString characterLevelObjectName = "spinBoxLevelVal";
     static const QString allegianceLevelObjectName = "spinBoxAllegianceLevelVal";
+    static const QString characterHealthObjectName = "spinBoxHealthVal";
+    static const QString characterManaObjectName = "spinBoxManaVal";
 
 
     /*** Character Tab ***/
@@ -198,16 +200,18 @@ namespace Strings
     /* Arrays for Iteration */
 
     // Total number of spinBoxes and comboBoxes on the character tab
-    static const int CHARACTER_TAB_NUM_SPINBOXES = 8;
+    static const int CHARACTER_TAB_NUM_SPINBOXES = 10;
     static const int CHARACTER_TAB_NUM_COMBOBOXES = 7;
 
     // Arrays for use in spinBox iteration
     static const QString cSpinBoxObjectNames[CHARACTER_TAB_NUM_SPINBOXES] = { vitalityEditObjectName, dexterityEditObjectName, magicEditObjectName,
                                                                               strengthEditObjectName, techEditObjectName, faithEditObjectName,
-                                                                              characterLevelObjectName, allegianceLevelObjectName };
+                                                                              characterLevelObjectName, allegianceLevelObjectName,
+                                                                              characterHealthObjectName, characterManaObjectName };
     static const std::string cSpinBoxSpecifiers[CHARACTER_TAB_NUM_SPINBOXES] = { vitalitySpecifier, dexteritySpecifier, magicSpecifier,
                                                                                  strengthSpecifier, techSpecifier, faithSpecifier,
-                                                                                 characterLevelSpecifier, allegianceLevelSpecifier};
+                                                                                 characterLevelSpecifier, allegianceLevelSpecifier,
+                                                                                 characterCurrentHealthSpecifier, characterCurrentManaSpecifier};
 
     // Arrays for use in comboBox iteration
     static const QString cComboBoxObjectNames[CHARACTER_TAB_NUM_COMBOBOXES] = { difficultyEditObjectName, raceEditObjectName, classEditObjectName,

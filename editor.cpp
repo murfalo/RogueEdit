@@ -40,25 +40,16 @@ Editor::~Editor()
 std::string Editor::loadValue(std::string specifier)
 {
     /* Returns the value assigned to specifier. */
-    std::string value = "";
+    // Find the value by determining the string between start and end (Ex:  0hp : <value> : System.Int32;
+    std::string startDelimiter = " " + specifier + Strings::paddedSeperator;
+    std::string endDelimiter = Strings::paddedSeperator;
 
-    // Create a stringstream and set it's contents to playerData
-    std::stringstream playerDataStream(*(this->_playerData));
+    // Find the location of key in playerData
+    std::size_t first = this->_playerData->find(startDelimiter);
+    first += startDelimiter.length(); // Move to the position just before value
+    std::size_t last = this->_playerData->find(endDelimiter, first);
 
-    std::string word;
-
-    // Search the file up to the specifier
-    while (playerDataStream >> word)
-        if (word == specifier) break;
-
-    // Find the value
-    while(playerDataStream >> word && word != Strings::terminator)
-    {
-        if (word != Strings::separator && word != Strings::intSpecifier && word != Strings::stringSpecifier)
-            value = value.empty() ? word : value + " " + word;
-    }
-
-    return value;
+    return this->_playerData->substr(first, last-first);
 }
 
 void Editor::replaceValue(std::string specifier, std::string oldValue, std::string newValue)
