@@ -70,7 +70,8 @@ namespace Items
     /* Item Stats */
     struct Equippable
     {
-        Equippable::Equippable(int vitality, int dexterity, int magic, int strength, int tech, int faith) :
+        Equippable() : vitality(0), dexterity(0), magic(0), strength(0), tech(0), faith(0) {}
+        Equippable(int vitality, int dexterity, int magic, int strength, int tech, int faith) :
             vitality(vitality), dexterity(dexterity), magic(magic), strength(strength), tech(tech), faith(faith) {}
         int vitality;
         int dexterity;
