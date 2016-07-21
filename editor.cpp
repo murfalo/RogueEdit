@@ -46,6 +46,7 @@ std::string Editor::loadValue(std::string specifier)
 
     // Find the location of key in playerData
     std::size_t first = this->_playerData->find(startDelimiter);
+    if (first == this->_playerData->npos) return ""; // Break if not found
     first += startDelimiter.length(); // Move to the position just before value
     std::size_t last = this->_playerData->find(endDelimiter, first);
 
