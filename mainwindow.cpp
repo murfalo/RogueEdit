@@ -309,6 +309,17 @@ void MainWindow::on_spinBoxFaiVal_valueChanged(const QString& newFai)
     this->simpleSpinBoxChangedHandler(newFai, Strings::faithSpecifier);
 }
 
+void MainWindow::on_spinBoxManaVal_valueChanged(const QString &newMana)
+{
+    this->simpleSpinBoxChangedHandler(newMana, Strings::characterCurrentManaSpecifier);
+}
+
+void MainWindow::on_spinBoxHealthVal_valueChanged(const QString &newHealth)
+{
+    this->simpleSpinBoxChangedHandler(newHealth, Strings::characterCurrentHealthSpecifier);
+}
+
+
 void MainWindow::on_spinBoxLevelVal_valueChanged(const QString& newCharacterLevel)
 {
     this->simpleSpinBoxChangedHandler(newCharacterLevel, Strings::characterLevelSpecifier);

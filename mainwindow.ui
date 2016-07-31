@@ -843,7 +843,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statVIT.png</pixmap>
+                  <pixmap>:/Resources/statVIT.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -929,7 +929,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statDEX.png</pixmap>
+                  <pixmap>:/Resources/statDEX.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1009,7 +1009,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statMAG.png</pixmap>
+                  <pixmap>:/Resources/statMAG.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1089,7 +1089,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statSTR.png</pixmap>
+                  <pixmap>:/Resources/statSTR.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1169,7 +1169,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statTEC.png</pixmap>
+                  <pixmap>:/Resources/statTEC.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1249,7 +1249,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statFTH.png</pixmap>
+                  <pixmap>:/Resources/statFTH.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1323,7 +1323,7 @@
              <widget class="QSpinBox" name="spinBoxLevelVal">
               <property name="geometry">
                <rect>
-                <x>184</x>
+                <x>180</x>
                 <y>82</y>
                 <width>41</width>
                 <height>20</height>
@@ -1376,7 +1376,7 @@
              <widget class="QSpinBox" name="spinBoxAllegianceLevelVal">
               <property name="geometry">
                <rect>
-                <x>184</x>
+                <x>180</x>
                 <y>110</y>
                 <width>41</width>
                 <height>20</height>
@@ -1436,7 +1436,7 @@
                </size>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>999</number>
               </property>
              </widget>
              <widget class="QLabel" name="labelHealth">
@@ -1474,7 +1474,7 @@
                </size>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>999</number>
               </property>
              </widget>
             </widget>
@@ -2339,8 +2339,6 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
