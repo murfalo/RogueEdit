@@ -3,8 +3,8 @@
 
 #pragma once
 #include <QMainWindow>
-#include <QToolButton>
 #include <QCompleter>
+#include <QToolButton>
 #include "items.h"
 #include "editor.h"
 #include "strings.h"

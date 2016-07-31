@@ -2,7 +2,6 @@
 #define EDITOR_H
 
 #pragma once
-#include <QtCore>
 #include <QMenu>
 #include <fstream>
 #include <sstream>

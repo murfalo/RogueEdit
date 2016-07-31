@@ -3,7 +3,7 @@
 
 #pragma once
 #include <string>
-#include <QtCore>
+#include <QStringList>
 #include <QCompleter>
 #include <unordered_map>
 
