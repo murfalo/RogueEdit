@@ -34,7 +34,6 @@ public:
     static const int MAX_CHARACTERS = 6;       // Maximum number of characters allowed by Roguelands
 
     std::string currentID;                                      // ID of the current character
-    int* equippedStats();                                       // Returns a pointer to an array to the stats provided by equipped items
 
     std::unordered_map<std::string, QString>* characterValues;  // Maps a specifier string to the character's associated value in QString form
     int* inventory;                                             // Maps an index to an item

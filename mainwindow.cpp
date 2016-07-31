@@ -454,7 +454,6 @@ void MainWindow::on_treeWidgetItemBrowser_currentItemChanged(QTreeWidgetItem *cu
     {
         // Update the spinBoxes and comboBoxes
         this->updateiSpinandComboBoxes(current);
-
         if (current->text(0) == Strings::noItemPlaceholder)
             setiSpinandComboBoxesEnabled(itemEditor, false);  // Don't enable combo/spin boxes if no item
         else
@@ -540,6 +539,10 @@ void MainWindow::on_comboBoxItemRarityEdit_currentIndexChanged(const QString& ne
 {
     // Determine the old value
     QTreeWidgetItem* current = this->findChild<QTreeWidget*>(Strings::itemBrowserObjectName)->currentItem();
+
+    // Prevent combat chips from being evil and setting item tiers to 4 for as of yet undetermined reasons
+    if (current->parent()->text(0) == Strings::itemBrowserCombatChipsTitle) return;
+
     std::string index = current->text(2).toStdString();
     std::string oldValue = this->_e->itemSettings[std::stoi(index)].rarity;
 

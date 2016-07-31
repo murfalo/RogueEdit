@@ -154,37 +154,6 @@ void Editor::loadCharacterItemBrowser()
         this->combatChips[i] = std::stoi(this->loadValue(this->currentID + Strings::combatChipSpecifier + std::to_string(i)));
 }
 
-int *Editor::equippedStats()
-{
-    int* equippedStats = new int[Items::NUM_STATS];
-    Items::Equippable currentEquippable;
-    int itemLevel;
-    int itemRarityBonus;
-
-    // Initialize everything to 0
-    for (int i = 0; i < Items::NUM_STATS; i++)
-        equippedStats[i] = 0;
-
-    // Loop through the inventory and update equipped stats!
-    for (int i = Items::EQUIPPED_BEGIN; i < Items::EQUIPPED_END; i++)
-    {
-        // Load in values associated with current equippable index
-        currentEquippable = Items::equippables.find(this->inventory[i])->second;
-        itemLevel = this->calculateItemLevelFromExperience(std::stoi(this->itemSettings[i].exp));
-        itemRarityBonus = std::stoi(this->itemSettings[i].rarity) * Items::itemRarityBonusMultiplier;
-
-        // Stat Bonus = Item Stat * Item Level + Item Rarity * 3 (iff Item Stat != 0)
-        equippedStats[Items::vitalityIndex] += (currentEquippable.vitality) ? currentEquippable.vitality * itemLevel + itemRarityBonus : 0;
-        equippedStats[Items::dexterityIndex] += (currentEquippable.dexterity) ? currentEquippable.dexterity * itemLevel + itemRarityBonus : 0;
-        equippedStats[Items::magicIndex] += (currentEquippable.magic) ? currentEquippable.magic * itemLevel + itemRarityBonus : 0;
-        equippedStats[Items::strengthIndex] += (currentEquippable.strength) ? currentEquippable.strength * itemLevel + itemRarityBonus : 0;
-        equippedStats[Items::techIndex] += (currentEquippable.tech) ? currentEquippable.tech * itemLevel + itemRarityBonus : 0;
-        equippedStats[Items::faithIndex] += (currentEquippable.faith) ? currentEquippable.faith * itemLevel + itemRarityBonus : 0;
-    }
-
-    return equippedStats;
-}
-
 int Editor::calculateItemLevelFromExperience(int exp)
 {
     // Takes exp and returns the associated item level

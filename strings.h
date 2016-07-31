@@ -17,7 +17,7 @@ namespace Strings
     static const std::string playerDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/AppData/LocalLow/DefaultCompany/Roguelands/.txt";
     static const QString appStyle = "WindowsVista";
-    static const QString appStyleSheet = "* { font-family: \"Tahoma\"; font-size: 11px; font-weight: normal }";
+    static const QString appStyleSheet = "* { font-family: \"Tahoma\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 56px; }";
 #elif defined(Q_OS_MAC)
     static const std::string playerDataPrefix = "/Users/";
     static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";

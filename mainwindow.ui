@@ -78,7 +78,7 @@
          <attribute name="title">
           <string>Character</string>
          </attribute>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>9</x>
@@ -764,13 +764,13 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>223</x>
             <y>9</y>
             <width>232</width>
-            <height>151</height>
+            <height>156</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="layoutStats">
@@ -1492,7 +1492,7 @@
             <x>9</x>
             <y>9</y>
             <width>201</width>
-            <height>161</height>
+            <height>151</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="layoutItemEditor">
@@ -1585,6 +1585,9 @@
                <layout class="QHBoxLayout" name="layoutItemRarityEdit">
                 <item>
                  <widget class="QComboBox" name="comboBoxItemRarityEdit">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <item>
                    <property name="text">
                     <string>Normal</string>
