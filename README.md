@@ -25,6 +25,7 @@ Note that there are some resources available for updating things such as items a
 
 ## Dependencies
 * [Qt Open Source][Qt]
+* [Roguelands][Steam]
 
 [Steam]: http://store.steampowered.com/app/364420/
 [Qt]: https://www.qt.io/download-open-source/
