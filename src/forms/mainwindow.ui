@@ -913,7 +913,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statVIT.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statVIT.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -999,7 +999,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statDEX.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statDEX.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1079,7 +1079,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statMAG.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statMAG.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1159,7 +1159,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statSTR.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statSTR.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1239,7 +1239,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statTEC.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statTEC.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1319,7 +1319,7 @@
                   <enum>Qt::PlainText</enum>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="images.qrc">:/Resources/statFTH.png</pixmap>
+                  <pixmap resource="../resources/images/images.qrc">:/statFTH.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -2414,7 +2414,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images/images.qrc"/>
  </resources>
  <connections/>
 </ui>

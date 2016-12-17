@@ -24,4 +24,4 @@ HEADERS  += src/headers/mainwindow.h \
 FORMS    += src/forms/mainwindow.ui
 
 RESOURCES += \
-    src/resources/images.qrc
+    src/resources/images/images.qrc

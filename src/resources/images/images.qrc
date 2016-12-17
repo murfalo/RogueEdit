@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>statDEX.png</file>
+        <file>statFTH.png</file>
+        <file>statMAG.png</file>
+        <file>statSTR.png</file>
+        <file>statTEC.png</file>
+        <file>statVIT.png</file>
+    </qresource>
+</RCC>
