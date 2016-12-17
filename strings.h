@@ -23,7 +23,7 @@ namespace Strings
     static const std::string playerDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/PlayerPrefs.txt";
     static const std::string tmpDataSuffix = "/Library/Application Support/unity.DefaultCompany.Roguelands/.txt";
     static const QString appStyle = "Fusion";
-    static const QString appStyleSheet = "* { font-family: \"Arial\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxDifficultyEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxRaceEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxClassEdit QAbstractScrollArea { min-height: 300px; } QComboBox#comboBoxAllegianceEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxVariantEdit QAbstractScrollArea { min-height: 60px; } QComboBox#comboBoxUniformEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxAugmentEdit QAbstractScrollArea { min-height: 400px; } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 80px; }";
+    static const QString appStyleSheet = "* { font-family: \"Arial\"; font-size: 11px; font-weight: normal } QComboBox#comboBoxDifficultyEdit QAbstractScrollArea { min-height: 40px; } QComboBox#comboBoxRaceEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxClassEdit QAbstractScrollArea { min-height: 300px; } QComboBox#comboBoxAllegianceEdit QAbstractScrollArea { min-height: 80px; } QComboBox#comboBoxVariantEdit QAbstractScrollArea { min-height: 60px; } QComboBox#comboBoxUniformEdit QAbstractScrollArea { min-height: 480px; } QComboBox#comboBoxAugmentEdit QAbstractScrollArea { min-height: 400px; } QComboBox#comboBoxItemRarityEdit QAbstractScrollArea { min-height: 80px; }";
 #endif
 
     /************ Parsing  ************/
@@ -149,13 +149,13 @@ namespace Strings
 
     // Constant integers used to determine array/map sizes
     static const int NUM_DIFFICULTIES = 2;
-    static const int NUM_RACES = 24;
+    static const int NUM_RACES = 36;
     static const int NUM_STATS = 6;
     static const int NUM_CLASSES = 15;
     static const int NUM_VARIANTS = 3;
     static const int NUM_UNIFORMS = 24;
     static const int NUM_AUGMENTS = 25;
-    static const int NUM_ALLEGIANCES = 2;
+    static const int NUM_ALLEGIANCES = 4;
 
     /* Difficulty */
     static const std::string difficulties[NUM_DIFFICULTIES] = { "Normal", "Ironman"};
@@ -164,7 +164,8 @@ namespace Strings
     static const std::string races[NUM_RACES] = { "Wanderer", "Royalite", "Centurion", "Illuminate", "Shlaami", "Fishfolk", "Gekko",
                                                   "Nomad", "Deathrazor", "Hiveling", "Ancient", "Lightsworn", "Drifter", "Goblin",
                                                   "Swampfolk", "Tiki", "Titan", "Trogon", "Scaled", "Florbgon", "Oompa", "Wizened",
-                                                  "Necro", "Golem" };
+                                                  "Necro", "Golem", "Avalancher", "Boogoo", "Afflicted", "Runefolk", "Overseer",
+                                                  "Bunyip", "Infernal", "Worg", "Broccolite", "Ironclad", "Savior", "Phantom" };
     /* Classes */
     // Array for retrieving class name by ID
     static const std::string classes[NUM_CLASSES] = { "Enforcer", "Gunner", "Machinist", "Darkmage", "Aethermage", "Blademaster", "Dragoon",
@@ -195,7 +196,7 @@ namespace Strings
                                                         "Rebellion Headpiece", "Gas Mask" };
 
     /* Allegiances */
-    static const std::string allegiances[NUM_ALLEGIANCES] = {"Galactic Fleet", "Starlight Rebellion"};
+    static const std::string allegiances[NUM_ALLEGIANCES] = {"Galactic Fleet", "Starlight Rebellion", "Church of Faust", "Gray Enigma"};
 
     /* Arrays for Iteration */
 
