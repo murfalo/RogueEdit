@@ -1,6 +1,6 @@
-#include "mainwindow.h"
-#include "editor.h"
-#include "strings.h"
+#include "../headers/mainwindow.h"
+#include "../headers/editor.h"
+#include "../headers/strings.h"
 
 int main(int argc, char *argv[])
 {

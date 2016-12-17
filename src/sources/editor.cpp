@@ -1,4 +1,4 @@
-#include "editor.h"
+#include "../headers/editor.h"
 
 Editor::Editor()
 {
