@@ -19,7 +19,7 @@ To download RogueEdit, check out the [releases page][releases] and download the 
 2. **Clone** the project to your own machine
 3. **Commit** changes to your own branch
 4. **Push** your work back up to your fork
-5. Submit a **Pull request** so that I can review your changes
+5. Submit a **pull request** so that I can review your changes
 
 Note that there are some resources available for updating things such as items and combat chips [here][utilities].  These can be used to convert the [item spreadsheets][items] into the format needed by [Items.h][items.h].
 
@@ -28,6 +28,7 @@ Note that there are some resources available for updating things such as items a
 * [Roguelands][Steam]
 
 [Steam]: http://store.steampowered.com/app/364420/
+[releases]: https://github.com/Murfalo/RogueEdit/releases
 [Qt]: https://www.qt.io/download-open-source/
 [utilities]: https://github.com/Murfalo/RogueEdit/tree/master/src/resources/utilities
 [items]: https://github.com/Murfalo/RogueEdit/tree/master/src/resources/items
