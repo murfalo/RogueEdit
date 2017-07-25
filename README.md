@@ -1,4 +1,6 @@
 # RogueEdit
+This is my personal fix/update to Murfalo's RogueEdit, all credit goes to him for making the program, i just simply made a quick update to it to add full compatiblity for 1.5.1, including the ultra boss armors.
+
 
 ## Description
 RogueEdit is an entirely free and open-source tool that allows [Roguelands][Steam] players to edit attributes of their characters.
