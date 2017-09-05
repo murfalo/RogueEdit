@@ -1,4 +1,7 @@
 # RogueEdit
+| Character Page | Items Page |
+|:-------------------------:|:-------------------------:|
+| ![](https://github.com/Murfalo/RogueEdit/blob/master/screenshots/Character.png?raw=true) | ![](https://github.com/Murfalo/RogueEdit/blob/master/screenshots/Items.png?raw=true) | 
 
 ## Description
 RogueEdit is an entirely free and open-source tool that allows [Roguelands][Steam] players to edit attributes of their characters.
